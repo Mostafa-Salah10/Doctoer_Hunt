@@ -13,7 +13,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   flutter_dotenv: ^6.0.1
+  flutter_secure_storage: ^10.3.1 
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -26,3 +29,11 @@ flutter:
 
   assets:
     - .env
+    - assets/images/
+    - assets/launchers/
+    - assets/svgs/
+
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/core/utils/
+  filename: assets.dart

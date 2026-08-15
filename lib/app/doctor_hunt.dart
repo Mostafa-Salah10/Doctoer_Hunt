@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/config/theme/manager/theme_cubit.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DoctorHunt extends StatelessWidget {
   const DoctorHunt({super.key});
@@ -14,14 +15,21 @@ class DoctorHunt extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       buildWhen: (previous, current) => previous.themeMode != current.themeMode,
       builder: (context, state) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: AppStrings.appName,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: state.themeMode,
-          onGenerateRoute: AppRouter.onGenerateRoute,
-          initialRoute: AppRoutes.splash,
+        return ScreenUtilInit(
+          designSize: const Size(360, 690),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (_, child) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: AppStrings.appName,
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              themeMode: state.themeMode,
+              onGenerateRoute: AppRouter.onGenerateRoute,
+              initialRoute: AppRoutes.splash,
+            );
+          },
         );
       },
     );

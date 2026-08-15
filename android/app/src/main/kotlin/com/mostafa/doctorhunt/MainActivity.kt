@@ -1,4 +1,4 @@
-package com.example.doctor_hunt
+package com.mostafa.doctorhunt
 
 import io.flutter.embedding.android.FlutterActivity
 

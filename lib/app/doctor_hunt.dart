@@ -12,26 +12,30 @@ class DoctorHunt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeState>(
-      buildWhen: (previous, current) => previous.themeMode != current.themeMode,
-      builder: (context, state) {
-        return ScreenUtilInit(
-          designSize: const Size(360, 690),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (_, child) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: AppStrings.appName,
-              theme: AppTheme.lightTheme,
-              darkTheme: AppTheme.darkTheme,
-              themeMode: state.themeMode,
-              onGenerateRoute: AppRouter.onGenerateRoute,
-              initialRoute: AppRoutes.splash,
-            );
-          },
-        );
-      },
+    return BlocProvider(
+      create: (_) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        buildWhen: (previous, current) =>
+            previous.themeMode != current.themeMode,
+        builder: (context, state) {
+          return ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (_, child) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: AppStrings.appName,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: state.themeMode,
+                onGenerateRoute: AppRouter.onGenerateRoute,
+                initialRoute: AppRoutes.splash,
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

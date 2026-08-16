@@ -6,7 +6,7 @@ abstract class AppTheme {
     primaryColor: Colors.red,
     scaffoldBackgroundColor: Colors.white,
 
-    fontFamily: 'Cairo',
+    // fontFamily: 'Cairo',
     appBarTheme: AppBarTheme(
       scrolledUnderElevation: 0,
       backgroundColor: Colors.white,
@@ -19,7 +19,7 @@ abstract class AppTheme {
     primaryColor: Colors.red,
     scaffoldBackgroundColor: Colors.grey[900],
 
-    fontFamily: 'Cairo',
+    // fontFamily: 'Cairo',
     appBarTheme: AppBarTheme(
       scrolledUnderElevation: 0,
       backgroundColor: Colors.grey[900],

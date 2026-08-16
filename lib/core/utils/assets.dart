@@ -6,6 +6,18 @@ class Assets {
   /// assets/images/bottom_ellipse.png
   static const String assetsImagesBottomEllipse = "assets/images/bottom_ellipse.png";
 
+  /// Assets for assetsImagesOnboardingOne
+  /// assets/images/onboarding_one.png
+  static const String assetsImagesOnboardingOne = "assets/images/onboarding_one.png";
+
+  /// Assets for assetsImagesOnboardingThree
+  /// assets/images/onboarding_three.png
+  static const String assetsImagesOnboardingThree = "assets/images/onboarding_three.png";
+
+  /// Assets for assetsImagesOnboardingTwo
+  /// assets/images/onboarding_two.png
+  static const String assetsImagesOnboardingTwo = "assets/images/onboarding_two.png";
+
   /// Assets for assetsImagesSplashAboveAndroid12
   /// assets/images/splash_above_android_12.png
   static const String assetsImagesSplashAboveAndroid12 = "assets/images/splash_above_android_12.png";

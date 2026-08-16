@@ -39,7 +39,7 @@ class CustomBackgroundWidget extends StatelessWidget {
               right: 0,
               child: Image.asset(Assets.assetsImagesBottomEllipse),
             ),
-
+        
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: withHorizontalPadding == true
@@ -47,7 +47,11 @@ class CustomBackgroundWidget extends StatelessWidget {
                     : 0.0,
                 vertical: verticalPadding ?? 0.0,
               ),
-              child: child,
+              child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: child,
+              ),
             ),
           ],
         ),

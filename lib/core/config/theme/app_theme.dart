@@ -1,30 +1,47 @@
+import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/config/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: Colors.red,
-    scaffoldBackgroundColor: Colors.white,
+    primaryColor: AppColors.primaryColor,
+    scaffoldBackgroundColor: AppColors.lightBackgroundColor,
 
-    // fontFamily: 'Cairo',
+    fontFamily: 'Rubik',
     appBarTheme: AppBarTheme(
       scrolledUnderElevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.lightBackgroundColor,
       elevation: 0,
       // titleTextStyle: AppStyles.font18BlackBold(),
+    ),
+
+    textTheme: TextTheme(
+      headlineMedium: AppStyles.font28DarkTextMedium,
+
+      titleSmall: AppStyles.font14GreyTextregular,
+      titleMedium: AppStyles.font18WhiteTextMedium,
     ),
   );
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: Colors.red,
-    scaffoldBackgroundColor: Colors.grey[900],
+    primaryColor: AppColors.primaryColor,
+    scaffoldBackgroundColor: AppColors.darkBackgroundColor,
 
-    // fontFamily: 'Cairo',
+    fontFamily: 'Rubik',
     appBarTheme: AppBarTheme(
       scrolledUnderElevation: 0,
-      backgroundColor: Colors.grey[900],
+      backgroundColor: AppColors.darkBackgroundColor,
       elevation: 0,
       // titleTextStyle: AppStyles.font18BlackBold(),
+    ),
+
+    textTheme: TextTheme(
+      headlineMedium: AppStyles.font28DarkTextMedium.copyWith(
+        color: AppColors.lightBackgroundColor,
+      ),
+      titleSmall: AppStyles.font14GreyTextregular,
+      titleMedium: AppStyles.font18WhiteTextMedium,
     ),
   );
 }

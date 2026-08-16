@@ -1,8 +1,8 @@
 import 'package:doctor_hunt/core/config/routing/app_router.dart';
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_theme.dart';
 import 'package:doctor_hunt/core/config/theme/manager/theme_cubit.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
-import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,11 +30,7 @@ class DoctorHunt extends StatelessWidget {
                 darkTheme: AppTheme.darkTheme,
                 themeMode: state.themeMode,
                 onGenerateRoute: AppRouter.onGenerateRoute,
-                // initialRoute: AppRoutes.splash,
-                home: CustomBackgroundWidget(
-                  withHorizontalPadding: false,
-                  child: Center(child: Text("Hello Disha")),
-                ),
+                initialRoute: AppRoutes.onboarding,
               );
             },
           );

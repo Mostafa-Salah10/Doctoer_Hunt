@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 abstract class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case AppRoutes.splash:
+      case AppRoutes.onboarding:
         return MaterialPageRoute(builder: (_) => Container());
 
       default:

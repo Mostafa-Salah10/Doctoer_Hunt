@@ -30,7 +30,7 @@ class DoctorHunt extends StatelessWidget {
                 darkTheme: AppTheme.darkTheme,
                 themeMode: state.themeMode,
                 onGenerateRoute: AppRouter.onGenerateRoute,
-                initialRoute: AppRoutes.splash,
+                initialRoute: AppRoutes.onboarding,
               );
             },
           );

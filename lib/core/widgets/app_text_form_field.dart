@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -57,7 +58,7 @@ class AppTextFormField extends StatelessWidget {
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
         filled: true,
-        fillColor: fillColor ?? AppColors.lightBackgroundColor,
+        fillColor: fillColor ??getFillColor(context) ,
         isDense: true,
         contentPadding:
             contentPadding ??
@@ -88,4 +89,9 @@ class AppTextFormField extends StatelessWidget {
       borderRadius: BorderRadius.circular(12.r),
     );
   }
+
+
+  Color getFillColor(BuildContext context)=> context.isDarkMode
+            ? AppColors.darkBackgroundColor
+            : AppColors.lightBackgroundColor;
 }

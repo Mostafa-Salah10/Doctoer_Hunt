@@ -46,11 +46,15 @@ class AuthSocialContainer extends StatelessWidget {
     return Container(
       height: 54.h,
       decoration: BoxDecoration(
-        color: AppColors.lightBackgroundColor,
+        color: context.isDarkMode
+            ? AppColors.darkBackgroundColor
+            : AppColors.lightBackgroundColor,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
+            color: context.isDarkMode
+                ? AppColors.lightBackgroundColor.withValues(alpha: 0.06)
+                : Colors.black.withValues(alpha: 0.06),
             offset: const Offset(0, 0),
             spreadRadius: 0,
             blurRadius: 22,

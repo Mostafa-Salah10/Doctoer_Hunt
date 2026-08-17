@@ -14,7 +14,7 @@ class ThemeCubit extends Cubit<ThemeState> {
     final appTheme = SharedPreferencesHelper().get(key: AppStrings.themeMode);
     emit(
       GetAppTheme(
-        themeMode: ThemeMode.values[appTheme ?? ThemeMode.light.index],
+        themeMode: ThemeMode.values[appTheme ?? ThemeMode.system.index],
       ),
     );
   }

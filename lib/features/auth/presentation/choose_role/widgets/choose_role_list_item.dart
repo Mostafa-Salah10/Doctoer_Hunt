@@ -28,13 +28,17 @@ class ChooseRoleListItem extends StatelessWidget {
             padding: EdgeInsets.all(24.h),
             decoration: BoxDecoration(
               color: selectedRole == role.role
-                  ? AppColors.lightBackgroundColor
+                  ? context.isDarkMode
+                        ? AppColors.darkBackgroundColor
+                        : AppColors.lightBackgroundColor
+                  : context.isDarkMode
+                  ? AppColors.darkBackgroundColor
                   : AppColors.lightIconColor,
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(
                 color: selectedRole == role.role
                     ? AppColors.secondaryColor
-                    : AppColors.greyBorder,
+                    :context.isDarkMode? AppColors.blackColor.withValues(alpha: 0.16): AppColors.greyBorder,
                 width: selectedRole == role.role ? 2.w : 1.w,
               ),
             ),

@@ -9,8 +9,10 @@ class SignInState {
   final BoxState sendOtp;
   final BoxState resetPassword;
   final bool validEmail;
+  final bool forgotPassValidEmail;
 
   const SignInState({
+    required this.forgotPassValidEmail,
     required this.showNewPassword,
     required this.showReEnterPassword,
     required this.resetPassword,
@@ -23,6 +25,7 @@ class SignInState {
 
   SignInState.init()
     : this(
+        forgotPassValidEmail: false,
         showNewPassword: false,
         showReEnterPassword: false,
         resetPassword: BoxState.initial(),
@@ -42,7 +45,9 @@ class SignInState {
     BoxState? resetPassword,
     bool? showNewPassword,
     bool? showReEnterPassword,
+    bool? forgotPassValidEmail,
   }) => SignInState(
+    forgotPassValidEmail: forgotPassValidEmail ?? this.forgotPassValidEmail,
     showNewPassword: showNewPassword ?? this.showNewPassword,
     showReEnterPassword: showReEnterPassword ?? this.showReEnterPassword,
     resetPassword: resetPassword ?? this.resetPassword,

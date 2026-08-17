@@ -62,7 +62,8 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
               const VerticalSpace(height: 36),
               BlocBuilder<SignInCubit, SignInState>(
                 buildWhen: (previous, current) =>
-                    previous.validEmail != current.validEmail,
+                    previous.forgotPassValidEmail !=
+                    current.forgotPassValidEmail,
                 builder: (context, state) {
                   return AppTextFormField(
                     hint: "Email",
@@ -71,7 +72,7 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
                       cubit.validateEmail(value);
                       email = value;
                     },
-                    suffixIcon: state.validEmail
+                    suffixIcon: state.forgotPassValidEmail
                         ? Icon(Icons.done, color: AppColors.greyColor)
                         : null,
                   );

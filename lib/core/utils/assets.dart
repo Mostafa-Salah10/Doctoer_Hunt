@@ -2,6 +2,14 @@
 class Assets {
   Assets._();
   
+  /// Assets for assetsFontsPlusJakartaSansRegular
+  /// assets/fonts/PlusJakartaSans-Regular.ttf
+  static const String assetsFontsPlusJakartaSansRegular = "assets/fonts/PlusJakartaSans-Regular.ttf";
+
+  /// Assets for assetsFontsRubikRegular
+  /// assets/fonts/Rubik-Regular.ttf
+  static const String assetsFontsRubikRegular = "assets/fonts/Rubik-Regular.ttf";
+
   /// Assets for assetsImagesBottomEllipse
   /// assets/images/bottom_ellipse.png
   static const String assetsImagesBottomEllipse = "assets/images/bottom_ellipse.png";
@@ -34,8 +42,20 @@ class Assets {
   /// assets/launchers/laucher_icon.png
   static const String assetsLaunchersLaucherIcon = "assets/launchers/laucher_icon.png";
 
+  /// Assets for assetsSvgsAdminRole
+  /// assets/svgs/admin_role.svg
+  static const String assetsSvgsAdminRole = "assets/svgs/admin_role.svg";
+
   /// Assets for assetsSvgsAppLogo
   /// assets/svgs/app_logo.svg
   static const String assetsSvgsAppLogo = "assets/svgs/app_logo.svg";
+
+  /// Assets for assetsSvgsPatientRole
+  /// assets/svgs/patient_role.svg
+  static const String assetsSvgsPatientRole = "assets/svgs/patient_role.svg";
+
+  /// Assets for assetsSvgsSelectedRole
+  /// assets/svgs/selected_role.svg
+  static const String assetsSvgsSelectedRole = "assets/svgs/selected_role.svg";
 }
 

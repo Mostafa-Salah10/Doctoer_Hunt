@@ -58,7 +58,7 @@ class OnboardingWidget extends StatelessWidget {
           ),
         ),
 
-        VerticalSpace(height: 14),
+      const  VerticalSpace(height: 14),
 
         BlocBuilder<OnboardingCubit, OnboardingState>(
           builder: (context, state) {

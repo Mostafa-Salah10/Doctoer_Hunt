@@ -2,6 +2,7 @@ import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
+import 'package:doctor_hunt/features/auth/presentation/choose_role/screens/choose_role_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart'
     show OnboardingCubit;
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -17,6 +18,10 @@ abstract class AppRouter {
             create: (context) => gi<OnboardingCubit>(),
             child: const OnboardingScreen(),
           ),
+        );
+      case AppRoutes.chooseRole:
+        return MaterialPageRoute(
+          builder: (_) => const ChooseRoleScreen(),
         );
 
       default:

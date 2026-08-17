@@ -9,7 +9,7 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomBackgroundWidget(
       withHorizontalPadding: false,
-      child: OnboardingWidget(),
+      child: const OnboardingWidget(),
     );
   }
 }

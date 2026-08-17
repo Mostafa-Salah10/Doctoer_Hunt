@@ -18,6 +18,7 @@ dependencies:
   flutter_dotenv: ^6.0.1
   flutter_screenutil: ^5.9.3
   flutter_secure_storage: ^10.3.1
+  flutter_svg: ^2.3.0
   get_it: ^9.2.1
   shared_preferences: ^2.5.5
   svg_flutter: ^0.0.1
@@ -43,6 +44,10 @@ flutter:
     - family: Rubik
       fonts:
         - asset: assets/fonts/Rubik-Regular.ttf
+
+    - family: PlusJakartaSans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
 
 flutter_assets:
   assets_path: assets/

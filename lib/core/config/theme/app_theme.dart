@@ -8,7 +8,6 @@ abstract class AppTheme {
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.lightBackgroundColor,
 
-    fontFamily: 'Rubik',
     appBarTheme: AppBarTheme(
       scrolledUnderElevation: 0,
       backgroundColor: AppColors.lightBackgroundColor,
@@ -21,6 +20,9 @@ abstract class AppTheme {
 
       titleSmall: AppStyles.font14GreyTextregular,
       titleMedium: AppStyles.font18WhiteTextMedium,
+      headlineSmall: AppStyles.font25BlackTextBold,
+      headlineLarge: AppStyles.font28darkblackTextRegularPlusJakarta,
+      titleLarge: AppStyles.font20darkblackTextSemiBoldPlusJakarta,
     ),
   );
   static final ThemeData darkTheme = ThemeData(
@@ -28,7 +30,6 @@ abstract class AppTheme {
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.darkBackgroundColor,
 
-    fontFamily: 'Rubik',
     appBarTheme: AppBarTheme(
       scrolledUnderElevation: 0,
       backgroundColor: AppColors.darkBackgroundColor,
@@ -42,6 +43,15 @@ abstract class AppTheme {
       ),
       titleSmall: AppStyles.font14GreyTextregular,
       titleMedium: AppStyles.font18WhiteTextMedium,
+      headlineSmall: AppStyles.font25BlackTextBold.copyWith(
+        color: AppColors.lightBackgroundColor,
+      ),
+      headlineLarge: AppStyles.font28darkblackTextRegularPlusJakarta.copyWith(
+        color: AppColors.lightBackgroundColor,
+      ),
+      titleLarge: AppStyles.font20darkblackTextSemiBoldPlusJakarta.copyWith(
+        color: AppColors.lightBackgroundColor,
+      ),
     ),
   );
 }

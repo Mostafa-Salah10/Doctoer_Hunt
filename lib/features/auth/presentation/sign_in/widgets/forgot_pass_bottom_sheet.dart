@@ -1,7 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
-import 'package:doctor_hunt/core/extensions/size_extension.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
@@ -28,7 +27,6 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
     final cubit = context.read<SignInCubit>();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      height: context.height * 0.45,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(
@@ -102,6 +100,7 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
                   },
                 ),
               ),
+              const VerticalSpace(height: 30),
             ],
           ),
         ),

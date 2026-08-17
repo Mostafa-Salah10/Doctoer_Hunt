@@ -10,10 +10,17 @@ class SignInCubit extends Cubit<SignInState> {
   final signInFormKey = GlobalKey<FormState>();
   final forgotFormKey = GlobalKey<FormState>();
   final sendCodeFormKey = GlobalKey<FormState>();
+  final resetFormKey = GlobalKey<FormState>();
   String otpCode = "";
 
   void togglePasswordIcon() =>
       emit(state.copyWith(showPassword: !state.showPassword));
+
+  void toggleNewPasswordIcon() =>
+      emit(state.copyWith(showNewPassword: !state.showNewPassword));
+
+  void toggleReEnterPasswordIcon() =>
+      emit(state.copyWith(showReEnterPassword: !state.showReEnterPassword));
 
   void validateEmail(String? email) {
     if (email == null) return;

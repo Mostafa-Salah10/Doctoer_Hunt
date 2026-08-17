@@ -1,10 +1,12 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
-import 'package:doctor_hunt/core/extensions/size_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
+import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/widgets/custom_otp_field.dart';
+import 'package:doctor_hunt/features/auth/presentation/sign_in/widgets/reset_password_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +25,6 @@ class _ForgotPasswordBottomSheetState extends State<SendCodeBottomSheet> {
     final cubit = context.read<SignInCubit>();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      height: context.height * 0.45,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(
@@ -72,12 +73,25 @@ class _ForgotPasswordBottomSheetState extends State<SendCodeBottomSheet> {
                 child: AppButton(
                   text: "Continue",
                   onPressed: () {
-                    if (cubit.sendCodeFormKey.currentState!.validate()) {
-                      ///TODO: forgot password
-                    }
+                    // if (cubit.sendCodeFormKey.currentState!.validate()) {
+                    //   ///TODO: forgot password
+                    // }
+                    context.pop();
+
+                    showModalBottomSheet(
+                      isDismissible: false,
+                      context: context,
+                      builder: (context) => BlocProvider.value(
+                        value: gi<SignInCubit>(),
+                        child: ResetPasswordBottomSheet(
+                          email: "mostafa@gmail.com",
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),
+              const VerticalSpace(height: 30),
             ],
           ),
         ),

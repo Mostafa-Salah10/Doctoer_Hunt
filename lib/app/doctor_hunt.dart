@@ -1,5 +1,4 @@
 import 'package:doctor_hunt/core/config/routing/app_router.dart';
-import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_theme.dart';
 import 'package:doctor_hunt/core/config/theme/manager/theme_cubit.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
@@ -31,8 +30,7 @@ class DoctorHunt extends StatelessWidget {
                 darkTheme: AppTheme.darkTheme,
                 themeMode: state.themeMode,
                 onGenerateRoute: AppRouter.onGenerateRoute,
-                // initialRoute: AppRouter.getInitialRoute,
-                initialRoute: AppRoutes.onboarding,
+                initialRoute: AppRouter.getInitialRoute,
               );
             },
           );

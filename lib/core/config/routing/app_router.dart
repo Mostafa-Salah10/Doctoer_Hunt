@@ -1,8 +1,11 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
+import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:doctor_hunt/features/auth/presentation/choose_role/screens/choose_role_screen.dart';
+import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
+import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart'
     show OnboardingCubit;
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -11,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case AppRoutes.onboarding:
         return MaterialPageRoute(
@@ -20,8 +24,13 @@ abstract class AppRouter {
           ),
         );
       case AppRoutes.chooseRole:
+        return MaterialPageRoute(builder: (_) => const ChooseRoleScreen());
+      case AppRoutes.signUp:
         return MaterialPageRoute(
-          builder: (_) => const ChooseRoleScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => gi<SignUpCubit>(),
+            child: SignUpScreen(role: args as Role),
+          ),
         );
 
       default:
@@ -40,7 +49,7 @@ abstract class AppRouter {
     if (isVisitedOnboarding == null) {
       return AppRoutes.onboarding;
     } else {
-      return AppRoutes.signIn;
+      return AppRoutes.chooseRole;
     }
   }
 }

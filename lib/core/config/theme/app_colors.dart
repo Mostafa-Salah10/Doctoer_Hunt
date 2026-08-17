@@ -5,6 +5,7 @@ abstract class AppColors {
   static const Color lightIconColor = Color(0xFFFAFCFB);
   static const Color greyBorder = Color(0xFFE6ECEA);
   static const Color darkBackgroundColor = Color(0xFF212121);
+  static const Color blackColor = Color(0xFF000000);
   static const Color primaryColor = Color(0xFF0EBE7F);
   static const Color secondaryColor = Color(0xFF006C49);
   static const Color darkblackText = Color(0xFF17202A);
@@ -15,4 +16,5 @@ abstract class AppColors {
   static const Color greyTextColor = Color(0xff677294);
   static const Color greyColor = Color(0xff7B8490);
   static const Color roleBackgroundColor = Color(0xFFD5E6E1);
+  static const Color errorColor = Color(0xFFF44336);
 }

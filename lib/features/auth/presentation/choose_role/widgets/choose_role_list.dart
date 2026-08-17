@@ -13,7 +13,7 @@ class ChooseRoleList extends StatefulWidget {
 }
 
 class _ChooseRoleListState extends State<ChooseRoleList> {
-  ValueNotifier<Role> currentRole = ValueNotifier(Role.admin);
+  ValueNotifier<Role> currentRole = ValueNotifier(Role.patient);
 
   @override
   Widget build(BuildContext context) {

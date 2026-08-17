@@ -48,7 +48,7 @@ class OnboardingWidget extends StatelessWidget {
                       value: true,
                     );
                     if (!context.mounted) return;
-                    context.pushReplacementNamed(AppRoutes.chooseRole);
+                    context.pushReplacementNamed(AppRoutes.signIn);
                   } else {
                     cubit.onNextPressed();
                   }
@@ -58,7 +58,7 @@ class OnboardingWidget extends StatelessWidget {
           ),
         ),
 
-      const  VerticalSpace(height: 14),
+        const VerticalSpace(height: 14),
 
         BlocBuilder<OnboardingCubit, OnboardingState>(
           builder: (context, state) {

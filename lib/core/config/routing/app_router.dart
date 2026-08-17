@@ -4,6 +4,8 @@ import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:doctor_hunt/features/auth/presentation/choose_role/screens/choose_role_screen.dart';
+import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
+import 'package:doctor_hunt/features/auth/presentation/sign_in/screens/sign_in_screen.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart'
@@ -32,6 +34,13 @@ abstract class AppRouter {
             child: SignUpScreen(role: args as Role),
           ),
         );
+      case AppRoutes.signIn:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => gi<SignInCubit>(),
+            child: SignInScreen(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(
@@ -49,7 +58,7 @@ abstract class AppRouter {
     if (isVisitedOnboarding == null) {
       return AppRoutes.onboarding;
     } else {
-      return AppRoutes.chooseRole;
+      return AppRoutes.signIn;
     }
   }
 }

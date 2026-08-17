@@ -19,6 +19,7 @@ class SignUpState {
         agreeWithTerms: false,
       );
 
+
   SignUpState copyWith({
     bool? showPassword,
     BoxState? signUp,

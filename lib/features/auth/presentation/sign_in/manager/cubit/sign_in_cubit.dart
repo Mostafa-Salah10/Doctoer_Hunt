@@ -8,6 +8,9 @@ part 'sign_in_state.dart';
 class SignInCubit extends Cubit<SignInState> {
   SignInCubit() : super(SignInState.init());
   final signInFormKey = GlobalKey<FormState>();
+  final forgotFormKey = GlobalKey<FormState>();
+  final sendCodeFormKey = GlobalKey<FormState>();
+  String otpCode = "";
 
   void togglePasswordIcon() =>
       emit(state.copyWith(showPassword: !state.showPassword));

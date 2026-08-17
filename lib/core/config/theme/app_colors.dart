@@ -15,6 +15,7 @@ abstract class AppColors {
   static const Color blackTextColor = Color(0xFF222222);
   static const Color greyTextColor = Color(0xff677294);
   static const Color greyColor = Color(0xff7B8490);
+  static const Color greyBorderColor = Color(0xffC4C4C4);
   static const Color roleBackgroundColor = Color(0xFFD5E6E1);
   static const Color errorColor = Color(0xFFF44336);
 }

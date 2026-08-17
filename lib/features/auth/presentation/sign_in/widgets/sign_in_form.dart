@@ -3,10 +3,12 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
+import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
+import 'package:doctor_hunt/features/auth/presentation/sign_in/widgets/forgot_pass_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -79,11 +81,17 @@ class _SignUpFormState extends State<SignInForm> {
               }
             },
           ),
-          const VerticalSpace(height: 46),
+          const VerticalSpace(height: 19),
 
           GestureDetector(
             onTap: () {
-              context.pushReplacementNamed(AppRoutes.chooseRole);
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => BlocProvider.value(
+                  value: gi<SignInCubit>(),
+                  child: ForgotPasswordBottomSheet(),
+                ),
+              );
             },
             child: Text(
               textAlign: TextAlign.center,

@@ -12,6 +12,6 @@ void setupServiceLocator() async {
   ///all cubits
   gi.registerLazySingleton(() => OnboardingCubit());
   gi.registerLazySingleton(() => ThemeCubit());
-  gi.registerLazySingleton(() => SignUpCubit());
-  gi.registerLazySingleton(() => SignInCubit());
+  gi.registerFactory(() => SignUpCubit());
+  gi.registerFactory(() => SignInCubit());
 }

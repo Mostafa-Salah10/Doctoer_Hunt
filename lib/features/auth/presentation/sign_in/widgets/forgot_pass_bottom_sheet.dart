@@ -69,7 +69,7 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
                     hint: "Email",
                     validator: (value) => AppValidators.email(value),
                     onChanged: (value) {
-                      cubit.validateEmail(value);
+                      cubit.validateForgotPassEmail(value);
                       email = value;
                     },
                     suffixIcon: state.forgotPassValidEmail

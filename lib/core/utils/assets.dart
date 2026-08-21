@@ -50,13 +50,29 @@ class Assets {
   /// assets/svgs/app_logo.svg
   static const String assetsSvgsAppLogo = "assets/svgs/app_logo.svg";
 
+  /// Assets for assetsSvgsBook
+  /// assets/svgs/book.svg
+  static const String assetsSvgsBook = "assets/svgs/book.svg";
+
   /// Assets for assetsSvgsFacebook
   /// assets/svgs/facebook.svg
   static const String assetsSvgsFacebook = "assets/svgs/facebook.svg";
 
+  /// Assets for assetsSvgsFav
+  /// assets/svgs/fav.svg
+  static const String assetsSvgsFav = "assets/svgs/fav.svg";
+
   /// Assets for assetsSvgsGoogle
   /// assets/svgs/google.svg
   static const String assetsSvgsGoogle = "assets/svgs/google.svg";
+
+  /// Assets for assetsSvgsHome
+  /// assets/svgs/home.svg
+  static const String assetsSvgsHome = "assets/svgs/home.svg";
+
+  /// Assets for assetsSvgsMsg
+  /// assets/svgs/msg.svg
+  static const String assetsSvgsMsg = "assets/svgs/msg.svg";
 
   /// Assets for assetsSvgsPatientRole
   /// assets/svgs/patient_role.svg

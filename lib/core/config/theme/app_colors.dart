@@ -12,6 +12,12 @@ abstract class AppColors {
   static const Color darkblackText = Color(0xFF17202A);
   static const Color primaryColorLinearOne = Color(0xFF0EBE7E);
   static const Color primaryColorLinearTwo = Color(0xFF07D9AD);
+  static const Color blueLinearOne = Color(0xFF2753F3);
+  static const Color blueLinearTwo = Color(0xFF765AFC);
+  static const Color orangeLinearOne = Color(0xFFFE7F44);
+  static const Color orangeLinearTwo = Color(0xFFFFCF68);
+  static const Color redLinearOne = Color(0xFFFF484C);
+  static const Color redLinearTwo = Color(0xFFFF6C60);
   static const Color darkTextColor = Color(0xFF333333);
   static const Color blackTextColor = Color(0xFF222222);
   static const Color greyTextColor = Color(0xff677294);

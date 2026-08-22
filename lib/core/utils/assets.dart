@@ -14,9 +14,33 @@ class Assets {
   /// assets/images/bottom_ellipse.png
   static const String assetsImagesBottomEllipse = "assets/images/bottom_ellipse.png";
 
+  /// Assets for assetsImagesFeatureDocOne
+  /// assets/images/feature_doc_one.png
+  static const String assetsImagesFeatureDocOne = "assets/images/feature_doc_one.png";
+
+  /// Assets for assetsImagesFeatureDocThree
+  /// assets/images/feature_doc_three.png
+  static const String assetsImagesFeatureDocThree = "assets/images/feature_doc_three.png";
+
+  /// Assets for assetsImagesFeatureDocTwo
+  /// assets/images/feature_doc_two.png
+  static const String assetsImagesFeatureDocTwo = "assets/images/feature_doc_two.png";
+
   /// Assets for assetsImagesHomAppBarImage
   /// assets/images/hom_app_bar_image.png
   static const String assetsImagesHomAppBarImage = "assets/images/hom_app_bar_image.png";
+
+  /// Assets for assetsImagesLiveDocOne
+  /// assets/images/live_doc_one.png
+  static const String assetsImagesLiveDocOne = "assets/images/live_doc_one.png";
+
+  /// Assets for assetsImagesLiveDocThree
+  /// assets/images/live_doc_three.png
+  static const String assetsImagesLiveDocThree = "assets/images/live_doc_three.png";
+
+  /// Assets for assetsImagesLiveDocTwo
+  /// assets/images/live_doc_two.png
+  static const String assetsImagesLiveDocTwo = "assets/images/live_doc_two.png";
 
   /// Assets for assetsImagesOnboardingOne
   /// assets/images/onboarding_one.png
@@ -29,6 +53,14 @@ class Assets {
   /// Assets for assetsImagesOnboardingTwo
   /// assets/images/onboarding_two.png
   static const String assetsImagesOnboardingTwo = "assets/images/onboarding_two.png";
+
+  /// Assets for assetsImagesPopularDocOne
+  /// assets/images/popular_doc_one.png
+  static const String assetsImagesPopularDocOne = "assets/images/popular_doc_one.png";
+
+  /// Assets for assetsImagesPopularDocTwo
+  /// assets/images/popular_doc_two.png
+  static const String assetsImagesPopularDocTwo = "assets/images/popular_doc_two.png";
 
   /// Assets for assetsImagesSplashAboveAndroid12
   /// assets/images/splash_above_android_12.png
@@ -62,6 +94,14 @@ class Assets {
   /// assets/svgs/close.svg
   static const String assetsSvgsClose = "assets/svgs/close.svg";
 
+  /// Assets for assetsSvgsClothes
+  /// assets/svgs/clothes.svg
+  static const String assetsSvgsClothes = "assets/svgs/clothes.svg";
+
+  /// Assets for assetsSvgsEye
+  /// assets/svgs/eye.svg
+  static const String assetsSvgsEye = "assets/svgs/eye.svg";
+
   /// Assets for assetsSvgsFacebook
   /// assets/svgs/facebook.svg
   static const String assetsSvgsFacebook = "assets/svgs/facebook.svg";
@@ -74,9 +114,25 @@ class Assets {
   /// assets/svgs/google.svg
   static const String assetsSvgsGoogle = "assets/svgs/google.svg";
 
+  /// Assets for assetsSvgsHeart
+  /// assets/svgs/heart.svg
+  static const String assetsSvgsHeart = "assets/svgs/heart.svg";
+
   /// Assets for assetsSvgsHome
   /// assets/svgs/home.svg
   static const String assetsSvgsHome = "assets/svgs/home.svg";
+
+  /// Assets for assetsSvgsLive
+  /// assets/svgs/live.svg
+  static const String assetsSvgsLive = "assets/svgs/live.svg";
+
+  /// Assets for assetsSvgsLove
+  /// assets/svgs/love.svg
+  static const String assetsSvgsLove = "assets/svgs/love.svg";
+
+  /// Assets for assetsSvgsLoveFilled
+  /// assets/svgs/love_filled.svg
+  static const String assetsSvgsLoveFilled = "assets/svgs/love_filled.svg";
 
   /// Assets for assetsSvgsMsg
   /// assets/svgs/msg.svg
@@ -86,6 +142,10 @@ class Assets {
   /// assets/svgs/patient_role.svg
   static const String assetsSvgsPatientRole = "assets/svgs/patient_role.svg";
 
+  /// Assets for assetsSvgsPuase
+  /// assets/svgs/puase.svg
+  static const String assetsSvgsPuase = "assets/svgs/puase.svg";
+
   /// Assets for assetsSvgsSearch
   /// assets/svgs/search.svg
   static const String assetsSvgsSearch = "assets/svgs/search.svg";
@@ -93,5 +153,13 @@ class Assets {
   /// Assets for assetsSvgsSelectedRole
   /// assets/svgs/selected_role.svg
   static const String assetsSvgsSelectedRole = "assets/svgs/selected_role.svg";
+
+  /// Assets for assetsSvgsStar
+  /// assets/svgs/star.svg
+  static const String assetsSvgsStar = "assets/svgs/star.svg";
+
+  /// Assets for assetsSvgsTeeth
+  /// assets/svgs/teeth.svg
+  static const String assetsSvgsTeeth = "assets/svgs/teeth.svg";
 }
 

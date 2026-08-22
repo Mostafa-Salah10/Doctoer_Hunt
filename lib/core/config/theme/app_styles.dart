@@ -56,7 +56,7 @@ abstract class AppStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.lightTextColor,
     letterSpacing: -0.3.sp,
-    height:1,
+    height: 1,
     fontFamily: "Rubik",
   );
   static final TextStyle font24BlackMeduimRubik = TextStyle(
@@ -71,6 +71,14 @@ abstract class AppStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w300,
     color: AppColors.greyTextColor,
+    letterSpacing: -0.3.sp,
+    height: 1,
+    fontFamily: "Rubik",
+  );
+  static final TextStyle font10WhiteBold = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.darkTextColor,
     letterSpacing: -0.3.sp,
     height: 1,
     fontFamily: "Rubik",

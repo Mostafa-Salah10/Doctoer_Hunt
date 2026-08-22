@@ -1,5 +1,4 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class HomeSearchBar extends StatelessWidget {
     return SizedBox(
       height: searchBarHeight,
       child: AppTextFormField(
-        style: context.textTheme.titleSmall,
+        // style: context.textTheme.titleSmall,
         hint: "Search...",
         onChanged: (word) {},
         borderRadius: 6.r,

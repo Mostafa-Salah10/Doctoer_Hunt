@@ -12,26 +12,32 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          width: 216.w,
-          height: 216.h,
-          top: 148.h,
-          left: -15,
-          child: Image.asset(Assets.assetsImagesTopEllipse),
-        ),
-        Positioned(
-          width: 216.w,
-          height: 216.h,
-          bottom: -10,
-          right: 0,
-          child: Image.asset(Assets.assetsImagesBottomEllipse),
-        ),
-        HomeTopContainer(containerHeight: containerHeight),
-        const HomeTopAppBar(),
-        HomeContent(containerHeight: containerHeight),
-      ],
+    return SingleChildScrollView(
+      child: Stack(
+        children: [
+          Positioned(
+            width: 216.w,
+            height: 216.h,
+            top: 148.h,
+            left: -15,
+            child: Image.asset(Assets.assetsImagesTopEllipse),
+          ),
+
+          Positioned(
+            width: 216.w,
+            height: 216.h,
+            bottom: -10,
+            right: 0,
+            child: Image.asset(Assets.assetsImagesBottomEllipse),
+          ),
+
+          HomeTopContainer(containerHeight: containerHeight),
+
+          const HomeTopAppBar(),
+
+          HomeContent(containerHeight: containerHeight),
+        ],
+      ),
     );
   }
 }

@@ -52,8 +52,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         : null,
                     shape: BoxShape.circle,
                   ),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
+                  child: Center(
                     child: SvgPicture.asset(
                       icons[index],
                       height: currentIndex == index ? 19.89.h : 20.h,

@@ -14,6 +14,10 @@ class Assets {
   /// assets/images/bottom_ellipse.png
   static const String assetsImagesBottomEllipse = "assets/images/bottom_ellipse.png";
 
+  /// Assets for assetsImagesHomAppBarImage
+  /// assets/images/hom_app_bar_image.png
+  static const String assetsImagesHomAppBarImage = "assets/images/hom_app_bar_image.png";
+
   /// Assets for assetsImagesOnboardingOne
   /// assets/images/onboarding_one.png
   static const String assetsImagesOnboardingOne = "assets/images/onboarding_one.png";
@@ -54,6 +58,10 @@ class Assets {
   /// assets/svgs/book.svg
   static const String assetsSvgsBook = "assets/svgs/book.svg";
 
+  /// Assets for assetsSvgsClose
+  /// assets/svgs/close.svg
+  static const String assetsSvgsClose = "assets/svgs/close.svg";
+
   /// Assets for assetsSvgsFacebook
   /// assets/svgs/facebook.svg
   static const String assetsSvgsFacebook = "assets/svgs/facebook.svg";
@@ -77,6 +85,10 @@ class Assets {
   /// Assets for assetsSvgsPatientRole
   /// assets/svgs/patient_role.svg
   static const String assetsSvgsPatientRole = "assets/svgs/patient_role.svg";
+
+  /// Assets for assetsSvgsSearch
+  /// assets/svgs/search.svg
+  static const String assetsSvgsSearch = "assets/svgs/search.svg";
 
   /// Assets for assetsSvgsSelectedRole
   /// assets/svgs/selected_role.svg

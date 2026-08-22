@@ -51,6 +51,14 @@ abstract class AppStyles {
     height: 28 / 20,
     fontFamily: "PlusJakartaSans",
   );
+  static final TextStyle font20lightTextColorregularRubik = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.lightTextColor,
+    letterSpacing: -0.3.sp,
+    height:1,
+    fontFamily: "Rubik",
+  );
   static final TextStyle font24BlackMeduimRubik = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeight.w500,

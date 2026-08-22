@@ -25,6 +25,7 @@ abstract class AppTheme {
       titleLarge: AppStyles.font20darkblackTextSemiBoldPlusJakarta,
       displayLarge: AppStyles.font24BlackMeduimRubik,
       bodyLarge: AppStyles.font16GreyTextLight,
+      labelSmall: AppStyles.font20lightTextColorregularRubik,
     ),
   );
   static final ThemeData darkTheme = ThemeData(
@@ -58,6 +59,7 @@ abstract class AppTheme {
         color: AppColors.lightBackgroundColor,
       ),
       bodyLarge: AppStyles.font16GreyTextLight,
+      labelSmall: AppStyles.font20lightTextColorregularRubik,
     ),
   );
 }

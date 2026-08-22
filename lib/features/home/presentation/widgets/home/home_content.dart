@@ -29,7 +29,7 @@ class HomeContent extends StatelessWidget {
 
           const VerticalSpace(height: 30),
 
-          HomeTitleAndSeeAll(title: "Live Doctors"),
+          const HomeTitleAndSeeAll(title: "Live Doctors"),
 
           const VerticalSpace(height: 20),
 
@@ -48,8 +48,11 @@ class HomeContent extends StatelessWidget {
           const HomePopularDoctors(),
 
           const VerticalSpace(height: 30),
+
           HomeTitleAndSeeAll(title: "Feature Doctor", onTap: () {}),
+
           const VerticalSpace(height: 20),
+
           const HomeFeatureDoctorsList(),
         ],
       ),

@@ -38,6 +38,8 @@ class HomePopularDoctorsItem extends StatelessWidget {
                 children: [
                   const VerticalSpace(height: 14),
                   Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     doctor.name,
                     style: context.textTheme.titleMedium!.copyWith(
                       color: context.isDarkMode
@@ -49,6 +51,8 @@ class HomePopularDoctorsItem extends StatelessWidget {
                   const VerticalSpace(height: 5),
 
                   Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     doctor.speciality,
                     style: context.textTheme.titleSmall!.copyWith(
                       fontSize: 12.sp,

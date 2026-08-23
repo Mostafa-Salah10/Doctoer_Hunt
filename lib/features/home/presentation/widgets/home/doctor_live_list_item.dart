@@ -17,7 +17,7 @@ class DoctorLiveListItem extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(doctorThumbnail, fit: BoxFit.fill),
-          Container(color: Colors.black.withValues(alpha: 0.1)),
+          Container(color: Colors.black.withValues(alpha: 0.2)),
           Center(
             child: SvgPicture.asset(
               Assets.assetsSvgsPuase,

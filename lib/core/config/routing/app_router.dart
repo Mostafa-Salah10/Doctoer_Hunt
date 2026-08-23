@@ -9,6 +9,7 @@ import 'package:doctor_hunt/features/auth/presentation/sign_in/screens/sign_in_s
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/bottom_nav_bar_screen.dart';
+import 'package:doctor_hunt/features/home/presentation/screens/home_deatails_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart'
     show OnboardingCubit;
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -44,6 +45,8 @@ abstract class AppRouter {
         );
       case AppRoutes.bottomNavBar:
         return MaterialPageRoute(builder: (_) => BottomNavBarScreen());
+      case AppRoutes.doctorDetails:
+        return MaterialPageRoute(builder: (_) => HomeDeatailsScreen());
 
       default:
         return MaterialPageRoute(

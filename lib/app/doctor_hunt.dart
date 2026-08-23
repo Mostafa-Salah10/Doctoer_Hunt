@@ -19,6 +19,7 @@ class DoctorHunt extends StatelessWidget {
             previous.themeMode != current.themeMode,
         builder: (context, state) {
           return ScreenUtilInit(
+            ensureScreenSize: true,
             designSize: const Size(375, 812),
             minTextAdapt: true,
             splitScreenMode: true,

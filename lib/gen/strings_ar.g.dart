@@ -42,6 +42,13 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	@override String get specialistCancer => 'أخصائي أورام';
 	@override String get specialistMedicine => 'أخصائي باطنة';
 	@override String get specialistDentist => 'أخصائي أسنان';
+	@override String get Appointment => 'حجز موعد';
+	@override String get AppointmentFor => 'الحجز لـ';
+	@override String get WhoIsThisPatient => 'لمن هذا المريض؟';
+	@override String get Next => 'التالي';
+	@override String get mySelf => 'انا';
+	@override String get myChild => 'ابني';
+	@override String get mySon => 'ابن';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -57,6 +64,13 @@ extension on TranslationsAr {
 			'specialistCancer' => 'أخصائي أورام',
 			'specialistMedicine' => 'أخصائي باطنة',
 			'specialistDentist' => 'أخصائي أسنان',
+			'Appointment' => 'حجز موعد',
+			'AppointmentFor' => 'الحجز لـ',
+			'WhoIsThisPatient' => 'لمن هذا المريض؟',
+			'Next' => 'التالي',
+			'mySelf' => 'انا',
+			'myChild' => 'ابني',
+			'mySon' => 'ابن',
 			_ => null,
 		};
 	}

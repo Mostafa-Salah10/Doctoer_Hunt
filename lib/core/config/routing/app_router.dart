@@ -3,12 +3,14 @@ import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
+import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_info_screen.dart';
 
 import 'package:doctor_hunt/features/auth/presentation/choose_role/screens/choose_role_screen.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/screens/sign_in_screen.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
+import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/bottom_nav_bar_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -64,6 +66,14 @@ abstract class AppRouter {
         path: AppRoutes.bottomNavBar,
         builder: (context, state) {
           return BottomNavBarScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.appoinmentInfo,
+        builder: (context, state) {
+          return AppointmentInfoScreen(
+            doctor: state.extra as HomeFeatureDoctorModel,
+          );
         },
       ),
     ],

@@ -18,6 +18,22 @@ class Assets {
   /// assets/i18n/strings_en.i18n.json
   static const String assetsI18nStringsEnI18n = "assets/i18n/strings_en.i18n.json";
 
+  /// Assets for assetsImagesAddPatient
+  /// assets/images/add_patient.png
+  static const String assetsImagesAddPatient = "assets/images/add_patient.png";
+
+  /// Assets for assetsImagesAppointment
+  /// assets/images/appointment.png
+  static const String assetsImagesAppointment = "assets/images/appointment.png";
+
+  /// Assets for assetsImagesAppointmentBoyOne
+  /// assets/images/appointment_boy_one.png
+  static const String assetsImagesAppointmentBoyOne = "assets/images/appointment_boy_one.png";
+
+  /// Assets for assetsImagesAppointmentBoyTwo
+  /// assets/images/appointment_boy_two.png
+  static const String assetsImagesAppointmentBoyTwo = "assets/images/appointment_boy_two.png";
+
   /// Assets for assetsImagesBottomEllipse
   /// assets/images/bottom_ellipse.png
   static const String assetsImagesBottomEllipse = "assets/images/bottom_ellipse.png";

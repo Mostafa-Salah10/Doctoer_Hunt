@@ -4,6 +4,13 @@
   "specialistCardiology": "Specialist Cardiology",
   "specialistCancer": "Specialist Cancer",
   "specialistMedicine": "Specialist Medicine",
-  "specialistDentist": "Specialist Dentist"
+  "specialistDentist": "Specialist Dentist",
+  "Appointment": "Appointment",
+  "AppointmentFor": "Appointment For",
+  "WhoIsThisPatient": "Who is this patient?",
+  "Next": "Next",
+  "mySelf": "My self",
+  "myChild": "My child",
+  "mySon": "My son"
 
 }

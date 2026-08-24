@@ -3,6 +3,13 @@
   "specialistCardiology": "أخصائي قلب",
   "specialistCancer": "أخصائي أورام",
   "specialistMedicine": "أخصائي باطنة",
-  "specialistDentist": "أخصائي أسنان"
+  "specialistDentist": "أخصائي أسنان",
+  "Appointment": "حجز موعد",
+  "AppointmentFor": "الحجز لـ",
+  "WhoIsThisPatient": "لمن هذا المريض؟",
+  "Next": "التالي",
+  "mySelf": "انا",
+  "myChild": "ابني",
+  "mySon": "ابن"
 
 }

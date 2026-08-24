@@ -1,6 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
-import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,7 @@ class CustomScreensAppBar extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () => context.pop(),
+            onTap: () => Navigator.pop(context),
             child: Container(
               width: 30.w,
               height: 30.w,
@@ -47,6 +46,8 @@ class CustomScreensAppBar extends StatelessWidget {
               color: context.isDarkMode
                   ? AppColors.lightBackgroundColor
                   : AppColors.darkTextColor,
+
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

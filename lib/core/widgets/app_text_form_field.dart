@@ -22,7 +22,7 @@ class AppTextFormField extends StatelessWidget {
     this.style,
     this.contentPadding,
     this.fillColor,
-    this.withBorder = true,
+    this.withBorder = true, this.border,
   });
   final String hint;
   final String? label;
@@ -41,6 +41,7 @@ class AppTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final Color? fillColor;
   final bool? withBorder;
+  final OutlineInputBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,7 @@ class AppTextFormField extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         errorBorder: _buildBorder(color: AppColors.errorColor),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: border ?? OutlineInputBorder(
           borderSide: withBorder == true
               ? BorderSide(
                   color: AppColors.greyTextColor.withValues(alpha: 0.16),

@@ -55,6 +55,27 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'Specialist Dentist'
 	String get specialistDentist => 'Specialist Dentist';
+
+	/// en: 'Appointment'
+	String get Appointment => 'Appointment';
+
+	/// en: 'Appointment For'
+	String get AppointmentFor => 'Appointment For';
+
+	/// en: 'Who is this patient?'
+	String get WhoIsThisPatient => 'Who is this patient?';
+
+	/// en: 'Next'
+	String get Next => 'Next';
+
+	/// en: 'My self'
+	String get mySelf => 'My self';
+
+	/// en: 'My child'
+	String get myChild => 'My child';
+
+	/// en: 'My son'
+	String get mySon => 'My son';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -70,6 +91,13 @@ extension on Translations {
 			'specialistCancer' => 'Specialist Cancer',
 			'specialistMedicine' => 'Specialist Medicine',
 			'specialistDentist' => 'Specialist Dentist',
+			'Appointment' => 'Appointment',
+			'AppointmentFor' => 'Appointment For',
+			'WhoIsThisPatient' => 'Who is this patient?',
+			'Next' => 'Next',
+			'mySelf' => 'My self',
+			'myChild' => 'My child',
+			'mySon' => 'My son',
 			_ => null,
 		};
 	}

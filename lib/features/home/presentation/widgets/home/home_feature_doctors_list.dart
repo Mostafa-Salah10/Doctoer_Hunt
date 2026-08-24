@@ -1,3 +1,5 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_feature_doctor_list_item.dart';
@@ -17,7 +19,12 @@ class HomeFeatureDoctorsList extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: HomeFeatureDoctorModel.doctors.length,
         itemBuilder: (context, index) => InkWell(
-          onTap: () {},
+          onTap: () {
+            context.pushNamed(
+              AppRoutes.appoinmentInfo,
+              arguments: HomeFeatureDoctorModel.doctors[index],
+            );
+          },
           child: HomeFeatureDoctorListItem(
             doctor: HomeFeatureDoctorModel.doctors[index],
           ),

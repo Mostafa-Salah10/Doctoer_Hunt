@@ -5,4 +5,5 @@ abstract class AppRoutes {
   static const String signUp = '/signUp';
   static const String bottomNavBar = '/bottomNavBar';
   static const String appoinmentInfo = '/appoinmentInfo';
+  static const String appointmentTimeScreen = '/appointmentTimeScreen';
 }

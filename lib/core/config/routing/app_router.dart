@@ -4,6 +4,7 @@ import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_info_screen.dart';
+import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_time_screen.dart';
 
 import 'package:doctor_hunt/features/auth/presentation/choose_role/screens/choose_role_screen.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
@@ -74,6 +75,12 @@ abstract class AppRouter {
           return AppointmentInfoScreen(
             doctor: state.extra as HomeFeatureDoctorModel,
           );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.appointmentTimeScreen,
+        builder: (context, state) {
+          return AppointmentTimeScreen();
         },
       ),
     ],

@@ -1,3 +1,5 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
@@ -32,7 +34,12 @@ class AppointmentInfoScreen extends StatelessWidget {
           const VerticalSpace(height: 20),
           const WhoIsPatientList(),
           const VerticalSpace(height: 20),
-          AppButton(text: t.Next, onPressed: () {}),
+          AppButton(
+            text: t.Next,
+            onPressed: () {
+              context.pushNamed(AppRoutes.appointmentTimeScreen);
+            },
+          ),
         ],
       ),
     );

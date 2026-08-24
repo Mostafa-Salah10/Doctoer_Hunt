@@ -11,6 +11,22 @@ abstract class AppStyles {
     height: 1,
     fontFamily: "Rubik",
   );
+  static final TextStyle font15DarkTextMedium = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkTextColor,
+    letterSpacing: -0.3.sp,
+    height: 1,
+    fontFamily: "Rubik",
+  );
+  static final TextStyle font12PrimaryRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primaryColor,
+    letterSpacing: -0.3.sp,
+    height: 1,
+    fontFamily: "Rubik",
+  );
   static final TextStyle font14GreyTextregular = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,

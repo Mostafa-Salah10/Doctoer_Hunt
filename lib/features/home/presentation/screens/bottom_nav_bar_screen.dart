@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/features/favourite/presentation/screens/favourite_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/bottom_nav_bar/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class BottomNavBarScreen extends StatelessWidget {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    Container(color: Colors.green),
+    FavouriteScreen(),
     Container(color: Colors.yellow),
     Container(color: Colors.purple),
   ];

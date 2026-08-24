@@ -10,9 +10,29 @@ class Assets {
   /// assets/fonts/Rubik-Regular.ttf
   static const String assetsFontsRubikRegular = "assets/fonts/Rubik-Regular.ttf";
 
+  /// Assets for assetsI18nStringsArI18n
+  /// assets/i18n/strings_ar.i18n.json
+  static const String assetsI18nStringsArI18n = "assets/i18n/strings_ar.i18n.json";
+
+  /// Assets for assetsI18nStringsEnI18n
+  /// assets/i18n/strings_en.i18n.json
+  static const String assetsI18nStringsEnI18n = "assets/i18n/strings_en.i18n.json";
+
   /// Assets for assetsImagesBottomEllipse
   /// assets/images/bottom_ellipse.png
   static const String assetsImagesBottomEllipse = "assets/images/bottom_ellipse.png";
+
+  /// Assets for assetsImagesFavDocOne
+  /// assets/images/fav_doc_one.png
+  static const String assetsImagesFavDocOne = "assets/images/fav_doc_one.png";
+
+  /// Assets for assetsImagesFavDocThree
+  /// assets/images/fav_doc_three.png
+  static const String assetsImagesFavDocThree = "assets/images/fav_doc_three.png";
+
+  /// Assets for assetsImagesFavDocTwo
+  /// assets/images/fav_doc_two.png
+  static const String assetsImagesFavDocTwo = "assets/images/fav_doc_two.png";
 
   /// Assets for assetsImagesFeatureDocOne
   /// assets/images/feature_doc_one.png
@@ -85,6 +105,10 @@ class Assets {
   /// Assets for assetsSvgsAppLogo
   /// assets/svgs/app_logo.svg
   static const String assetsSvgsAppLogo = "assets/svgs/app_logo.svg";
+
+  /// Assets for assetsSvgsArrrowBack
+  /// assets/svgs/arrrow_back.svg
+  static const String assetsSvgsArrrowBack = "assets/svgs/arrrow_back.svg";
 
   /// Assets for assetsSvgsBook
   /// assets/svgs/book.svg

@@ -7,4 +7,5 @@ abstract class AppRoutes {
   static const String adminbottomNavBar = '/AdminbottomNavBar';
   static const String appoinmentInfo = '/appoinmentInfo';
   static const String appointmentTimeScreen = '/appointmentTimeScreen';
+  static const String adminCreateDoctorScreen = '/adminCreateDoctorScreen';
 }

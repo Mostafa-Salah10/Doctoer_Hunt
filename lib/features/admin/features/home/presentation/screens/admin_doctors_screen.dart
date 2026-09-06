@@ -1,5 +1,6 @@
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_all_doctors_list.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_floating_action_button.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_search_bar.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_statistics.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/custom_admin_app_bar.dart';
@@ -12,13 +13,13 @@ class AdminDoctorsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const AdminFloatingActionButton(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(90.h),
         child: AdminAppBar(
           leadingIcon: Icons.menu,
           title: "Doctors",
           leadingAction: () {},
-
           suffixAction: () {},
 
           suffixIcon: Icons.notifications_on,

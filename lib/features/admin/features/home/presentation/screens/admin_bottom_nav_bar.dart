@@ -1,6 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
-import 'package:doctor_hunt/features/admin/features/presentation/admin_doctors_screen.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_doctors_screen.dart';
 
 import 'package:doctor_hunt/features/home/presentation/widgets/bottom_nav_bar/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';

@@ -3,7 +3,7 @@ import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
-import 'package:doctor_hunt/features/admin/features/presentation/screens/admin_bottom_nav_bar.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_bottom_nav_bar.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_info_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_time_screen.dart';
 

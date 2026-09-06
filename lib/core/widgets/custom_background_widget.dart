@@ -22,39 +22,38 @@ class CustomBackgroundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Positioned(
-              width: 216.w,
-              height: 216.h,
-              top: 0,
-              left: -15,
-              child: Image.asset(Assets.assetsImagesTopEllipse),
+      body: Stack(
+        children: [
+          Positioned(
+            width: 216.w,
+            height: 216.h,
+            top: 0,
+            left: -15,
+            child: Image.asset(Assets.assetsImagesTopEllipse),
+          ),
+          Positioned(
+            width: 216.w,
+            height: 216.h,
+            bottom: -10,
+            right: 0,
+            child: Image.asset(Assets.assetsImagesBottomEllipse),
+          ),
+      
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: withHorizontalPadding == true
+                  ? horizontalPadding ?? AppSizes.marginL
+                  : 0.0,
+              vertical: verticalPadding ?? 0.0,
             ),
-            Positioned(
-              width: 216.w,
-              height: 216.h,
-              bottom: -10,
-              right: 0,
-              child: Image.asset(Assets.assetsImagesBottomEllipse),
+            child: SizedBox(
+            
+              width: double.infinity,
+              height: double.infinity,
+              child: child,
             ),
-        
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: withHorizontalPadding == true
-                    ? horizontalPadding ?? AppSizes.marginL
-                    : 0.0,
-                vertical: verticalPadding ?? 0.0,
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: child,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

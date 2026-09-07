@@ -76,6 +76,24 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'My son'
 	String get mySon => 'My son';
+
+	/// en: 'Create Doctor'
+	String get createDoctor => 'Create Doctor';
+
+	/// en: 'Doctor Name'
+	String get doctorName => 'Doctor Name';
+
+	/// en: 'Enter Doctor Name'
+	String get enterDoctorName => 'Enter Doctor Name';
+
+	/// en: 'Speciality'
+	String get speciality => 'Speciality';
+
+	/// en: 'Select Speciality'
+	String get selectSpeciality => 'Select Speciality';
+
+	/// en: 'Doctor Image'
+	String get doctorImage => 'Doctor Image';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -98,6 +116,12 @@ extension on Translations {
 			'mySelf' => 'My self',
 			'myChild' => 'My child',
 			'mySon' => 'My son',
+			'createDoctor' => 'Create Doctor',
+			'doctorName' => 'Doctor Name',
+			'enterDoctorName' => 'Enter Doctor Name',
+			'speciality' => 'Speciality',
+			'selectSpeciality' => 'Select Speciality',
+			'doctorImage' => 'Doctor Image',
 			_ => null,
 		};
 	}

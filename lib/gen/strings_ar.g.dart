@@ -37,7 +37,7 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsAr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsAr(meta: meta ?? this.$meta);
 
 	// Translations
-	@override String get favouriteDoctors => 'أطباء المفضلة';
+	@override String get favouriteDoctors => 'أطباء المفضلة';
 	@override String get specialistCardiology => 'أخصائي قلب';
 	@override String get specialistCancer => 'أخصائي أورام';
 	@override String get specialistMedicine => 'أخصائي باطنة';
@@ -46,9 +46,15 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	@override String get AppointmentFor => 'الحجز لـ';
 	@override String get WhoIsThisPatient => 'لمن هذا المريض؟';
 	@override String get Next => 'التالي';
-	@override String get mySelf => 'انا';
+	@override String get mySelf => 'أنا';
 	@override String get myChild => 'ابني';
 	@override String get mySon => 'ابن';
+	@override String get createDoctor => 'إنشاء طبيب';
+	@override String get doctorName => 'اسم الطبيب';
+	@override String get enterDoctorName => 'أدخل اسم الطبيب';
+	@override String get speciality => 'التخصص';
+	@override String get selectSpeciality => 'اختر التخصص';
+	@override String get doctorImage => 'صورة الطبيب';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -59,7 +65,7 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 extension on TranslationsAr {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'favouriteDoctors' => 'أطباء المفضلة',
+			'favouriteDoctors' => 'أطباء المفضلة',
 			'specialistCardiology' => 'أخصائي قلب',
 			'specialistCancer' => 'أخصائي أورام',
 			'specialistMedicine' => 'أخصائي باطنة',
@@ -68,9 +74,15 @@ extension on TranslationsAr {
 			'AppointmentFor' => 'الحجز لـ',
 			'WhoIsThisPatient' => 'لمن هذا المريض؟',
 			'Next' => 'التالي',
-			'mySelf' => 'انا',
+			'mySelf' => 'أنا',
 			'myChild' => 'ابني',
 			'mySon' => 'ابن',
+			'createDoctor' => 'إنشاء طبيب',
+			'doctorName' => 'اسم الطبيب',
+			'enterDoctorName' => 'أدخل اسم الطبيب',
+			'speciality' => 'التخصص',
+			'selectSpeciality' => 'اختر التخصص',
+			'doctorImage' => 'صورة الطبيب',
 			_ => null,
 		};
 	}

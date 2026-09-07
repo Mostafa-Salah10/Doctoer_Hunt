@@ -36,7 +36,6 @@ class AdminAppBar extends StatelessWidget {
         children: [
           InkWell(
             onTap: leadingAction,
-
             child: Icon(
               leadingIcon,
               size: 23.h,

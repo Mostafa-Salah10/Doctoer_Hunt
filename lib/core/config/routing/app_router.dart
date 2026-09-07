@@ -3,6 +3,8 @@ import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_bottom_nav_bar.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_info_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_time_screen.dart';
 
@@ -21,7 +23,9 @@ import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: _getInitialRoute(),
+    // initialLocation: _getInitialRoute(),
+
+    initialLocation: AppRoutes.adminbottomNavBar,
 
     routes: [
       GoRoute(
@@ -81,6 +85,18 @@ abstract class AppRouter {
         path: AppRoutes.appointmentTimeScreen,
         builder: (context, state) {
           return AppointmentTimeScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.adminbottomNavBar,
+        builder: (context, state) {
+          return AdminBottomNavBar();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.adminCreateDoctorScreen,
+        builder: (context, state) {
+          return AdminCreateDoctorScreen();
         },
       ),
     ],

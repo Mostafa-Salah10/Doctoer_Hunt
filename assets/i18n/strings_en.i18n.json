@@ -1,5 +1,4 @@
 {
-
   "favouriteDoctors": "Favourite Doctors",
   "specialistCardiology": "Specialist Cardiology",
   "specialistCancer": "Specialist Cancer",
@@ -11,6 +10,11 @@
   "Next": "Next",
   "mySelf": "My self",
   "myChild": "My child",
-  "mySon": "My son"
-
+  "mySon": "My son",
+  "createDoctor": "Create Doctor",
+  "doctorName": "Doctor Name",
+  "enterDoctorName": "Enter Doctor Name",
+  "speciality": "Speciality",
+  "selectSpeciality": "Select Speciality",
+  "doctorImage": "Doctor Image"
 }

@@ -1,5 +1,5 @@
 {
-  "favouriteDoctors": "أطباء المفضلة",
+  "favouriteDoctors": "أطباء المفضلة",
   "specialistCardiology": "أخصائي قلب",
   "specialistCancer": "أخصائي أورام",
   "specialistMedicine": "أخصائي باطنة",
@@ -8,8 +8,13 @@
   "AppointmentFor": "الحجز لـ",
   "WhoIsThisPatient": "لمن هذا المريض؟",
   "Next": "التالي",
-  "mySelf": "انا",
+  "mySelf": "أنا",
   "myChild": "ابني",
-  "mySon": "ابن"
-
+  "mySon": "ابن",
+  "createDoctor": "إنشاء طبيب",
+  "doctorName": "اسم الطبيب",
+  "enterDoctorName": "أدخل اسم الطبيب",
+  "speciality": "التخصص",
+  "selectSpeciality": "اختر التخصص",
+  "doctorImage": "صورة الطبيب"
 }

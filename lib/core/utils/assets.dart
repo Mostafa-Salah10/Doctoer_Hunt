@@ -194,9 +194,17 @@ class Assets {
   /// assets/svgs/selected_role.svg
   static const String assetsSvgsSelectedRole = "assets/svgs/selected_role.svg";
 
+  /// Assets for assetsSvgsSettings
+  /// assets/svgs/settings.svg
+  static const String assetsSvgsSettings = "assets/svgs/settings.svg";
+
   /// Assets for assetsSvgsStar
   /// assets/svgs/star.svg
   static const String assetsSvgsStar = "assets/svgs/star.svg";
+
+  /// Assets for assetsSvgsTeam
+  /// assets/svgs/team.svg
+  static const String assetsSvgsTeam = "assets/svgs/team.svg";
 
   /// Assets for assetsSvgsTeeth
   /// assets/svgs/teeth.svg

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "572710841673",
+    "project_id": "doctor-hunt-8905d",
+    "storage_bucket": "doctor-hunt-8905d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572710841673:android:5ca8ebefd698e3d3c5fe98",
+        "android_client_info": {
+          "package_name": "com.mostafa.doctorhunt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhKguJWUxGy0-f0hNGlQEoBX5zUSSOFxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

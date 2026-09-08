@@ -20,7 +20,7 @@ class _ChooseRoleListState extends State<ChooseRoleList> {
     return ListView.separated(
       separatorBuilder: (context, index) => const VerticalSpace(height: 16),
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: RoleModel.roles.length,
+      itemCount: RoleModel.roles.length ,
       itemBuilder: (context, index) => GestureDetector(
         onTap: () {
           if (currentRole.value == RoleModel.roles[index].role) return;

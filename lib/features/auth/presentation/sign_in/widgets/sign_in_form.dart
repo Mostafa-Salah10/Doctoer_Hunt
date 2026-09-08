@@ -1,9 +1,13 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
+import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
+import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
+import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
@@ -73,12 +77,31 @@ class _SignUpFormState extends State<SignInForm> {
           ),
 
           const VerticalSpace(height: 32),
-          AppButton(
-            text: "Sign in",
-            onPressed: () {
-              if (cubit.signInFormKey.currentState!.validate()) {
-                //sign in
+          BlocConsumer<SignInCubit, SignInState>(
+            buildWhen: (previous, current) => previous.signIn != current.signIn,
+            listenWhen: (previous, current) =>
+                previous.signIn != current.signIn,
+            listener: (context, state) {
+              if (state.signIn.isSuccess) {
+                _navigateToRightRoue(state.signIn.data);
+              } else if (state.signIn.isError) {
+                toastAlert(
+                  msg: state.signIn.error!,
+                  color: AppColors.errorColor,
+                );
               }
+            },
+            builder: (context, state) {
+              return AppButton(
+                text: state.signIn.isLoading ? "Signing in..." : "Sign in",
+                onPressed: () {
+                  if (state.signIn.isLoading) return;
+                  cubit.signInWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                  );
+                },
+              );
             },
           ),
           const VerticalSpace(height: 19),
@@ -118,5 +141,24 @@ class _SignUpFormState extends State<SignInForm> {
         ],
       ),
     );
+  }
+
+  _navigateToRightRoue(Role role) async {
+    await SharedPreferencesHelper().set(
+      key: AppStrings.role,
+      value: role.index,
+    );
+
+    if (!mounted) return;
+
+    switch (role) {
+      case Role.patient:
+        context.pushNamedAndRemoveUntil(AppRoutes.bottomNavBar);
+        break;
+      case Role.doctor:
+      case Role.admin:
+        context.pushNamedAndRemoveUntil(AppRoutes.adminbottomNavBar);
+        break;
+    }
   }
 }

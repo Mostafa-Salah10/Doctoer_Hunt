@@ -23,10 +23,9 @@ import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static final GoRouter router = GoRouter(
-    // initialLocation: _getInitialRoute(),
+    initialLocation: _getInitialRoute(),
 
-    initialLocation: AppRoutes.adminbottomNavBar,
-
+    // initialLocation: AppRoutes.adminbottomNavBar,
     routes: [
       GoRoute(
         path: AppRoutes.onboarding,
@@ -109,8 +108,19 @@ abstract class AppRouter {
 
     if (isVisitedOnboarding == null) {
       return AppRoutes.onboarding;
-    }
+    } else {
+      final role = SharedPreferencesHelper().get(key: AppStrings.role);
 
-    return AppRoutes.bottomNavBar;
+      if (role==null) return AppRoutes.signIn;
+      switch (Role.values[role]) {
+        case Role.patient:
+          return AppRoutes.bottomNavBar;
+
+        case Role.doctor:
+          return AppRoutes.onboarding;
+        case Role.admin:
+          return AppRoutes.adminbottomNavBar;
+      }
+    }
   }
 }

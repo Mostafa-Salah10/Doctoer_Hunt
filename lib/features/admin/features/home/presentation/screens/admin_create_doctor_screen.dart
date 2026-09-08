@@ -24,6 +24,7 @@ class AdminCreateDoctorScreen extends StatelessWidget {
 
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
+        
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(

@@ -1,13 +1,12 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
+import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
-import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
-import 'package:doctor_hunt/features/auth/presentation/sign_in/widgets/send_code_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,22 +80,44 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
               const VerticalSpace(height: 30),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: AppButton(
-                  text: "Continue",
-                  onPressed: () {
-                    // if (cubit.forgotFormKey.currentState!.validate()) {
-                    //   ///TODO: forgot password
-                    // }
+                child: BlocConsumer<SignInCubit, SignInState>(
+                  buildWhen: (previous, current) =>
+                      current.resetPassword != previous.resetPassword,
+                  listenWhen: (previous, current) =>
+                      current.resetPassword != previous.resetPassword,
+                  listener: (context, state) {
+                    if (state.resetPassword.isSuccess) {
+                      context.pop();
+                      toastAlert(
+                        msg: "Check Your Email",
+                        color: AppColors.primaryColor,
+                      );
+                      context.pop();
+                    } else if (state.resetPassword.isError) {
+                      toastAlert(
+                        msg: state.resetPassword.error!,
+                        color: AppColors.errorColor,
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    return AppButton(
+                      text: state.resetPassword.isLoading
+                          ? "Sending...."
+                          : "Continue",
+                      onPressed: () {
+                        // showModalBottomSheet(
+                        //   isDismissible: false,
+                        //   context: context,
+                        //   builder: (context) => BlocProvider.value(
+                        //     value: gi<SignInCubit>(),
+                        //     child: SendCodeBottomSheet(),
+                        //   ),
+                        // );
 
-                    context.pop();
-
-                    showModalBottomSheet(
-                      isDismissible: false,
-                      context: context,
-                      builder: (context) => BlocProvider.value(
-                        value: gi<SignInCubit>(),
-                        child: SendCodeBottomSheet(),
-                      ),
+                        if (state.resetPassword.isLoading) return;
+                        cubit.resetPassword(email: email);
+                      },
                     );
                   },
                 ),

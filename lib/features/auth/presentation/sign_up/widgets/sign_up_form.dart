@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
+import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
@@ -79,12 +80,33 @@ class _SignUpFormState extends State<SignUpForm> {
             },
           ),
           const VerticalSpace(height: 55),
-          AppButton(
-            text: "Sign up",
-            onPressed: () {
-              if (cubit.signUpFormKey.currentState!.validate()) {
-                //sign up
+          BlocConsumer<SignUpCubit, SignUpState>(
+            listenWhen: (previous, current) =>
+                current.signUp != previous.signUp,
+            buildWhen: (previous, current) => current.signUp != previous.signUp,
+            listener: (context, state) {
+              if (state.signUp.isSuccess) {
+                context.pushReplacementNamed(AppRoutes.signIn);
+              } else if (state.signUp.isError) {
+                toastAlert(
+                  msg: state.signUp.error!,
+                  color: AppColors.errorColor,
+                );
               }
+            },
+            builder: (context, state) {
+              return AppButton(
+                text: state.signUp.isLoading ? "Signing up..." : "Sign up",
+                onPressed: () {
+                  if (state.signUp.isLoading) return;
+                  cubit.signUpWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                    name: name,
+                    role: widget.role,
+                  );
+                },
+              );
             },
           ),
           const VerticalSpace(height: 17),

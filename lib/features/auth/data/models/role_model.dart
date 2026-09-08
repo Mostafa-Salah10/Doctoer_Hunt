@@ -20,7 +20,7 @@ class RoleModel {
           'Find doctors, book\n appointments,\n and manage your medical\n records.',
     ),
     RoleModel(
-      role: Role.admin,
+      role: Role.doctor,
       icon: Assets.assetsSvgsAdminRole,
       description:
           'Find doctors, book appointments,\nand manage your medical records.',

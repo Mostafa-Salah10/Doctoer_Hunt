@@ -1,13 +1,16 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/custom_drop_down_menu.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/create_doctor/admin_create_doctor_image_container.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/custom_text_header.dart';
 import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminCreateDoctorForm extends StatelessWidget {
   AdminCreateDoctorForm({super.key});
@@ -36,17 +39,36 @@ class AdminCreateDoctorForm extends StatelessWidget {
 
           CustomTextHeader(text: t.speciality),
 
-          CustomDropDownMenu<String>(
-            title: t.speciality,
-            items: [
-              DropDownMenuItemModel(title: 'Cardiology', value: 'cardiology'),
-              DropDownMenuItemModel(title: 'Cancer', value: 'cancer'),
-              DropDownMenuItemModel(title: 'Medicine', value: 'medicine'),
-              DropDownMenuItemModel(title: 'Dentist', value: 'dentist'),
-            ],
-            // initialValue: 'cardiology',
-            onSelect: (value) {
-              // selectedSpeciality = value;
+          BlocConsumer<CreateDoctorCubit, CreateDoctorState>(
+            buildWhen: (previous, current) =>
+                previous.getDoctorSpecialities != current.getDoctorSpecialities,
+            listenWhen: (previous, current) =>
+                previous.getDoctorSpecialities != current.getDoctorSpecialities,
+            listener: (context, state) {
+              if (state.getDoctorSpecialities.isError) {
+                toastAlert(
+                  msg: state.getDoctorSpecialities.error!,
+                  color: AppColors.errorColor,
+                );
+              }
+            },
+            builder: (context, state) {
+              return CustomDropDownMenu<String>(
+                title: t.speciality,
+                items: state.getDoctorSpecialities.isSuccess
+                    ? state.getDoctorSpecialities.data!
+                          .map(
+                            (speciality) => DropDownMenuItemModel(
+                              title: speciality.speciality,
+                              value: speciality.speciality,
+                            ),
+                          )
+                          .toList()
+                    : [],
+                onSelect: (value) {
+                  // selectedSpeciality = value;
+                },
+              );
             },
           ),
 

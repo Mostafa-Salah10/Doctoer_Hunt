@@ -74,7 +74,6 @@ class _ForgotPasswordBottomSheetState extends State<SendCodeBottomSheet> {
                   text: "Continue",
                   onPressed: () {
                     // if (cubit.sendCodeFormKey.currentState!.validate()) {
-                    //   ///TODO: forgot password
                     // }
                     context.pop();
 

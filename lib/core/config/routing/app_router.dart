@@ -3,7 +3,8 @@ import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
-import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_bottom_nav_bar.dart';
+import 'package:doctor_hunt/features/admin/features/bottom_nav_bar/presentation/screens/admin_bottom_nav_bar.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_info_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_time_screen.dart';
@@ -14,12 +15,13 @@ import 'package:doctor_hunt/features/auth/presentation/sign_in/screens/sign_in_s
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
 import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
-import 'package:doctor_hunt/features/home/presentation/screens/bottom_nav_bar_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../features/bottom_nav_bar/presentation/screens/bottom_nav_bar_screen.dart';
 
 abstract class AppRouter {
   static final GoRouter router = GoRouter(
@@ -95,7 +97,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.adminCreateDoctorScreen,
         builder: (context, state) {
-          return AdminCreateDoctorScreen();
+          return BlocProvider(
+            create: (context) => gi.get<CreateDoctorCubit>()..getDoctorSpecialitis(),
+            child: AdminCreateDoctorScreen(),
+          );
         },
       ),
     ],
@@ -111,13 +116,11 @@ abstract class AppRouter {
     } else {
       final role = SharedPreferencesHelper().get(key: AppStrings.role);
 
-      if (role==null) return AppRoutes.signIn;
+      if (role == null) return AppRoutes.signIn;
       switch (Role.values[role]) {
         case Role.patient:
           return AppRoutes.bottomNavBar;
 
-        case Role.doctor:
-          return AppRoutes.onboarding;
         case Role.admin:
           return AppRoutes.adminbottomNavBar;
       }

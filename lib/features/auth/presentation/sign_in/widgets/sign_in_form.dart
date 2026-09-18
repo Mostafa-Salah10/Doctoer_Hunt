@@ -155,7 +155,6 @@ class _SignUpFormState extends State<SignInForm> {
       case Role.patient:
         context.pushNamedAndRemoveUntil(AppRoutes.bottomNavBar);
         break;
-      case Role.doctor:
       case Role.admin:
         context.pushNamedAndRemoveUntil(AppRoutes.adminbottomNavBar);
         break;

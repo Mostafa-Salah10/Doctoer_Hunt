@@ -40,6 +40,9 @@ class AuthRepoImpl implements AuthRepo {
     required Role role,
   }) async {
     try {
+      if (role == Role.admin) {
+        return Left("Sign up only for patients");
+      }
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -67,23 +70,11 @@ class AuthRepoImpl implements AuthRepo {
       'role': role.index,
     });
 
-    switch (role) {
-      case Role.patient:
-        await _fireStore.collection("patients").doc("patient_${user.uid}").set({
-          "name": name,
-          "email": email,
-        });
-
-        break;
-      case Role.doctor:
-        await _fireStore.collection("doctors").doc("doctor${user.uid}").set({
-          "name": name,
-          "email": email,
-        });
-
-        break;
-      case Role.admin:
-        break;
+    if (role == Role.patient) {
+      await _fireStore.collection("patients").doc("patient_${user.uid}").set({
+        "name": name,
+        "email": email,
+      });
     }
   }
 

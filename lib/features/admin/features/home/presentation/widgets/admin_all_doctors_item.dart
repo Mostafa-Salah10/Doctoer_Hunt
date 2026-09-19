@@ -1,11 +1,12 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
-import 'package:doctor_hunt/features/admin/features/home/data/models/admin_doctor_model.dart';
+import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdminAllDoctorsItem extends StatelessWidget {
-  final AdminDoctorModel doctor;
+  final DoctorEnitity doctor;
 
   const AdminAllDoctorsItem({super.key, required this.doctor});
 
@@ -20,7 +21,11 @@ class AdminAllDoctorsItem extends StatelessWidget {
             height: 60.h,
             decoration: const BoxDecoration(shape: BoxShape.circle),
             clipBehavior: Clip.antiAlias,
-            child: Image.asset(doctor.image, fit: BoxFit.cover),
+            child: CustomCachedNetworkImage(
+              
+              width: 69.w,
+              height: 60.h,
+              imageUrl: doctor.imageUrl),
           ),
 
           SizedBox(width: 12.w),
@@ -40,7 +45,7 @@ class AdminAllDoctorsItem extends StatelessWidget {
 
                 SizedBox(height: 4.h),
 
-                Text(doctor.specialty, style: context.textTheme.titleSmall),
+                Text(doctor.speciality, style: context.textTheme.titleSmall),
 
                 SizedBox(height: 4.h),
 
@@ -51,7 +56,7 @@ class AdminAllDoctorsItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Text(
-                    doctor.status,
+                    doctor.isActive ? "Active" : "Not Active",
                     style: context.textTheme.bodySmall!.copyWith(
                       color: AppColors.primaryColor,
                     ),

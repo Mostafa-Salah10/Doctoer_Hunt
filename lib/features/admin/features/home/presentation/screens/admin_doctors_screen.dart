@@ -1,10 +1,11 @@
-import 'package:doctor_hunt/core/widgets/space_widget.dart';
-import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_all_doctors_list.dart';
+import 'package:doctor_hunt/core/widgets/error_widget.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_floating_action_button.dart';
-import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_search_bar.dart';
-import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_statistics.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_home_body.dart';
+
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/custom_admin_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdminDoctorsScreen extends StatelessWidget {
@@ -26,19 +27,18 @@ class AdminDoctorsScreen extends StatelessWidget {
         ),
       ),
 
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            const VerticalSpace(height: 35),
-            const AdminSearchBar(),
-            const VerticalSpace(height: 20),
-            const AdminStatistics(),
-            const VerticalSpace(height: 20),
-
-            Expanded(child: const AdminAllDoctorsList()),
-          ],
-        ),
+      body: BlocBuilder<AdminHomeCubit, AdminHomeState>(
+        buildWhen: (previous, current) =>
+            previous.errorType != current.errorType,
+        builder: (context, state) {
+          return state.errorType != null
+              ? MyErrorWidget(
+                  onRetry: () {
+                    context.read<AdminHomeCubit>().getAllDoctors();
+                  },
+                )
+              : AdminHomeBody();
+        },
       ),
     );
   }

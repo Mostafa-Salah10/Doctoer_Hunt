@@ -3,15 +3,15 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:doctor_hunt/features/admin/features/home/data/models/doctor_speciality_model.dart';
+import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
 
 class AdminHomeRemoteDataSource {
   final FirebaseFirestore _firebaseFirestore;
 
-  AdminHomeRemoteDataSource({
-    required FirebaseFirestore firebaseFirestore,
-  }) : _firebaseFirestore = firebaseFirestore;
+  AdminHomeRemoteDataSource({required FirebaseFirestore firebaseFirestore})
+    : _firebaseFirestore = firebaseFirestore;
 
-  Future<List<DoctorSpecialityModel>> getSpecialities() async {
+  Future<List<DocotorSpecialityEntity>> getSpecialities() async {
     final response = await _firebaseFirestore.collection('specialities').get();
 
     final List<DoctorSpecialityModel> specialities = [];
@@ -59,6 +59,7 @@ class AdminHomeRemoteDataSource {
       'name': name,
       'speciality': speciality,
       'image': imageUrl,
+      'isActive': true,
     });
   }
 }

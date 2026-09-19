@@ -1,9 +1,12 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_doctors_screen.dart';
 
 import 'package:doctor_hunt/features/home/presentation/widgets/bottom_nav_bar/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminBottomNavBar extends StatelessWidget {
   AdminBottomNavBar({super.key});
@@ -39,7 +42,10 @@ class AdminBottomNavBar extends StatelessWidget {
   final List<String> titles = ["Doctors", "Settings"];
 
   final List<Widget> _screens = [
-    AdminDoctorsScreen(),
+    BlocProvider(
+      create: (context) => gi.get<AdminHomeCubit>()..getAllDoctors(),
+      child: AdminDoctorsScreen(),
+    ),
     Container(color: AppColors.redLinearOne),
   ];
 }

@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
-import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/repo/admin_home_repo.dart';
 
 class CreateDoctor {
@@ -8,6 +9,13 @@ class CreateDoctor {
   CreateDoctor({required AdminHomeRepo adminHomeRepo})
     : _adminHomeRepo = adminHomeRepo;
 
-  Future<Either<String, List<DocotorSpecialityEntity>>> call() async =>
-      await _adminHomeRepo.getDoctorSpecialities();
+  Future<Either<String, Null>> call({
+    required String name,
+    required String speciality,
+    required File image,
+  }) async => await _adminHomeRepo.createDoctor(
+    image: image,
+    name: name,
+    speciality: speciality,
+  );
 }

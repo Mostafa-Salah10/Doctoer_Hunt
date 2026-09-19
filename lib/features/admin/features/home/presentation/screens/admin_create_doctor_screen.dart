@@ -35,6 +35,8 @@ class AdminCreateDoctorScreen extends StatelessWidget {
           ),
         ),
       ),
+
+      
     );
   }
 }

@@ -11,27 +11,41 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/cu
 import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
-class AdminCreateDoctorForm extends StatelessWidget {
-  AdminCreateDoctorForm({super.key});
+class AdminCreateDoctorForm extends StatefulWidget {
+  const AdminCreateDoctorForm({super.key});
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  @override
+  State<AdminCreateDoctorForm> createState() => _AdminCreateDoctorFormState();
+}
+
+class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
+  String doctorName = '';
+
+  String doctorSpeciality = '';
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<CreateDoctorCubit>();
+
     return Form(
-      key: _formKey,
+      key: cubit.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextHeader(text: t.doctorName),
 
           AppTextFormField(
+            onChanged: (name) {
+              doctorName = name;
+            },
             validator: AppValidators.required,
             hint: t.enterDoctorName,
-            prefixIcon: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.person, color: AppColors.greyColor, size: 23),
+            prefixIcon: Icon(
+              Icons.person,
+              color: AppColors.greyColor,
+              size: 23,
             ),
           ),
 
@@ -65,8 +79,10 @@ class AdminCreateDoctorForm extends StatelessWidget {
                           )
                           .toList()
                     : [],
-                onSelect: (value) {
-                  // selectedSpeciality = value;
+                onSelect: (speciality) {
+                  doctorSpeciality =
+                      speciality ??
+                      state.getDoctorSpecialities.data!.first.speciality;
                 },
               );
             },
@@ -78,16 +94,53 @@ class AdminCreateDoctorForm extends StatelessWidget {
 
           const VerticalSpace(height: 10),
 
-          const AdminCreateDoctorImageContainer(),
+          BlocBuilder<CreateDoctorCubit, CreateDoctorState>(
+            buildWhen: (previous, current) =>
+                previous.doctorImage != current.doctorImage,
+            builder: (context, state) {
+              return AdminCreateDoctorImageContainer(image: state.doctorImage);
+            },
+          ),
 
           const VerticalSpace(height: 70),
 
-          AppButton(
-            text: t.createDoctor,
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                // Handle form submission
+          BlocConsumer<CreateDoctorCubit, CreateDoctorState>(
+            buildWhen: (previous, current) =>
+                previous.createDoctor != current.createDoctor ||
+                previous.doctorImage != current.doctorImage,
+            listenWhen: (previous, current) =>
+                previous.createDoctor != current.createDoctor,
+            listener: (context, state) {
+              if (state.createDoctor.isError) {
+                toastAlert(
+                  msg: state.createDoctor.error!,
+                  color: AppColors.errorColor,
+                );
+              } else if (state.createDoctor.isSuccess) {
+                toastAlert(
+                  msg: 'Doctor Added Successfully',
+                  color: AppColors.primaryColor,
+                );
+                context.pop();
               }
+            },
+            builder: (context, state) {
+              return AppButton(
+                text: state.createDoctor.isLoading
+                    ? "Created..."
+                    : t.createDoctor,
+                onPressed: () {
+                  final isValid = cubit.formKey.currentState!.validate();
+
+                  if (!isValid) return;
+                  if (state.doctorImage == null) return;
+
+                  cubit.createDoctor(
+                    doctorName: doctorName,
+                    doctorSpeciality: doctorSpeciality,
+                  );
+                },
+              );
             },
           ),
         ],

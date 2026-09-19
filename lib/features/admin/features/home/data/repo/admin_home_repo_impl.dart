@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:doctor_hunt/features/admin/features/home/data/data_source/admin_home_remote_data_source.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
@@ -14,6 +16,25 @@ class AdminHomeRepoImpl extends AdminHomeRepo {
   getDoctorSpecialities() async {
     try {
       return Right(await _adminHomeRemoteDataSource.getSpecialities());
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, Null>> createDoctor({
+    required String name,
+    required String speciality,
+    required File image,
+  }) async {
+    try {
+      await _adminHomeRemoteDataSource.createDoctor(
+        image: image,
+        name: name,
+        speciality: speciality,
+      );
+
+      return right(null);
     } catch (e) {
       return Left(e.toString());
     }

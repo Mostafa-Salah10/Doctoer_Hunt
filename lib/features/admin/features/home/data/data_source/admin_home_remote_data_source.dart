@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/features/admin/features/home/data/models/doctor_speciality_model.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
 
@@ -60,6 +61,23 @@ class AdminHomeRemoteDataSource {
       'speciality': speciality,
       'image': imageUrl,
       'isActive': true,
+    });
+  }
+
+  Future<void> deleteDoctor({required String doctorId}) async {
+    await _firebaseFirestore.collection('doctors').doc(doctorId).delete();
+  }
+
+  Future<void> updateDotor({required DoctorEnitity doctor}) async {
+    String imageUrl = '';
+    if (doctor.imageFile != null) {
+      imageUrl = await _uploadImage(doctor.imageFile!);
+    }
+    await _firebaseFirestore.collection('doctors').doc(doctor.id).update({
+      'name': doctor.name,
+      'speciality': doctor.speciality,
+      'isActive': doctor.isActive,
+      'image': doctor.imageFile == null ? doctor.imageUrl : imageUrl,
     });
   }
 }

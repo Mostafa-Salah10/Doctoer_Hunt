@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
 
 abstract class AdminHomeRepo {
@@ -10,4 +11,6 @@ abstract class AdminHomeRepo {
     required String speciality,
     required File image,
   });
+  Future<Either<String, Null>> deleteDoctor({required String doctorId});
+  Future<Either<String, Null>> updateDoctor({required DoctorEnitity doctor});
 }

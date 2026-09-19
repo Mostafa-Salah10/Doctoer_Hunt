@@ -38,12 +38,14 @@ void setupServiceLocator() async {
     ),
   );
 
-    gi.registerLazySingleton(
-    () => AdminHomeCubit(sharedRepository: gi.get<SharedRepoImpl>()),
+  gi.registerLazySingleton(
+    () => AdminHomeCubit(
+      sharedRepository: gi.get<SharedRepoImpl>(),
+      adminHomeRepo: gi.get<AdminHomeRepoImpl>(),
+    ),
   );
 
   gi.registerFactory(() => SignUpCubit(authRepo: gi.get<AuthRepoImpl>()));
   gi.registerFactory(() => SignInCubit(authRepo: gi.get<AuthRepoImpl>()));
   gi.registerFactory(() => CreateDoctorCubit(gi.get<AdminHomeRepoImpl>()));
-
 }

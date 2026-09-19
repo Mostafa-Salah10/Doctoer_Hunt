@@ -52,7 +52,9 @@ class CreateDoctorCubit extends Cubit<CreateDoctorState> {
 
     result.fold(
       (err) => emit(state.copyWith(createDoctor: BoxState.error(error: err))),
-      (specialities) => emit(state.copyWith(createDoctor: BoxState.success())),
+      (_) => emit(
+        state.copyWith(createDoctor: BoxState.success(), doctorImage: null),
+      ),
     );
   }
 

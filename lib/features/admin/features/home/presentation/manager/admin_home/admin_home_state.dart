@@ -3,8 +3,8 @@ part of 'admin_home_cubit.dart';
 class AdminHomeState {
   final BoxState<List<DoctorEnitity>> getAllDoctors;
 
-  final BoxState<void> deleteDoctor;
-  final BoxState<void> updateDoctor;
+  final BoxState<String> deleteDoctor;
+  final BoxState<String> updateDoctor;
 
   final ErrorTypes? errorType;
 
@@ -27,8 +27,8 @@ class AdminHomeState {
 
   AdminHomeState copyWith({
     BoxState<List<DoctorEnitity>>? getAllDoctors,
-    BoxState<void>? deleteDoctor,
-    BoxState<void>? updateDoctor,
+    BoxState<String>? deleteDoctor,
+    BoxState<String>? updateDoctor,
     ErrorTypes? errorType,
     DoctorStatisticsEntity? doctorStatistics,
   }) {

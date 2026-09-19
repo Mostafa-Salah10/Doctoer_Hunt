@@ -16,6 +16,7 @@ class AppButton extends StatelessWidget {
     this.elevation = 1,
     this.splashColor,
     this.child,
+    this.fontSize,
   });
   final VoidCallback? onPressed;
   final String? text;
@@ -27,6 +28,8 @@ class AppButton extends StatelessWidget {
   final double? elevation;
   final Color? splashColor;
   final Widget? child;
+
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,12 @@ class AppButton extends StatelessWidget {
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child:
           child ??
-          Text(text ?? "", style: style ?? context.textTheme.titleMedium),
+          Text(
+            text ?? "",
+            style:
+                style ??
+                context.textTheme.titleMedium!.copyWith(fontSize: fontSize),
+          ),
     );
   }
 }

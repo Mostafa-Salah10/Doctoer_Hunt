@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_all_doctors_list.dart';
@@ -33,10 +34,25 @@ class AdminHomeBody extends StatelessWidget {
           const VerticalSpace(height: 20),
 
           Expanded(
-            child: BlocBuilder<AdminHomeCubit, AdminHomeState>(
+            child: BlocConsumer<AdminHomeCubit, AdminHomeState>(
               buildWhen: (previous, current) =>
                   previous.getAllDoctors != current.getAllDoctors,
+              listenWhen: (previous, current) =>
+                  previous.deleteDoctor != current.deleteDoctor,
 
+              listener: (context, state) {
+                if (state.deleteDoctor.isError) {
+                  toastAlert(
+                    msg: state.deleteDoctor.error!,
+                    color: AppColors.errorColor,
+                  );
+                } else if (state.deleteDoctor.isSuccess) {
+                  toastAlert(
+                    msg: "Doctor Deleted Successfully",
+                    color: AppColors.primaryColor,
+                  );
+                }
+              },
               builder: (context, state) {
                 return state.getAllDoctors.isLoading ||
                         state.getAllDoctors.isInitial

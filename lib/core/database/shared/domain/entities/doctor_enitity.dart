@@ -7,7 +7,7 @@ class DoctorEnitity {
   final String speciality;
   final String id;
 
-  final File? imageFile;
+  File? imageFile;
 
   DoctorEnitity({
     required this.id,

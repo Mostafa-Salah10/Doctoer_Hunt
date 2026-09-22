@@ -1,4 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
@@ -11,12 +17,11 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/cr
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/create_doctor/admin_create_doctor_image_container.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/custom_text_header.dart';
 import 'package:doctor_hunt/gen/strings.g.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class AdminCreateDoctorForm extends StatefulWidget {
-  const AdminCreateDoctorForm({super.key});
+  const AdminCreateDoctorForm({super.key, this.doctor});
+
+  final DoctorEnitity? doctor;
 
   @override
   State<AdminCreateDoctorForm> createState() => _AdminCreateDoctorFormState();
@@ -26,6 +31,15 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
   String doctorName = '';
 
   String doctorSpeciality = '';
+
+  @override
+  void initState() {
+    if (isEdit) {
+      doctorName = widget.doctor!.name;
+      doctorSpeciality = widget.doctor!.speciality;
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +53,7 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
           CustomTextHeader(text: t.doctorName),
 
           AppTextFormField(
+            intialValue: widget.doctor?.name,
             onChanged: (name) {
               doctorName = name;
             },
@@ -70,6 +85,7 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
             },
             builder: (context, state) {
               return CustomDropDownMenu<String>(
+                initialValue: widget.doctor?.speciality,
                 title: t.speciality,
                 items: state.getDoctorSpecialities.isSuccess
                     ? state.getDoctorSpecialities.data!
@@ -109,18 +125,25 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
           BlocConsumer<CreateDoctorCubit, CreateDoctorState>(
             buildWhen: (previous, current) =>
                 previous.createDoctor != current.createDoctor ||
-                previous.doctorImage != current.doctorImage,
+                previous.doctorImage != current.doctorImage ||
+                previous.updateDoctor != current.updateDoctor,
             listenWhen: (previous, current) =>
-                previous.createDoctor != current.createDoctor,
+                previous.createDoctor != current.createDoctor ||
+                previous.updateDoctor != current.updateDoctor,
             listener: (context, state) {
-              if (state.createDoctor.isError) {
+              if (state.createDoctor.isError || state.updateDoctor.isError) {
                 toastAlert(
-                  msg: state.createDoctor.error!,
+                  msg: isEdit
+                      ? state.updateDoctor.error!
+                      : state.createDoctor.error!,
                   color: AppColors.errorColor,
                 );
-              } else if (state.createDoctor.isSuccess) {
+              } else if (state.createDoctor.isSuccess ||
+                  state.updateDoctor.isSuccess) {
                 toastAlert(
-                  msg: 'Doctor Added Successfully',
+                  msg: isEdit
+                      ? 'Doctor Updated Successfully'
+                      : 'Doctor Added Successfully',
                   color: AppColors.primaryColor,
                 );
                 context.pop();
@@ -129,19 +152,35 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
             },
             builder: (context, state) {
               return AppButton(
-                text: state.createDoctor.isLoading
-                    ? "Created..."
-                    : t.createDoctor,
+                text:
+                    state.createDoctor.isLoading || state.updateDoctor.isLoading
+                    ? "Loading..."
+                    : isEdit
+                    ? "Update"
+                    : "Create",
                 onPressed: () {
                   final isValid = cubit.formKey.currentState!.validate();
 
                   if (!isValid) return;
-                  if (state.doctorImage == null) return;
 
-                  cubit.createDoctor(
-                    doctorName: doctorName,
-                    doctorSpeciality: doctorSpeciality,
-                  );
+                  if (isEdit) {
+                    cubit.updateDoctor(
+                      doctor: DoctorEnitity(
+                        id: widget.doctor!.id,
+                        name: doctorName,
+                        imageUrl: widget.doctor!.imageUrl,
+                        isActive: widget.doctor!.isActive,
+                        speciality: doctorSpeciality,
+                      ),
+                    );
+                  } else {
+                    if (state.doctorImage == null) return;
+
+                    cubit.createDoctor(
+                      doctorName: doctorName,
+                      doctorSpeciality: doctorSpeciality,
+                    );
+                  }
                 },
               );
             },
@@ -150,4 +189,6 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
       ),
     );
   }
+
+  bool get isEdit => widget.doctor != null;
 }

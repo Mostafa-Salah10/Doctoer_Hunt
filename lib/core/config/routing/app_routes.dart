@@ -8,4 +8,5 @@ abstract class AppRoutes {
   static const String appoinmentInfo = '/appoinmentInfo';
   static const String appointmentTimeScreen = '/appointmentTimeScreen';
   static const String adminCreateDoctorScreen = '/adminCreateDoctorScreen';
+  static const String adminUpdateDoctorScreen = '/adminUpdateDoctorScreen';
 }

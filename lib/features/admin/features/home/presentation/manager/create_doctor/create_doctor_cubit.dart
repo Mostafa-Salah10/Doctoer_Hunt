@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/core/functions/pick_image_from_device.dart';
 import 'package:doctor_hunt/core/helpers/box_state.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/repo/admin_home_repo.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/use_case/create_doctor.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/use_case/get_doctor_specialities.dart';
+import 'package:doctor_hunt/features/admin/features/home/domain/use_case/update_doctor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,6 +56,24 @@ class CreateDoctorCubit extends Cubit<CreateDoctorState> {
       (err) => emit(state.copyWith(createDoctor: BoxState.error(error: err))),
       (_) => emit(
         state.copyWith(createDoctor: BoxState.success(), doctorImage: null),
+      ),
+    );
+  }
+
+  Future<void> updateDoctor({required DoctorEnitity doctor}) async {
+    if (state.updateDoctor.isLoading) return;
+    emit(state.copyWith(createDoctor: BoxState.loading()));
+
+    doctor.imageFile = state.doctorImage;
+
+    final result = await UpdateDoctor(
+      adminHomeRepo: _adminHomeRepo,
+    ).call(doctor: doctor);
+
+    result.fold(
+      (err) => emit(state.copyWith(updateDoctor: BoxState.error(error: err))),
+      (_) => emit(
+        state.copyWith(updateDoctor: BoxState.success(), doctorImage: null),
       ),
     );
   }

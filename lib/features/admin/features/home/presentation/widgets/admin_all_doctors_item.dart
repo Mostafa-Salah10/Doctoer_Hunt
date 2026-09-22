@@ -1,6 +1,8 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/custom_bottom_sheet_confirm_widget.dart';
@@ -79,7 +81,13 @@ class AdminAllDoctorsItem extends StatelessWidget {
                 child: CustomBottomSheetConfirmWidget(
                   cancelText: "Delete",
                   confirmText: "Update",
-                  onConfirm: () {},
+                  onConfirm: () {
+                    Navigator.pop(context);
+                    context.pushNamed(
+                      AppRoutes.adminUpdateDoctorScreen,
+                      arguments: doctor,
+                    );
+                  },
                   onCancel: () async {
                     await gi.get<AdminHomeCubit>().deleteDoctor(
                       doctorId: doctor.id,

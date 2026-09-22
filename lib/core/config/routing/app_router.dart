@@ -1,11 +1,13 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:doctor_hunt/features/admin/features/bottom_nav_bar/presentation/screens/admin_bottom_nav_bar.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_info_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_time_screen.dart';
 
@@ -98,8 +100,19 @@ abstract class AppRouter {
         path: AppRoutes.adminCreateDoctorScreen,
         builder: (context, state) {
           return BlocProvider(
-            create: (context) => gi.get<CreateDoctorCubit>()..getDoctorSpecialitis(),
+            create: (context) =>
+                gi.get<CreateDoctorCubit>()..getDoctorSpecialitis(),
             child: AdminCreateDoctorScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.adminUpdateDoctorScreen,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) =>
+                gi.get<CreateDoctorCubit>()..getDoctorSpecialitis(),
+            child: UpdateDoctorScreen(doctor: state.extra as DoctorEnitity),
           );
         },
       ),

@@ -1,6 +1,8 @@
+
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/helpers/box_state.dart';
-import 'package:doctor_hunt/features/auth/data/repo/auth_repo.dart';
+import 'package:doctor_hunt/features/auth/domain/repo/auth_repo.dart';
+import 'package:doctor_hunt/features/auth/domain/usecases/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,6 +14,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       super(SignUpState.init());
 
   final AuthRepo _authRepo;
+
   final signUpFormKey = GlobalKey<FormState>();
 
   void togglePasswordIcon() {
@@ -30,12 +33,9 @@ class SignUpCubit extends Cubit<SignUpState> {
   }) async {
     if (signUpFormKey.currentState?.validate() ?? false) {
       emit(state.copyWith(signUp: BoxState.loading()));
-      final result = await _authRepo.signUpWithEmailAndPassword(
-        email: email,
-        password: password,
-        name: name,
-        role: role,
-      );
+      final result = await SignUp(
+        authRepo: _authRepo,
+      ).call(email: email, password: password, name: name, role: role);
       result.fold(
         (error) => emit(state.copyWith(signUp: BoxState.error(error: error))),
         (_) => emit(state.copyWith(signUp: BoxState.success())),

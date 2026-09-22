@@ -1,30 +1,24 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
-import 'package:doctor_hunt/features/auth/data/repo/auth_repo.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:doctor_hunt/features/auth/data/data_source/auth_remote_data_source.dart';
+import 'package:doctor_hunt/features/auth/domain/repo/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final _firebaseAuth = FirebaseAuth.instance;
-  final _fireStore = FirebaseFirestore.instance;
+  final AuthRemoteDataSource _authRemoteDataSource;
+
+  AuthRepoImpl({required AuthRemoteDataSource authRemoteDataSource})
+    : _authRemoteDataSource = authRemoteDataSource;
+
   @override
   Future<Either<String, Role>> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      final role = await _authRemoteDataSource.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      final result = await _fireStore
-          .collection('users')
-          .doc("user_${_firebaseAuth.currentUser!.uid}")
-          .get();
-
-      final roleIndex = result.data()!['role'] as int;
-      final role = Role.values[roleIndex];
 
       return Right(role);
     } catch (e) {
@@ -40,19 +34,12 @@ class AuthRepoImpl implements AuthRepo {
     required Role role,
   }) async {
     try {
-      if (role == Role.admin) {
-        return Left("Sign up only for patients");
-      }
-      final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+      await _authRemoteDataSource.signUpWithEmailAndPassword(
         email: email,
         password: password,
+        name: name,
+        role: role,
       );
-
-      final user = userCredential.user;
-
-      if (user != null) {
-        await _createUser(user, name, email, role);
-      }
 
       return const Right(null);
     } catch (e) {
@@ -60,28 +47,10 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
-  Future<void> _createUser(
-    User user,
-    String name,
-    String email,
-    Role role,
-  ) async {
-    await _fireStore.collection('users').doc("user_${user.uid}").set({
-      'role': role.index,
-    });
-
-    if (role == Role.patient) {
-      await _fireStore.collection("patients").doc("patient_${user.uid}").set({
-        "name": name,
-        "email": email,
-      });
-    }
-  }
-
   @override
   Future<Either<String, Null>> resetPass({required String email}) async {
     try {
-      await _firebaseAuth.sendPasswordResetEmail(email: email);
+      await _authRemoteDataSource.resetPass(email: email);
       return right(null);
     } catch (e) {
       return left(e.toString());

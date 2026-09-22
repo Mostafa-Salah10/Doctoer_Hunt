@@ -1,6 +1,8 @@
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
 import 'package:doctor_hunt/core/helpers/box_state.dart';
-import 'package:doctor_hunt/features/auth/data/repo/auth_repo.dart';
+import 'package:doctor_hunt/features/auth/domain/repo/auth_repo.dart';
+import 'package:doctor_hunt/features/auth/domain/usecases/reset_pass.dart';
+import 'package:doctor_hunt/features/auth/domain/usecases/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,10 +53,9 @@ class SignInCubit extends Cubit<SignInState> {
   }) async {
     if (signInFormKey.currentState?.validate() ?? false) {
       emit(state.copyWith(signIn: BoxState.loading()));
-      final result = await _authRepo.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final result = await SignIn(
+        authRepo: _authRepo,
+      ).call(email: email, password: password);
       result.fold(
         (error) => emit(state.copyWith(signIn: BoxState.error(error: error))),
         (role) => emit(state.copyWith(signIn: BoxState.success(data: role))),
@@ -65,7 +66,7 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> resetPassword({required String email}) async {
     if (resetFormKey.currentState!.validate()) {
       emit(state.copyWith(resetPassword: BoxState.loading()));
-      final result = await _authRepo.resetPass(email: email);
+      final result = await ResetPass(authRepo: _authRepo).call(email: email);
       result.fold(
         (error) =>
             emit(state.copyWith(resetPassword: BoxState.error(error: error))),

@@ -1,3 +1,6 @@
-extension UppperLowerExtension on String{
-  String get toUpperCaseFirst => '${this[0].toUpperCase()}${substring(1)}';
+extension UppperLowerExtension on String {
+  String get toUpperCaseFirst {
+    if (trim().isEmpty) return '';
+    return '${this[0].toUpperCase()}${substring(1)}';
+  }
 }

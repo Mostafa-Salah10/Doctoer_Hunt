@@ -1,6 +1,6 @@
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 
-class DoctorModel extends DoctorEnitity {
+class DoctorModel extends DoctorEntity {
   DoctorModel({
     required super.name,
     required super.imageUrl,

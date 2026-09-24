@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension ConfigExtenstions on BuildContext {
+extension ConfigExtension on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   bool get isArabic => Localizations.localeOf(this).languageCode == 'ar';
   TextTheme get textTheme => Theme.of(this).textTheme;

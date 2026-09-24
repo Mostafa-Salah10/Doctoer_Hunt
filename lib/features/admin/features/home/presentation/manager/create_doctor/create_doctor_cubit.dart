@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/functions/pick_image_from_device.dart';
 import 'package:doctor_hunt/core/helpers/box_state.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
@@ -70,7 +70,7 @@ class CreateDoctorCubit extends Cubit<CreateDoctorState> {
     );
   }
 
-  Future<void> updateDoctor({required DoctorEnitity doctor}) async {
+  Future<void> updateDoctor({required DoctorEntity doctor}) async {
     if (state.updateDoctor.isLoading) return;
     emit(state.copyWith(createDoctor: BoxState.loading()));
 

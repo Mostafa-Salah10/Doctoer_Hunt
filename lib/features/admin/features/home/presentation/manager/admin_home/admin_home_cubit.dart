@@ -1,4 +1,4 @@
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/database/shared/domain/repo/shared_repository.dart';
 import 'package:doctor_hunt/core/database/shared/domain/usecases/get_all_doctors.dart';
 import 'package:doctor_hunt/core/enums/request_state.dart';
@@ -59,7 +59,7 @@ class AdminHomeCubit extends Cubit<AdminHomeState> {
       (_) {
         emit(state.copyWith(deleteDoctor: BoxState.success(data: doctorId)));
         getAllDoctors();
-        // final List<DoctorEnitity> docs = [...state.getAllDoctors.data!];
+        // final List<DoctorEntity> docs = [...state.getAllDoctors.data!];
 
         // bool isActive = false;
 

@@ -2,7 +2,7 @@ import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
+import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';

@@ -1,6 +1,6 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
+import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';

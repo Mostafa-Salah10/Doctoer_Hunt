@@ -1,7 +1,7 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
-import 'package:doctor_hunt/core/extensions/uppper_lower_extension.dart';
+import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/upper_lower_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/data/models/role_model.dart';

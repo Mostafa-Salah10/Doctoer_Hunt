@@ -1,5 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
+import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';

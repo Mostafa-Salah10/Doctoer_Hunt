@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
@@ -24,7 +24,7 @@ class AdminCreateDoctorForm extends StatefulWidget {
     required AdminHomeCubit adminHomeCubit,
   }) : _adminHomeCubit = adminHomeCubit;
 
-  final DoctorEnitity? doctor;
+  final DoctorEntity? doctor;
   final AdminHomeCubit _adminHomeCubit;
 
   @override
@@ -169,7 +169,7 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
 
                   if (isEdit) {
                     cubit.updateDoctor(
-                      doctor: DoctorEnitity(
+                      doctor: DoctorEntity(
                         id: widget.doctor!.id,
                         name: doctorName,
                         imageUrl: widget.doctor!.imageUrl,

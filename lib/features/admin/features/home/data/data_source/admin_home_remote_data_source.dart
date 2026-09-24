@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/features/admin/features/home/data/models/doctor_speciality_model.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
 
@@ -68,7 +68,7 @@ class AdminHomeRemoteDataSource {
     await _firebaseFirestore.collection('doctors').doc(doctorId).delete();
   }
 
-  Future<void> updateDotor({required DoctorEnitity doctor}) async {
+  Future<void> updateDotor({required DoctorEntity doctor}) async {
     String imageUrl = '';
     if (doctor.imageFile != null) {
       imageUrl = await _uploadImage(doctor.imageFile!);

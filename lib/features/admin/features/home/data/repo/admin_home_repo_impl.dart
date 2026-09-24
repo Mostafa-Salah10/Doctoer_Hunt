@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/features/admin/features/home/data/data_source/admin_home_remote_data_source.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/enitites/docotor_speciality_entity.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/repo/admin_home_repo.dart';
@@ -54,7 +54,7 @@ class AdminHomeRepoImpl extends AdminHomeRepo {
 
   @override
   Future<Either<String, Null>> updateDoctor({
-    required DoctorEnitity doctor,
+    required DoctorEntity doctor,
   }) async {
     try {
       await _adminHomeRemoteDataSource.updateDotor(doctor: doctor);

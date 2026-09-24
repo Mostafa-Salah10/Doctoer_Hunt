@@ -1,4 +1,4 @@
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
@@ -14,7 +14,7 @@ class UpdateDoctorScreen extends StatelessWidget {
     required AdminHomeCubit adminHomeCubit,
   }) : _adminHomeCubit = adminHomeCubit;
 
-  final DoctorEnitity doctor;
+  final DoctorEntity doctor;
   final AdminHomeCubit _adminHomeCubit;
 
   @override

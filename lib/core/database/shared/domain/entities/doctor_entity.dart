@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class DoctorEnitity {
+class DoctorEntity {
   final String name;
   final String imageUrl;
   final bool isActive;
@@ -9,7 +9,7 @@ class DoctorEnitity {
 
   File? imageFile;
 
-  DoctorEnitity({
+  DoctorEntity({
     required this.id,
     required this.name,
     required this.imageUrl,

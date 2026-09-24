@@ -1,4 +1,4 @@
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
+import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/onboarding/data/models/onboarding_model.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/widgets/custom_onboarding_linear_circle.dart';

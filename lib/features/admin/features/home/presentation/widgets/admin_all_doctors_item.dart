@@ -1,7 +1,7 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
+import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/custom_bottom_sheet_confirm_widget.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdminAllDoctorsItem extends StatelessWidget {
-  final DoctorEnitity doctor;
+  final DoctorEntity doctor;
 
   const AdminAllDoctorsItem({super.key, required this.doctor});
 

@@ -1,4 +1,4 @@
-import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
+import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/data/models/who_patient_model.dart';
 import 'package:doctor_hunt/gen/strings.g.dart';

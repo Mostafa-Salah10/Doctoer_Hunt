@@ -1,6 +1,6 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
-import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
@@ -113,7 +113,7 @@ abstract class AppRouter {
         path: AppRoutes.adminUpdateDoctorScreen,
         builder: (context, state) {
           var data = state.extra as Map<String, dynamic>;
-          DoctorEnitity doctor = data['doctor'];
+          DoctorEntity doctor = data['doctor'];
           AdminHomeCubit cubit = data['cubit'];
           return BlocProvider(
             create: (context) {

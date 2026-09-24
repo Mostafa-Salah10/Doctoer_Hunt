@@ -174,8 +174,6 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
                       ),
                     );
                   } else {
-                    if (state.doctorImage == null) return;
-
                     cubit.createDoctor(
                       doctorName: doctorName,
                       doctorSpeciality: doctorSpeciality,

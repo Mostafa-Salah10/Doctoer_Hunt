@@ -46,6 +46,16 @@ class CreateDoctorCubit extends Cubit<CreateDoctorState> {
     if (state.createDoctor.isLoading) return;
     emit(state.copyWith(createDoctor: BoxState.loading()));
 
+    if (state.doctorImage == null) {
+      emit(
+        state.copyWith(
+          createDoctor: BoxState.error(error: 'You Must Choose An Imagr'),
+        ),
+      );
+
+      return;
+    }
+
     final result = await CreateDoctor(adminHomeRepo: _adminHomeRepo).call(
       name: doctorName,
       speciality: doctorSpeciality,

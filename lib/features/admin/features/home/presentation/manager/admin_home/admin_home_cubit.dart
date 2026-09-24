@@ -28,13 +28,21 @@ class AdminHomeCubit extends Cubit<AdminHomeState> {
       sharedRepository: _sharedRepository,
     ).call();
 
-    result.fold((err) => emit(state.copyWith(errorType: ErrorTypes.server)), (
-      specialities,
-    ) {
-      emit(state.copyWith(getAllDoctors: BoxState.success(data: specialities)));
+    result.fold(
+      (err) => emit(
+        state.copyWith(
+          errorType: ErrorTypes.server,
+          getAllDoctors: BoxState.error(),
+        ),
+      ),
+      (specialities) {
+        emit(
+          state.copyWith(getAllDoctors: BoxState.success(data: specialities)),
+        );
 
-      calcuteNumberOfDoctorsAndActiveDoctors();
-    });
+        calcuteNumberOfDoctorsAndActiveDoctors();
+      },
+    );
   }
 
   Future<void> deleteDoctor({required String doctorId}) async {

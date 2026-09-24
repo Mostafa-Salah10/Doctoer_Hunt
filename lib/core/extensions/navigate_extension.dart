@@ -16,7 +16,7 @@ extension NavigateExtensions on BuildContext {
 
   void pop<T extends Object?>([T? result]) {
     if (canPop()) {
-      pop<T>(result);
+      Navigator.pop(this);
     }
   }
 }

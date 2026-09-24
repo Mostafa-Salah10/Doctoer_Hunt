@@ -20,7 +20,6 @@ void setupServiceLocator() async {
   ///all repos
   gi.registerLazySingleton(() => AuthRepoImpl());
 
-  ///all cubits
   gi.registerLazySingleton(() => OnboardingCubit());
   gi.registerLazySingleton(() => ThemeCubit());
   gi.registerLazySingleton(
@@ -38,7 +37,9 @@ void setupServiceLocator() async {
     ),
   );
 
-  gi.registerLazySingleton(
+  ///all cubits
+
+  gi.registerFactory(
     () => AdminHomeCubit(
       sharedRepository: gi.get<SharedRepoImpl>(),
       adminHomeRepo: gi.get<AdminHomeRepoImpl>(),

@@ -88,7 +88,7 @@ class CreateDoctorCubit extends Cubit<CreateDoctorState> {
     );
   }
 
-  Future<void> pcikDoctorImage() async {
+  Future<void> pickDoctorImage() async {
     final image = await pickImageFromDevice();
     if (image != null) {
       emit(state.copyWith(doctorImage: image));

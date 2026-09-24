@@ -7,7 +7,6 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/helpers/app_validator.dart';
-import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/custom_drop_down_menu.dart';
@@ -19,9 +18,14 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/cu
 import 'package:doctor_hunt/gen/strings.g.dart';
 
 class AdminCreateDoctorForm extends StatefulWidget {
-  const AdminCreateDoctorForm({super.key, this.doctor});
+  const AdminCreateDoctorForm({
+    super.key,
+    this.doctor,
+    required AdminHomeCubit adminHomeCubit,
+  }) : _adminHomeCubit = adminHomeCubit;
 
   final DoctorEnitity? doctor;
+  final AdminHomeCubit _adminHomeCubit;
 
   @override
   State<AdminCreateDoctorForm> createState() => _AdminCreateDoctorFormState();
@@ -147,7 +151,7 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
                   color: AppColors.primaryColor,
                 );
                 context.pop();
-                gi<AdminHomeCubit>().getAllDoctors();
+                widget._adminHomeCubit.getAllDoctors();
               }
             },
             builder: (context, state) {

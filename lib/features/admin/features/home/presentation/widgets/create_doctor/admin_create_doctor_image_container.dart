@@ -24,7 +24,7 @@ class AdminCreateDoctorImageContainer extends StatelessWidget {
           )
         : GestureDetector(
             onTap: () {
-              cubit.pcikDoctorImage();
+              cubit.pickDoctorImage();
             },
             child: SizedBox(
               width: double.infinity,

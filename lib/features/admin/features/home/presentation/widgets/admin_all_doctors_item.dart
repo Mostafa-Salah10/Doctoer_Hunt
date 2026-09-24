@@ -3,7 +3,6 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_enitity.dart';
 import 'package:doctor_hunt/core/extensions/config_extenstioin.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
-import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/custom_bottom_sheet_confirm_widget.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
@@ -74,10 +73,11 @@ class AdminAllDoctorsItem extends StatelessWidget {
 
         InkWell(
           onTap: () {
+            var cubit = context.read<AdminHomeCubit>();
             showModalBottomSheet(
               context: context,
               builder: (context) => BlocProvider(
-                create: (context) => gi.get<AdminHomeCubit>(),
+                create: (context) => cubit,
                 child: CustomBottomSheetConfirmWidget(
                   cancelText: "Delete",
                   confirmText: "Update",
@@ -85,11 +85,14 @@ class AdminAllDoctorsItem extends StatelessWidget {
                     Navigator.pop(context);
                     context.pushNamed(
                       AppRoutes.adminUpdateDoctorScreen,
-                      arguments: doctor,
+                      arguments: {
+                        'cubit': cubit,
+                        'doctor': doctor,
+                      },
                     );
                   },
                   onCancel: () async {
-                    await gi.get<AdminHomeCubit>().deleteDoctor(
+                    await cubit.deleteDoctor(
                       doctorId: doctor.id,
                     );
 

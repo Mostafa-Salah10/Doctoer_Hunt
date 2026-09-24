@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
 import 'package:doctor_hunt/features/admin/features/bottom_nav_bar/presentation/screens/admin_bottom_nav_bar.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
@@ -102,17 +103,23 @@ abstract class AppRouter {
           return BlocProvider(
             create: (context) =>
                 gi.get<CreateDoctorCubit>()..getDoctorSpecialitis(),
-            child: AdminCreateDoctorScreen(),
+            child: AdminCreateDoctorScreen(
+              adminHomeCubit: state.extra as AdminHomeCubit,
+            ),
           );
         },
       ),
       GoRoute(
         path: AppRoutes.adminUpdateDoctorScreen,
         builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          DoctorEnitity doctor = data['doctor'];
+          AdminHomeCubit cubit = data['cubit'];
           return BlocProvider(
-            create: (context) =>
-                gi.get<CreateDoctorCubit>()..getDoctorSpecialitis(),
-            child: UpdateDoctorScreen(doctor: state.extra as DoctorEnitity),
+            create: (context) {
+              return gi.get<CreateDoctorCubit>()..getDoctorSpecialitis();
+            },
+            child: UpdateDoctorScreen(doctor: doctor, adminHomeCubit: cubit),
           );
         },
       ),

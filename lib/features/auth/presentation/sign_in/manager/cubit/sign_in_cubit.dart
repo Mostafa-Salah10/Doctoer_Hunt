@@ -63,7 +63,7 @@ class SignInCubit extends Cubit<SignInState> {
   }
 
   Future<void> resetPassword({required String email}) async {
-    if (resetFormKey.currentState!.validate()) {
+    if (forgotFormKey.currentState!.validate()) {
       emit(state.copyWith(resetPassword: BoxState.loading()));
       final result = await _authRepo.resetPass(email: email);
       result.fold(

@@ -14,22 +14,24 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomBackgroundWidget(
-      child: Column(
-        children: [
-          CustomScreensAppBar(title: context.t.favouriteDoctors),
-
-          const VerticalSpace(height: 34),
-          const FavouriteSearchBar(),
-          const VerticalSpace(height: 24),
-          const FavDoctorsGrid(),
-          const VerticalSpace(height: 29),
-
-          HomeTitleAndSeeAll(title: "Feature Doctor", onTap: () {}),
-
-          const VerticalSpace(height: 20),
-
-          const HomeFeatureDoctorsList(),
-        ],
+      child: SafeArea(
+        child: Column(
+          children: [
+            CustomScreensAppBar(title: context.t.favouriteDoctors),
+        
+            const VerticalSpace(height: 34),
+            const FavouriteSearchBar(),
+            const VerticalSpace(height: 24),
+            const FavDoctorsGrid(),
+            const VerticalSpace(height: 29),
+        
+            HomeTitleAndSeeAll(title: "Feature Doctor", onTap: () {}),
+        
+            const VerticalSpace(height: 20),
+        
+            const HomeFeatureDoctorsList(),
+          ],
+        ),
       ),
     );
   }

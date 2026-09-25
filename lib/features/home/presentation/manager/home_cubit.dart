@@ -10,14 +10,20 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit({required HomeRepo homeRepo})
     : _homeRepo = homeRepo,
-      super(HomeState.init());
+      super(HomeState.init()) {
+    getHomeData();
+  }
 
   final HomeRepo _homeRepo;
 
-  void changeCurrentSpeciality(DoctorSpeciality speciality, int limit) {
+  void changeCurrentSpeciality(DoctorSpeciality speciality, int limit) async {
     emit(state.copyWith(currentSpeciality: speciality));
-    getPopularDoctors(limit: limit);
-    getFeatureDoctors(limit: limit);
+    getHomeData();
+  }
+
+  void getHomeData() async {
+    await getPopularDoctors(limit: 3);
+    getFeatureDoctors(limit: 3);
   }
 
   Future<void> getPopularDoctors({required int limit}) async {

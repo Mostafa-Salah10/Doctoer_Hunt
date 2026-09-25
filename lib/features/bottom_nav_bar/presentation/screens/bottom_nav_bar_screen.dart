@@ -40,14 +40,11 @@ class BottomNavBarScreen extends StatelessWidget {
   ];
 
   final List<Widget> _screens = [
+    BlocProvider(create: (context) => gi<HomeCubit>(), child: HomeScreen()),
     BlocProvider(
-      create: (context) => gi<HomeCubit>()
-        ..getPopularDoctors(limit: 3)
-        ..getFeatureDoctors(limit: 3),
-      
-      child: HomeScreen(),
+      create: (context) => gi<HomeCubit>()..getFeatureDoctors(limit: 3),
+      child: FavouriteScreen(),
     ),
-    FavouriteScreen(),
     Container(color: Colors.yellow),
     Container(color: Colors.purple),
   ];

@@ -22,8 +22,7 @@ class HomeScreen extends StatelessWidget {
         return state.errorTypes != null
             ? MyErrorWidget(
                 onRetry: () {
-                  context.read<HomeCubit>().getPopularDoctors(limit: 3);
-                  context.read<HomeCubit>().getFeatureDoctors(limit: 3);
+                  context.read<HomeCubit>().getHomeData();
                 },
               )
             : SingleChildScrollView(

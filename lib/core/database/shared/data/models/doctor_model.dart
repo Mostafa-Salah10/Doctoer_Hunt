@@ -7,6 +7,11 @@ class DoctorModel extends DoctorEntity {
     required super.isActive,
     required super.speciality,
     required super.id,
+    super.cost,
+    super.imageFile,
+    super.rating,
+
+    super.isFeature,
   });
 
   factory DoctorModel.fromJson(
@@ -19,6 +24,9 @@ class DoctorModel extends DoctorEntity {
       imageUrl: json['image'] as String,
       isActive: json['isActive'] as bool,
       speciality: json['speciality'] as String,
+      cost: json['cost'] as double,
+      isFeature: json['isFeature'] as bool,
+      rating: json['rating'] as double,
     );
   }
 }

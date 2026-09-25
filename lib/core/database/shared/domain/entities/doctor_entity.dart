@@ -6,8 +6,10 @@ class DoctorEntity {
   final bool isActive;
   final String speciality;
   final String id;
-
+  double? rating;
+  double? cost;
   File? imageFile;
+  bool? isFeature;
 
   DoctorEntity({
     required this.id,
@@ -15,7 +17,11 @@ class DoctorEntity {
     required this.imageUrl,
     required this.isActive,
     required this.speciality,
+    this.rating,
+    this.cost,
 
     this.imageFile,
+
+    this.isFeature,
   });
 }

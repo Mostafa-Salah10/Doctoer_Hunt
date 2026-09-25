@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:doctor_hunt/core/enums/doctor_speciality.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -74,39 +75,20 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
 
           CustomTextHeader(text: t.speciality),
 
-          BlocConsumer<CreateDoctorCubit, CreateDoctorState>(
-            buildWhen: (previous, current) =>
-                previous.getDoctorSpecialities != current.getDoctorSpecialities,
-            listenWhen: (previous, current) =>
-                previous.getDoctorSpecialities != current.getDoctorSpecialities,
-            listener: (context, state) {
-              if (state.getDoctorSpecialities.isError) {
-                toastAlert(
-                  msg: state.getDoctorSpecialities.error!,
-                  color: AppColors.errorColor,
-                );
-              }
-            },
-            builder: (context, state) {
-              return CustomDropDownMenu<String>(
-                initialValue: widget.doctor?.speciality,
-                title: t.speciality,
-                items: state.getDoctorSpecialities.isSuccess
-                    ? state.getDoctorSpecialities.data!
-                          .map(
-                            (speciality) => DropDownMenuItemModel(
-                              title: speciality.speciality,
-                              value: speciality.speciality,
-                            ),
-                          )
-                          .toList()
-                    : [],
-                onSelect: (speciality) {
-                  doctorSpeciality =
-                      speciality ??
-                      state.getDoctorSpecialities.data!.first.speciality;
-                },
-              );
+          CustomDropDownMenu<String>(
+            initialValue: widget.doctor?.speciality,
+            title: t.speciality,
+            items: DoctorSpeciality.values
+                .map(
+                  (speciality) => DropDownMenuItemModel(
+                    title: speciality.toStringValue(),
+                    value: speciality.name,
+                  ),
+                )
+                .toList(),
+            onSelect: (speciality) {
+              doctorSpeciality =
+                  speciality ?? DoctorSpeciality.values.elementAt(0).name;
             },
           ),
 
@@ -175,6 +157,9 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
                         imageUrl: widget.doctor!.imageUrl,
                         isActive: widget.doctor!.isActive,
                         speciality: doctorSpeciality,
+                        cost: widget.doctor!.cost,
+                        isFeature: widget.doctor!.isFeature,
+                        rating: widget.doctor!.rating,
                       ),
                     );
                   } else {

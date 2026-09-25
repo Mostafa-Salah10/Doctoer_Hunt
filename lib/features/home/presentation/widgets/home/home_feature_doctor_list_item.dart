@@ -1,15 +1,16 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
-import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeFeatureDoctorListItem extends StatelessWidget {
   const HomeFeatureDoctorListItem({super.key, required this.doctor});
-  final HomeFeatureDoctorModel doctor;
+  final DoctorEntity doctor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,17 @@ class HomeFeatureDoctorListItem extends StatelessWidget {
             children: [
               HomeFetaureCardTopBar(doctor: doctor),
               const VerticalSpace(height: 8),
-              CircleAvatar(
-                radius: 27.r,
-                backgroundImage: AssetImage(doctor.image),
+              // CircleAvatar(
+              //   radius: 27.r,
+              //   backgroundImage: AssetImage(doctor.image),
+              // ),
+
+              Container(
+                clipBehavior: Clip.hardEdge,
+                width: 54.w,
+                height: 54.w,
+                decoration: BoxDecoration(shape: BoxShape.circle),
+                child: CustomCachedNetworkImage(imageUrl: doctor.imageUrl),
               ),
               const VerticalSpace(height: 8),
               Text(
@@ -39,7 +48,7 @@ class HomeFeatureDoctorListItem extends StatelessWidget {
               Text(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                "\$ ${doctor.price} / hours",
+                "\$ ${doctor.cost} / hours",
                 style: context.textTheme.titleSmall!.copyWith(fontSize: 10.sp),
               ),
             ],
@@ -53,7 +62,7 @@ class HomeFeatureDoctorListItem extends StatelessWidget {
 class HomeFetaureCardTopBar extends StatelessWidget {
   const HomeFetaureCardTopBar({super.key, required this.doctor});
 
-  final HomeFeatureDoctorModel doctor;
+  final DoctorEntity doctor;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +72,7 @@ class HomeFetaureCardTopBar extends StatelessWidget {
         FittedBox(
           fit: BoxFit.scaleDown,
           child: SvgPicture.asset(
-            doctor.isFav ? Assets.assetsSvgsLoveFilled : Assets.assetsSvgsLove,
+            1 == 1 ? Assets.assetsSvgsLoveFilled : Assets.assetsSvgsLove,
 
             height: 12.h,
           ),
@@ -72,7 +81,10 @@ class HomeFetaureCardTopBar extends StatelessWidget {
           spacing: 5.w,
           children: [
             Icon(Icons.star, color: Colors.amber, size: 15.h),
-            Text(doctor.rate.toString(), style: context.textTheme.labelMedium),
+            Text(
+              doctor.rating.toString(),
+              style: context.textTheme.labelMedium,
+            ),
           ],
         ),
       ],

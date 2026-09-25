@@ -102,7 +102,7 @@ abstract class AppRouter {
         builder: (context, state) {
           return BlocProvider(
             create: (context) =>
-                gi.get<CreateDoctorCubit>()..getDoctorSpecialitis(),
+                gi.get<CreateDoctorCubit>(),
             child: AdminCreateDoctorScreen(
               adminHomeCubit: state.extra as AdminHomeCubit,
             ),
@@ -117,7 +117,7 @@ abstract class AppRouter {
           AdminHomeCubit cubit = data['cubit'];
           return BlocProvider(
             create: (context) {
-              return gi.get<CreateDoctorCubit>()..getDoctorSpecialitis();
+              return gi.get<CreateDoctorCubit>();
             },
             child: UpdateDoctorScreen(doctor: doctor, adminHomeCubit: cubit),
           );

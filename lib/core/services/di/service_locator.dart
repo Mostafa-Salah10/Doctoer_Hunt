@@ -14,6 +14,8 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/cr
 import 'package:doctor_hunt/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
+import 'package:doctor_hunt/features/home/data/repo/home_repo_imp.dart';
+import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -24,6 +26,9 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void setupServiceLocator() async {
   ///all repos
   gi.registerLazySingleton(() => AuthRepoImpl());
+  gi.registerLazySingleton(
+    () => HomeRepoImp(firebaseFirestore: FirebaseFirestore.instance),
+  );
 
   gi.registerLazySingleton(() => OnboardingCubit());
   gi.registerLazySingleton(() => ThemeCubit());
@@ -53,6 +58,7 @@ void setupServiceLocator() async {
 
   gi.registerFactory(() => SignUpCubit(authRepo: gi.get<AuthRepoImpl>()));
   gi.registerFactory(() => SignInCubit(authRepo: gi.get<AuthRepoImpl>()));
+  gi.registerFactory(() => HomeCubit(homeRepo: gi<HomeRepoImp>()));
   gi.registerFactory(
     () => CreateDoctorCubit(
       getDoctorSpecialities: GetDoctorSpecialities(

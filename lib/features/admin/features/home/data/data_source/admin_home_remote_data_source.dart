@@ -61,6 +61,9 @@ class AdminHomeRemoteDataSource {
       'speciality': speciality,
       'image': imageUrl,
       'isActive': true,
+      'cost': 0.0,
+      'isFeature': false,
+      'rating': 3.0,
     });
   }
 
@@ -78,6 +81,9 @@ class AdminHomeRemoteDataSource {
       'speciality': doctor.speciality,
       'isActive': doctor.isActive,
       'image': doctor.imageFile == null ? doctor.imageUrl : imageUrl,
+      'cost': doctor.cost,
+      'isFeature': doctor.isFeature,
+      'rating': doctor.rating,
     });
   }
 }

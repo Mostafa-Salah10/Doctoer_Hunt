@@ -1,7 +1,9 @@
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/home/data/models/home_category_model.dart';
+import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_category_list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeCategoryList extends StatelessWidget {
@@ -18,7 +20,12 @@ class HomeCategoryList extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: HomeCategoryModel.categories.length,
         itemBuilder: (context, index) => InkWell(
-          onTap: () {},
+          onTap: () {
+            context.read<HomeCubit>().changeCurrentSpeciality(
+              HomeCategoryModel.categories[index].doctorSpeciality,
+              3,
+            );
+          },
           child: HomeCategoryListItem(
             category: HomeCategoryModel.categories[index],
           ),

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/features/auth/data/repo/auth_repo_impl.dart';
@@ -90,6 +92,17 @@ void main() {
         role: Role.patient,
       );
 
+      expect(result.isRight(), true);
+    });
+  });
+
+  group('Test Reset Password', () {
+    test('test right side', () async {
+      when(
+        firebaseAuth.sendPasswordResetEmail(email: 'patient@test.com'),
+      ).thenAnswer((_) async {});
+
+      final result = await authRepo.resetPass(email: 'patient@test.com');
       expect(result.isRight(), true);
     });
   });

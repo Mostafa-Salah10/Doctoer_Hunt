@@ -17,6 +17,7 @@ import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sig
 import 'package:doctor_hunt/features/home/data/repo/home_repo_imp.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -25,7 +26,12 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void setupServiceLocator() async {
   ///all repos
-  gi.registerLazySingleton(() => AuthRepoImpl());
+  gi.registerLazySingleton(
+    () => AuthRepoImpl(
+      fireStore: FirebaseFirestore.instance,
+      firebaseAuth: FirebaseAuth.instance,
+    ),
+  );
   gi.registerLazySingleton(
     () => HomeRepoImp(firebaseFirestore: FirebaseFirestore.instance),
   );

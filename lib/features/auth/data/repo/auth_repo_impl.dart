@@ -5,8 +5,14 @@ import 'package:doctor_hunt/features/auth/data/repo/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final _firebaseAuth = FirebaseAuth.instance;
-  final _fireStore = FirebaseFirestore.instance;
+  final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _fireStore;
+
+  AuthRepoImpl({
+    required FirebaseAuth firebaseAuth,
+    required FirebaseFirestore fireStore,
+  }) : _firebaseAuth = firebaseAuth,
+       _fireStore = fireStore;
   @override
   Future<Either<String, Role>> signInWithEmailAndPassword({
     required String email,

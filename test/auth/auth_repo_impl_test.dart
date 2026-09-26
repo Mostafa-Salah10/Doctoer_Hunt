@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/features/auth/data/repo/auth_repo_impl.dart';
@@ -28,6 +26,8 @@ void main() {
   late MockCollectionReference<Map<String, dynamic>> firebaseCollection;
   late MockDocumentReference<Map<String, dynamic>> firebaseDocument;
 
+  late DocumentSnapshot<Map<String, dynamic>> documentSnapshot;
+
   late AuthRepoImpl authRepo;
 
   setUp(() {
@@ -39,6 +39,8 @@ void main() {
     firebaseCollection = MockCollectionReference<Map<String, dynamic>>();
 
     firebaseDocument = MockDocumentReference<Map<String, dynamic>>();
+
+    documentSnapshot = MockDocumentSnapshot();
 
     authRepo = AuthRepoImpl(firebaseAuth: firebaseAuth, fireStore: fireStore);
   });
@@ -103,6 +105,35 @@ void main() {
       ).thenAnswer((_) async {});
 
       final result = await authRepo.resetPass(email: 'patient@test.com');
+      expect(result.isRight(), true);
+    });
+  });
+
+  group("Test Sign In Method", () {
+    test('test right hand side', () async {
+      when(
+        firebaseAuth.signInWithEmailAndPassword(
+          email: 'patient@test.com',
+          password: '12345',
+        ),
+      ).thenAnswer((_) async => userCredential);
+
+      when(firebaseAuth.currentUser).thenReturn(user);
+      when(user.uid).thenReturn('123');
+
+      when(fireStore.collection('users')).thenReturn(firebaseCollection);
+
+      when(firebaseCollection.doc('user_123')).thenReturn(firebaseDocument);
+
+      when(firebaseDocument.get()).thenAnswer((_) async => documentSnapshot);
+
+      when(documentSnapshot.data()).thenReturn({'role': 0});
+
+      final result = await authRepo.signInWithEmailAndPassword(
+        email: 'patient@test.com',
+        password: '12345',
+      );
+
       expect(result.isRight(), true);
     });
   });

@@ -14,6 +14,8 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/cr
 import 'package:doctor_hunt/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
+import 'package:doctor_hunt/features/favourite/data/repo/fav_repo_imp.dart';
+import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/data/repo/home_repo_imp.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
@@ -34,6 +36,9 @@ void setupServiceLocator() async {
   );
   gi.registerLazySingleton(
     () => HomeRepoImp(firebaseFirestore: FirebaseFirestore.instance),
+  );
+  gi.registerLazySingleton(
+    () => FavRepoImp(firebaseFirestore: FirebaseFirestore.instance),
   );
 
   gi.registerLazySingleton(() => OnboardingCubit());
@@ -61,6 +66,7 @@ void setupServiceLocator() async {
       deleteDoctor: DeleteDoctor(adminHomeRepo: gi.get<AdminHomeRepoImpl>()),
     ),
   );
+  gi.registerFactory(() => FavouriteCubit(favRepo: gi<FavRepoImp>()));
 
   gi.registerFactory(() => SignUpCubit(authRepo: gi.get<AuthRepoImpl>()));
   gi.registerFactory(() => SignInCubit(authRepo: gi.get<AuthRepoImpl>()));

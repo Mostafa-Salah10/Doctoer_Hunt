@@ -10,10 +10,10 @@ class BoxState<T> extends Equatable {
 
   const BoxState.initial()
     : this(state: RequestStates.initial, data: null, error: null);
-  const BoxState.loading()
-    : this(state: RequestStates.loading, data: null, error: null);
-  const BoxState.error({String? error})
-    : this(state: RequestStates.error, error: error, data: null);
+  const BoxState.loading({T? data})
+    : this(state: RequestStates.loading, data: data, error: null);
+  const BoxState.error({String? error,T?data})
+    : this(state: RequestStates.error, error: error, data: data);
   const BoxState.success({T? data})
     : this(state: RequestStates.success, data: data, error: null);
 

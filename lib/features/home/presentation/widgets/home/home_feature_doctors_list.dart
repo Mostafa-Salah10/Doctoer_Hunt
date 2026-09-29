@@ -36,23 +36,23 @@ class HomeFeatureDoctorsList extends StatelessWidget {
                   ),
                 )
               : ListView.separated(
-            separatorBuilder: (context, index) =>
-                const HorizontalSpace(width: 8),
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            itemCount: state.getFeatureDoctors.data!.length,
-            itemBuilder: (context, index) => InkWell(
-              onTap: () {
-                context.pushNamed(
-                  AppRoutes.appoinmentInfo,
-                  arguments: HomeFeatureDoctorModel.doctors[index],
-                );
-              },
-              child: HomeFeatureDoctorListItem(
-                doctor:  state.getFeatureDoctors.data![index],
-              ),
-            ),
-          ),
+                  separatorBuilder: (context, index) =>
+                      const HorizontalSpace(width: 8),
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: state.getFeatureDoctors.data!.length,
+                  itemBuilder: (context, index) => InkWell(
+                    onTap: () {
+                      context.pushNamed(
+                        AppRoutes.appoinmentInfo,
+                        arguments: HomeFeatureDoctorModel.doctors[index],
+                      );
+                    },
+                    child: HomeFeatureDoctorListItem(
+                      doctor: state.getFeatureDoctors.data![index],
+                    ),
+                  ),
+                ),
         );
       },
     );

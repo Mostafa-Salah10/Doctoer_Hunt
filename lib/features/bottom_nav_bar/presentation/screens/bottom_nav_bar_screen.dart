@@ -1,5 +1,6 @@
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/favourite/presentation/screens/favourite_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_screen.dart';
@@ -40,9 +41,22 @@ class BottomNavBarScreen extends StatelessWidget {
   ];
 
   final List<Widget> _screens = [
-    BlocProvider(create: (context) => gi<HomeCubit>(), child: HomeScreen()),
-    BlocProvider(
-      create: (context) => gi<HomeCubit>()..getFeatureDoctors(limit: 3),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => gi<HomeCubit>()),
+        BlocProvider(
+          create: (context) => gi<FavouriteCubit>()..getFavouritesIds(),
+        ),
+      ],
+      child: HomeScreen(),
+    ),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => gi<HomeCubit>()..getFeatureDoctors(limit: 3),
+        ),
+        BlocProvider(create: (context) => gi<FavouriteCubit>()),
+      ],
       child: FavouriteScreen(),
     ),
     Container(color: Colors.yellow),

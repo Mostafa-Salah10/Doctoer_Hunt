@@ -1,10 +1,13 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -25,10 +28,6 @@ class HomeFeatureDoctorListItem extends StatelessWidget {
             children: [
               HomeFetaureCardTopBar(doctor: doctor),
               const VerticalSpace(height: 8),
-              // CircleAvatar(
-              //   radius: 27.r,
-              //   backgroundImage: AssetImage(doctor.image),
-              // ),
 
               Container(
                 clipBehavior: Clip.hardEdge,
@@ -69,13 +68,42 @@ class HomeFetaureCardTopBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: SvgPicture.asset(
-            1 == 1 ? Assets.assetsSvgsLoveFilled : Assets.assetsSvgsLove,
+        BlocConsumer<FavouriteCubit, FavouriteState>(
+          listenWhen: (previous, current) => current.getFavourites.isError,
 
-            height: 12.h,
-          ),
+          buildWhen: (previous, current) =>
+              previous.getFavourites != current.getFavourites ||
+              current.addOrRemoveFromFav.data == doctor.id,
+          listener: (context, state) {
+            if (state.getFavourites.isError) {
+              toastAlert(
+                msg: state.getFavourites.error!,
+                color: AppColors.errorColor,
+              );
+            }
+          },
+          builder: (context, state) {
+            final fav = context.read<FavouriteCubit>();
+            return InkWell(
+              onTap: () {
+                if (fav.isFav(doctorId: doctor.id)) {
+                  fav.removeFromFavourites(doctorId: doctor.id);
+                } else {
+                  fav.addToFavourites(doctorId: doctor.id);
+                }
+              },
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: SvgPicture.asset(
+                  fav.isFav(doctorId: doctor.id)
+                      ? Assets.assetsSvgsLoveFilled
+                      : Assets.assetsSvgsLove,
+
+                  height: 12.h,
+                ),
+              ),
+            );
+          },
         ),
         Row(
           spacing: 5.w,

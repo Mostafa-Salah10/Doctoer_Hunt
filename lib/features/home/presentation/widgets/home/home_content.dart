@@ -1,6 +1,7 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/doc_live_list.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_category_list.dart';
@@ -61,7 +62,18 @@ class HomeContent extends StatelessWidget {
 
           const VerticalSpace(height: 30),
 
-          HomeTitleAndSeeAll(title: "Feature Doctor", onTap: () {}),
+          HomeTitleAndSeeAll(
+            title: "Feature Doctor",
+            onTap: () {
+              context.pushNamed(
+                AppRoutes.seeAllFeatureDoctoraScreen,
+                arguments: {
+                  'homeCubit': context.read<HomeCubit>(),
+                  'favCubit': context.read<FavouriteCubit>(),
+                },
+              );
+            },
+          ),
 
           const VerticalSpace(height: 20),
 

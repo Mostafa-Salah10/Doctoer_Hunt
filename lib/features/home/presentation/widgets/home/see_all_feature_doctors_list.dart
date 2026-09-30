@@ -1,10 +1,10 @@
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
-import 'package:doctor_hunt/features/home/presentation/widgets/home/home_popular_doctors_item.dart';
+import 'package:doctor_hunt/features/favourite/presentation/widgets/fav_doctor_card.dart';
 import 'package:flutter/material.dart';
 
-class SeeAllPopularDoctorsList extends StatelessWidget {
-  const SeeAllPopularDoctorsList({super.key, required this.doctors});
+class SeeAllFeatureDoctorsList extends StatelessWidget {
+  const SeeAllFeatureDoctorsList({super.key, required this.doctors});
 
   final List<DoctorEntity> doctors;
 
@@ -18,17 +18,15 @@ class SeeAllPopularDoctorsList extends StatelessWidget {
             ),
           )
         : GridView.builder(
-          padding: EdgeInsets.zero,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 15,
               mainAxisSpacing: 15,
-              childAspectRatio: 0.8,
+              childAspectRatio: 0.88,
             ),
             itemCount: doctors.length,
             physics: const BouncingScrollPhysics(),
-            itemBuilder: (_, index) =>
-                HomePopularDoctorsItem(doctor: doctors.elementAt(index)),
+            itemBuilder: (_, index) => FavDoctorCard(doctor: doctors[index]),
           );
   }
 }

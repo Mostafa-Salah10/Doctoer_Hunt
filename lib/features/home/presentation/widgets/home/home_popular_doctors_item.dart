@@ -21,15 +21,19 @@ class HomePopularDoctorsItem extends StatelessWidget {
         color: AppColors.lightBackgroundColor,
         child: Column(
           children: [
-            Flexible(
-              flex: 2,
+            Expanded(
+              flex: 1,
               child: Container(
+                width: double.infinity,
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
                 ),
 
-                child: CustomCachedNetworkImage(imageUrl: doctor.imageUrl),
+                child: CustomCachedNetworkImage(
+                  imageUrl: doctor.imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Expanded(
@@ -59,21 +63,18 @@ class HomePopularDoctorsItem extends StatelessWidget {
                     ),
                   ),
                   const VerticalSpace(height: 5),
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        5,
-                        (index) => Padding(
-                          padding: const EdgeInsets.only(right: 2),
-                          child: Icon(
-                            Icons.star,
-                            color: index < doctor.rating!.toInt()
-                                ? Colors.amber
-                                : AppColors.greyBorderColor,
-                            size: 17.sp,
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      5,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(right: 2),
+                        child: Icon(
+                          Icons.star,
+                          color: index < doctor.rating!.toInt()
+                              ? Colors.amber
+                              : AppColors.greyBorderColor,
+                          size: 17.sp,
                         ),
                       ),
                     ),

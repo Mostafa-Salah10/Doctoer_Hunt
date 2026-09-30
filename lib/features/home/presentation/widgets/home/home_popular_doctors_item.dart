@@ -26,7 +26,6 @@ class HomePopularDoctorsItem extends StatelessWidget {
               child: Container(
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
-
                   borderRadius: BorderRadius.circular(8.r),
                 ),
 
@@ -60,18 +59,21 @@ class HomePopularDoctorsItem extends StatelessWidget {
                     ),
                   ),
                   const VerticalSpace(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      5,
-                      (index) => Padding(
-                        padding: const EdgeInsets.only(right: 2),
-                        child: Icon(
-                          Icons.star,
-                          color: index < doctor.rating!.toInt()
-                              ? Colors.amber
-                              : AppColors.greyBorderColor,
-                          size: 17.sp,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        5,
+                        (index) => Padding(
+                          padding: const EdgeInsets.only(right: 2),
+                          child: Icon(
+                            Icons.star,
+                            color: index < doctor.rating!.toInt()
+                                ? Colors.amber
+                                : AppColors.greyBorderColor,
+                            size: 17.sp,
+                          ),
                         ),
                       ),
                     ),

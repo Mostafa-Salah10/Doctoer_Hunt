@@ -17,7 +17,11 @@ import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sig
 import 'package:doctor_hunt/features/auth/presentation/sign_in/screens/sign_in_screen.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
+import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
+import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
+import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_feature_doctors_screen.dart';
+import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_popular_doctors_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
 
@@ -101,8 +105,7 @@ abstract class AppRouter {
         path: AppRoutes.adminCreateDoctorScreen,
         builder: (context, state) {
           return BlocProvider(
-            create: (context) =>
-                gi.get<CreateDoctorCubit>(),
+            create: (context) => gi.get<CreateDoctorCubit>(),
             child: AdminCreateDoctorScreen(
               adminHomeCubit: state.extra as AdminHomeCubit,
             ),
@@ -120,6 +123,31 @@ abstract class AppRouter {
               return gi.get<CreateDoctorCubit>();
             },
             child: UpdateDoctorScreen(doctor: doctor, adminHomeCubit: cubit),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.seeAllPopularDoctorsScreen,
+        builder: (context, state) {
+          HomeCubit homeCubit = state.extra as HomeCubit;
+          return BlocProvider.value(
+            value: homeCubit,
+            child: HomeSeeAllPopularDoctorsScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.seeAllFeatureDoctoraScreen,
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          HomeCubit homeCubit = data['homeCubit'];
+          FavouriteCubit favouriteCubit = data['favCubit'];
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: homeCubit),
+              BlocProvider.value(value: favouriteCubit),
+            ],
+            child: HomeSeeAllFeatureDoctorsScreen(),
           );
         },
       ),

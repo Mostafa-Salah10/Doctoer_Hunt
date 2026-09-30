@@ -1,4 +1,7 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/doc_live_list.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_category_list.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_feature_doctors_list.dart';
@@ -6,6 +9,7 @@ import 'package:doctor_hunt/features/home/presentation/widgets/home/home_popular
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_search_bar.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_title_see_all.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeContent extends StatelessWidget {
@@ -41,7 +45,15 @@ class HomeContent extends StatelessWidget {
 
           const VerticalSpace(height: 30),
 
-          HomeTitleAndSeeAll(title: "Popular Doctor", onTap: () {}),
+          HomeTitleAndSeeAll(
+            title: "Popular Doctor",
+            onTap: () {
+              context.pushNamed(
+                AppRoutes.seeAllPopularDoctorsScreen,
+                arguments: context.read<HomeCubit>(),
+              );
+            },
+          ),
 
           const VerticalSpace(height: 20),
 

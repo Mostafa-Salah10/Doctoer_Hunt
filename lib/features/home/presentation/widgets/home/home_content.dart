@@ -3,7 +3,6 @@ import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
-import 'package:doctor_hunt/features/home/presentation/widgets/home/doc_live_list.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_category_list.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_feature_doctors_list.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_popular_doctors.dart';
@@ -34,14 +33,12 @@ class HomeContent extends StatelessWidget {
 
           const VerticalSpace(height: 30),
 
-          const HomeTitleAndSeeAll(title: "Live Doctors"),
+          // const HomeTitleAndSeeAll(title: "Live Doctors"),
 
-          const VerticalSpace(height: 20),
+          // const VerticalSpace(height: 20),
 
-          DoctorLiveList(),
-
-          const VerticalSpace(height: 30),
-
+          // DoctorLiveList(),
+          // const VerticalSpace(height: 30),
           const HomeCategoryList(),
 
           const VerticalSpace(height: 30),
@@ -64,6 +61,7 @@ class HomeContent extends StatelessWidget {
 
           HomeTitleAndSeeAll(
             title: "Feature Doctor",
+
             onTap: () {
               context.pushNamed(
                 AppRoutes.seeAllFeatureDoctoraScreen,

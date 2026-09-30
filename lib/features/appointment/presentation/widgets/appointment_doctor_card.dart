@@ -1,17 +1,20 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
-import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
+import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppointmentDoctorCard extends StatelessWidget {
   const AppointmentDoctorCard({super.key, required this.doctor});
 
-  final HomeFeatureDoctorModel doctor;
+  final DoctorEntity doctor;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +39,12 @@ class AppointmentDoctorCard extends StatelessWidget {
 
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.r),
-            child: Image.asset(
-              Assets.assetsImagesAppointment,
-              width: 92.w,
-              height: 87.w,
-              fit: BoxFit.cover,
-            ),
+          Container(
+            clipBehavior: Clip.hardEdge,
+            width: 84.w,
+            height: 84.w,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+            child: CustomCachedNetworkImage(imageUrl: doctor.imageUrl),
           ),
 
           const HorizontalSpace(width: 13),
@@ -66,15 +67,32 @@ class AppointmentDoctorCard extends StatelessWidget {
                             : AppColors.darkTextColor,
                       ),
                     ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: SvgPicture.asset(
-                        doctor.isFav
-                            ? Assets.assetsSvgsLoveFilled
-                            : Assets.assetsSvgsLove,
+                    BlocBuilder<FavouriteCubit, FavouriteState>(
+                      buildWhen: (previous, current) =>
+                          current.addOrRemoveFromFav.data == doctor.id,
 
-                        height: 16,
-                      ),
+                      builder: (context, state) {
+                        final fav = context.read<FavouriteCubit>();
+                        return InkWell(
+                          onTap: () {
+                            if (fav.isFav(doctorId: doctor.id)) {
+                              fav.removeFromFavourites(doctorId: doctor.id);
+                            } else {
+                              fav.addToFavourites(doctorId: doctor.id);
+                            }
+                          },
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: SvgPicture.asset(
+                              fav.isFav(doctorId: doctor.id)
+                                  ? Assets.assetsSvgsLoveFilled
+                                  : Assets.assetsSvgsLove,
+
+                              height: 16.h,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -101,7 +119,7 @@ class AppointmentDoctorCard extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 2),
                             child: Icon(
                               Icons.star,
-                              color: index < doctor.rate
+                              color: index < doctor.rating!.toInt()
                                   ? Colors.amber
                                   : AppColors.greyBorderColor,
                               size: 17.sp,
@@ -114,7 +132,7 @@ class AppointmentDoctorCard extends StatelessWidget {
                     Text(
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      "\$ ${doctor.price} / hr",
+                      "\$ ${doctor.cost} / hr",
                       style: context.textTheme.titleSmall,
                     ),
                   ],

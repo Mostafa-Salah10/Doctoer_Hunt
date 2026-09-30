@@ -18,7 +18,6 @@ import 'package:doctor_hunt/features/auth/presentation/sign_in/screens/sign_in_s
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
-import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_feature_doctors_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_popular_doctors_screen.dart';
@@ -84,8 +83,9 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.appoinmentInfo,
         builder: (context, state) {
-          return AppointmentInfoScreen(
-            doctor: state.extra as HomeFeatureDoctorModel,
+          return BlocProvider(
+            create: (context) => gi<FavouriteCubit>(),
+            child: AppointmentInfoScreen(doctor: state.extra as DoctorEntity),
           );
         },
       ),

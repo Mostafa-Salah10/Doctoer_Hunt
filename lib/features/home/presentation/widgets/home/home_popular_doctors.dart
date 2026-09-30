@@ -1,5 +1,7 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_popular_doctors_item.dart';
@@ -38,7 +40,12 @@ class HomePopularDoctors extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   itemCount: state.getPopularDoctors.data!.length,
                   itemBuilder: (context, index) => InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(
+                        AppRoutes.appoinmentInfo,
+                        arguments: state.getPopularDoctors.data![index],
+                      );
+                    },
                     child: HomePopularDoctorsItem(
                       doctor: state.getPopularDoctors.data!.elementAt(index),
                     ),

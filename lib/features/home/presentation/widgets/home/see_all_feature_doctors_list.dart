@@ -1,5 +1,7 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/features/favourite/presentation/widgets/fav_doctor_card.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +28,16 @@ class SeeAllFeatureDoctorsList extends StatelessWidget {
             ),
             itemCount: doctors.length,
             physics: const BouncingScrollPhysics(),
-            itemBuilder: (_, index) => FavDoctorCard(doctor: doctors[index]),
+            itemBuilder: (_, index) => InkWell(
+              onTap: () {
+                context.pushNamed(
+                  AppRoutes.appoinmentInfo,
+                  arguments: doctors[index],
+                );
+              },
+
+              child: FavDoctorCard(doctor: doctors[index]),
+            ),
           );
   }
 }

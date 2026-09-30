@@ -13,7 +13,7 @@ class FavouriteSearchBar extends StatelessWidget {
     return SizedBox(
       height: 54.h,
       child: AppTextFormField(
-        hint: "Dentist",
+        hint: 'Search...',
         onChanged: (doctor) {},
         borderRadius: 6.r,
         prefixIcon: FittedBox(

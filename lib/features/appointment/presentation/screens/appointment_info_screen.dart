@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/core/config/routing/app_routes.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
@@ -7,7 +8,6 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_doctor_card.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_form.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/who_is_patient_list.dart';
-import 'package:doctor_hunt/features/home/data/models/home_feature_doctor_model.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_title_see_all.dart';
 import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 class AppointmentInfoScreen extends StatelessWidget {
   const AppointmentInfoScreen({super.key, required this.doctor});
 
-  final HomeFeatureDoctorModel doctor;
+  final DoctorEntity doctor;
 
   @override
   Widget build(BuildContext context) {

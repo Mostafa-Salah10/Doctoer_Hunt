@@ -1,5 +1,7 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/favourite/presentation/widgets/fav_doctor_card.dart';
@@ -49,8 +51,16 @@ class FavDoctorsGrid extends StatelessWidget {
                   ),
                   itemCount: state.getFavouritesDoctors.data!.length,
                   physics: const BouncingScrollPhysics(),
-                  itemBuilder: (_, index) => FavDoctorCard(
-                    doctor: state.getFavouritesDoctors.data![index],
+                  itemBuilder: (_, index) => InkWell(
+                    onTap: () {
+                      context.pushNamed(
+                        AppRoutes.appoinmentInfo,
+                        arguments: state.getFavouritesDoctors.data![index],
+                      );
+                    },
+                    child: FavDoctorCard(
+                      doctor: state.getFavouritesDoctors.data![index],
+                    ),
                   ),
                 );
         },

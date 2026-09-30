@@ -44,7 +44,7 @@ class HomeFeatureDoctorsList extends StatelessWidget {
                   itemBuilder: (context, index) => InkWell(
                     onTap: () {
                       context.pushNamed(
-                        AppRoutes.appoinmentInfo,
+                        AppRoutes.doctorDetailsScreen,
                         arguments: {
                           'cubit': context.read<FavouriteCubit>(),
                           "doctor": state.getFeatureDoctors.data![index],

@@ -9,7 +9,7 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/ad
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
-import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_info_screen.dart';
+import 'package:doctor_hunt/features/home/presentation/screens/doctor_details_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_time_screen.dart';
 
 import 'package:doctor_hunt/features/auth/presentation/choose_role/screens/choose_role_screen.dart';
@@ -82,14 +82,14 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: AppRoutes.appoinmentInfo,
+        path: AppRoutes.doctorDetailsScreen,
         builder: (context, state) {
           var data = state.extra as Map<String, dynamic>;
           DoctorEntity doctor = data['doctor'];
           FavouriteCubit cubit = data['cubit'];
           return BlocProvider.value(
             value: cubit,
-            child: AppointmentInfoScreen(doctor: doctor),
+            child: DoctorDetailsScreen(doctor: doctor),
           );
         },
       ),

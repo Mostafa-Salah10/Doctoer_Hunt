@@ -45,7 +45,7 @@ class FavDoctorsGrid extends StatelessWidget {
                   itemBuilder: (_, index) => InkWell(
                     onTap: () {
                       context.pushNamed(
-                        AppRoutes.appoinmentInfo,
+                        AppRoutes.doctorDetailsScreen,
                         arguments: {
                           'cubit': context.read<FavouriteCubit>(),
                           'doctor': state.getFavouritesDoctors.data![index],

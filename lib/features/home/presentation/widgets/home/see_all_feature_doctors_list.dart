@@ -33,7 +33,7 @@ class SeeAllFeatureDoctorsList extends StatelessWidget {
             itemBuilder: (_, index) => InkWell(
               onTap: () {
                 context.pushNamed(
-                  AppRoutes.appoinmentInfo,
+                  AppRoutes.doctorDetailsScreen,
                   arguments: {
                     'doctor': doctors.elementAt(index),
                     'cubit': context.read<FavouriteCubit>(),

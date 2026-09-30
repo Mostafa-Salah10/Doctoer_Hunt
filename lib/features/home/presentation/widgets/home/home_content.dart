@@ -33,12 +33,6 @@ class HomeContent extends StatelessWidget {
 
           const VerticalSpace(height: 30),
 
-          // const HomeTitleAndSeeAll(title: "Live Doctors"),
-
-          // const VerticalSpace(height: 20),
-
-          // DoctorLiveList(),
-          // const VerticalSpace(height: 30),
           const HomeCategoryList(),
 
           const VerticalSpace(height: 30),

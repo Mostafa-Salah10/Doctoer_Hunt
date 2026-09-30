@@ -32,7 +32,7 @@ class SeeAllPopularDoctorsList extends StatelessWidget {
             itemBuilder: (_, index) => InkWell(
               onTap: () {
                 context.pushNamed(
-                  AppRoutes.appoinmentInfo,
+                  AppRoutes.doctorDetailsScreen,
                   arguments: {
                     'cubit': context.read<FavouriteCubit>(),
                     "doctor": doctors.elementAt(index),

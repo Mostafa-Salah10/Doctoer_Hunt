@@ -78,6 +78,10 @@ class Assets {
   /// assets/images/live_doc_two.png
   static const String assetsImagesLiveDocTwo = "assets/images/live_doc_two.png";
 
+  /// Assets for assetsImagesMap
+  /// assets/images/map.png
+  static const String assetsImagesMap = "assets/images/map.png";
+
   /// Assets for assetsImagesOnboardingOne
   /// assets/images/onboarding_one.png
   static const String assetsImagesOnboardingOne = "assets/images/onboarding_one.png";
@@ -129,6 +133,10 @@ class Assets {
   /// Assets for assetsSvgsBook
   /// assets/svgs/book.svg
   static const String assetsSvgsBook = "assets/svgs/book.svg";
+
+  /// Assets for assetsSvgsBurger
+  /// assets/svgs/burger.svg
+  static const String assetsSvgsBurger = "assets/svgs/burger.svg";
 
   /// Assets for assetsSvgsClose
   /// assets/svgs/close.svg

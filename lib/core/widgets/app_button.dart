@@ -45,14 +45,17 @@ class AppButton extends StatelessWidget {
       shape:
           shape ??
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
-      child:
-          child ??
-          Text(
-            text ?? "",
-            style:
-                style ??
-                context.textTheme.titleMedium!.copyWith(fontSize: fontSize),
-          ),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child:
+            child ??
+            Text(
+              text ?? "",
+              style:
+                  style ??
+                  context.textTheme.titleMedium!.copyWith(fontSize: fontSize),
+            ),
+      ),
     );
   }
 }

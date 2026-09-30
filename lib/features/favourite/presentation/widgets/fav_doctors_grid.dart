@@ -2,7 +2,6 @@ import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
-import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/favourite/presentation/widgets/fav_doctor_card.dart';
 import 'package:flutter/material.dart';
@@ -14,26 +13,18 @@ class FavDoctorsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: BlocConsumer<FavouriteCubit, FavouriteState>(
-        listenWhen: (previous, current) =>
-            previous.getFavouritesDoctors != current.getFavouritesDoctors,
+      child: BlocBuilder<FavouriteCubit, FavouriteState>(
         buildWhen: (previous, current) =>
             previous.getFavouritesDoctors != current.getFavouritesDoctors,
-        listener: (context, state) {
-          if (state.getFavouritesDoctors.isError) {
-            toastAlert(
-              msg: state.getFavouritesDoctors.error!,
-              color: AppColors.errorColor,
-            );
-          }
-        },
+
         builder: (context, state) {
           if (state.getFavouritesDoctors.isLoading ||
-              state.getFavouritesDoctors.isInitial ||
-              state.getFavouritesDoctors.isError) {
+              state.getFavouritesDoctors.isInitial) {
             return Center(
               child: CircularProgressIndicator(color: AppColors.primaryColor),
             );
+          } else if (state.getFavouritesDoctors.isError) {
+            return Center(child: Text(state.getFavouritesDoctors.error!));
           }
           return state.getFavouritesDoctors.data!.isEmpty
               ? Center(

@@ -49,6 +49,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         suffixIcon: InkWell(
           onTap: () {
             _controller.clear();
+            widget.onSearch('');
           },
           child: FittedBox(
             fit: BoxFit.scaleDown,

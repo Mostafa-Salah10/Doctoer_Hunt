@@ -32,27 +32,14 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
             CustomScreensAppBar(title: context.t.favouriteDoctors),
 
             const VerticalSpace(height: 34),
-            CustomSearchBar(onSearch: (word) {}, title: "Dentist"),
+            CustomSearchBar(
+              onSearch: (word) {
+                context.read<FavouriteCubit>().searchForDoctor(word: word);
+              },
+              title: "Dentist",
+            ),
             const VerticalSpace(height: 24),
             const FavDoctorsGrid(),
-            // const VerticalSpace(height: 29),
-
-            // HomeTitleAndSeeAll(
-            //   title: "Feature Doctor",
-            //   onTap: () {
-            //     context.pushNamed(
-            //       AppRoutes.seeAllFeatureDoctoraScreen,
-            //       arguments: {
-            //         'homeCubit': context.read<HomeCubit>(),
-            //         'favCubit': context.read<FavouriteCubit>(),
-            //       },
-            //     );
-            //   },
-            // ),
-
-            // const VerticalSpace(height: 20),
-
-            // const HomeFeatureDoctorsList(),
           ],
         ),
       ),

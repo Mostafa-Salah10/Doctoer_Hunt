@@ -1,4 +1,3 @@
-
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/helpers/box_state.dart';
 import 'package:doctor_hunt/features/favourite/data/repo/fav_repo.dart';
@@ -12,6 +11,8 @@ class FavouriteCubit extends Cubit<FavouriteState> {
       super(FavouriteState.init());
 
   Set<String> favourites = {};
+
+  List<DoctorEntity> allFavourites = [];
 
   final FavRepo _favRepo;
 
@@ -28,7 +29,6 @@ class FavouriteCubit extends Cubit<FavouriteState> {
         favourites = {...favs};
 
         emit(state.copyWith(getFavourites: BoxState.success()));
-
       },
     );
   }
@@ -80,7 +80,6 @@ class FavouriteCubit extends Cubit<FavouriteState> {
   }
 
   Future<void> getFavouritesDoctors() async {
-
     emit(state.copyWith(getFavouritesDoctors: BoxState.loading()));
 
     final result = await _favRepo.getFavDoctors();
@@ -92,6 +91,7 @@ class FavouriteCubit extends Cubit<FavouriteState> {
         );
       },
       (doctors) {
+        allFavourites = doctors;
         emit(
           state.copyWith(getFavouritesDoctors: BoxState.success(data: doctors)),
         );
@@ -101,5 +101,30 @@ class FavouriteCubit extends Cubit<FavouriteState> {
 
   bool isFav({required String doctorId}) {
     return favourites.contains(doctorId);
+  }
+
+  void searchForDoctor({required String word}) {
+    if (state.getFavouritesDoctors.data == null) {
+      return;
+    }
+    if (word.trim().isEmpty) {
+      emit(
+        state.copyWith(
+          getFavouritesDoctors: BoxState.success(data: allFavourites),
+        ),
+      );
+
+      return;
+    }
+    List<DoctorEntity> filteredDoctos = [];
+    filteredDoctos = state.getFavouritesDoctors.data!.where((doctor) {
+      return doctor.name.toLowerCase().contains(word.toLowerCase());
+    }).toList();
+
+    emit(
+      state.copyWith(
+        getFavouritesDoctors: BoxState.success(data: filteredDoctos),
+      ),
+    );
   }
 }

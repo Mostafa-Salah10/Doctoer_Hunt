@@ -19,6 +19,7 @@ import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sig
 import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
+import 'package:doctor_hunt/features/home/presentation/screens/home_find_doctor_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_feature_doctors_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_popular_doctors_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
@@ -83,9 +84,12 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.appoinmentInfo,
         builder: (context, state) {
-          return BlocProvider(
-            create: (context) => gi<FavouriteCubit>(),
-            child: AppointmentInfoScreen(doctor: state.extra as DoctorEntity),
+          var data = state.extra as Map<String, dynamic>;
+          DoctorEntity doctor = data['doctor'];
+          FavouriteCubit cubit = data['cubit'];
+          return BlocProvider.value(
+            value: cubit,
+            child: AppointmentInfoScreen(doctor: doctor),
           );
         },
       ),
@@ -129,9 +133,14 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.seeAllPopularDoctorsScreen,
         builder: (context, state) {
-          HomeCubit homeCubit = state.extra as HomeCubit;
-          return BlocProvider.value(
-            value: homeCubit,
+          var data = state.extra as Map<String, dynamic>;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => data["homeCubit"] as HomeCubit),
+              BlocProvider(
+                create: (context) => data['favCubit'] as FavouriteCubit,
+              ),
+            ],
             child: HomeSeeAllPopularDoctorsScreen(),
           );
         },
@@ -148,6 +157,21 @@ abstract class AppRouter {
               BlocProvider.value(value: favouriteCubit),
             ],
             child: HomeSeeAllFeatureDoctorsScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.homeFindDoctorScreen,
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          HomeCubit homeCubit = data['homeCubit'];
+          FavouriteCubit favouriteCubit = data['favCubit'];
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: homeCubit),
+              BlocProvider.value(value: favouriteCubit),
+            ],
+            child: HomeFindDoctorScreen(),
           );
         },
       ),

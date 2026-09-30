@@ -16,6 +16,8 @@ class HomeCubit extends Cubit<HomeState> {
 
   final HomeRepo _homeRepo;
 
+  List<DoctorEntity> allDoctors = [];
+
   void changeCurrentSpeciality(DoctorSpeciality speciality, int limit) async {
     emit(state.copyWith(currentSpeciality: speciality));
     getHomeData();
@@ -71,6 +73,45 @@ class HomeCubit extends Cubit<HomeState> {
           state.copyWith(getFeatureDoctors: BoxState.success(data: doctors)),
         );
       },
+    );
+  }
+
+  Future<void> getAllDoctors() async {
+    emit(state.copyWith(getSearchedDoctors: BoxState.loading()));
+
+    final result = await _homeRepo.getAllDoctors();
+
+    result.fold(
+      (err) => emit(state.copyWith(getSearchedDoctors: BoxState.error())),
+      (doctors) {
+        allDoctors = doctors;
+        emit(
+          state.copyWith(getSearchedDoctors: BoxState.success(data: doctors)),
+        );
+      },
+    );
+  }
+
+  void searchForDoctor({required String word}) {
+    if (state.getSearchedDoctors.data == null) {
+      return;
+    }
+    if (word.trim().isEmpty) {
+      emit(
+        state.copyWith(getSearchedDoctors: BoxState.success(data: allDoctors)),
+      );
+
+      return;
+    }
+    List<DoctorEntity> filteredDoctos = [];
+    filteredDoctos = state.getSearchedDoctors.data!.where((doctor) {
+      return doctor.name.toLowerCase().contains(word.toLowerCase());
+    }).toList();
+
+    emit(
+      state.copyWith(
+        getSearchedDoctors: BoxState.success(data: filteredDoctos),
+      ),
     );
   }
 }

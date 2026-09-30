@@ -59,4 +59,21 @@ class HomeRepoImp implements HomeRepo {
       return left(e.toString());
     }
   }
+
+  @override
+  Future<Either<String, List<DoctorEntity>>> getAllDoctors() async {
+    try {
+      final result = await _firebaseFirestore.collection('doctors').get();
+
+      final List<DoctorEntity> doctors = [];
+
+      for (var doctor in result.docs) {
+        doctors.add(DoctorModel.fromJson(doctor.data(), id: doctor.id));
+      }
+
+      return right(doctors);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
 }

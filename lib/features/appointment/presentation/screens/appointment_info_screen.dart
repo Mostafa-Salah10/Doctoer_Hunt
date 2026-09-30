@@ -4,8 +4,8 @@ import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
+import 'package:doctor_hunt/core/widgets/doctor_details_horizontal_card.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
-import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_doctor_card.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_form.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/who_is_patient_list.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_title_see_all.dart';
@@ -24,7 +24,7 @@ class AppointmentInfoScreen extends StatelessWidget {
         children: [
           CustomScreensAppBar(title: t.Appointment),
           const VerticalSpace(height: 34),
-          AppointmentDoctorCard(doctor: doctor),
+          DoctorDetailsHorizontalCard(doctor: doctor),
           const VerticalSpace(height: 30),
           HomeTitleAndSeeAll(title: t.AppointmentFor),
           const VerticalSpace(height: 20),

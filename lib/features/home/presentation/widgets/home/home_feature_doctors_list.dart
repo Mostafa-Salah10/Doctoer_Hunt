@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_feature_doctor_list_item.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,10 @@ class HomeFeatureDoctorsList extends StatelessWidget {
                     onTap: () {
                       context.pushNamed(
                         AppRoutes.appoinmentInfo,
-                        arguments: state.getFeatureDoctors.data![index],
+                        arguments: {
+                          'cubit': context.read<FavouriteCubit>(),
+                          "doctor": state.getFeatureDoctors.data![index],
+                        },
                       );
                     },
                     child: HomeFeatureDoctorListItem(

@@ -55,7 +55,10 @@ class FavDoctorsGrid extends StatelessWidget {
                     onTap: () {
                       context.pushNamed(
                         AppRoutes.appoinmentInfo,
-                        arguments: state.getFavouritesDoctors.data![index],
+                        arguments: {
+                          'cubit': context.read<FavouriteCubit>(),
+                          'doctor': state.getFavouritesDoctors.data![index],
+                        },
                       );
                     },
                     child: FavDoctorCard(

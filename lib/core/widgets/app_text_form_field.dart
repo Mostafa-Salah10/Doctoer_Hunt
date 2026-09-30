@@ -22,7 +22,10 @@ class AppTextFormField extends StatelessWidget {
     this.style,
     this.contentPadding,
     this.fillColor,
-    this.withBorder = true, this.border,
+    this.withBorder = true,
+    this.border,
+    this.readOnly,
+    this.onTap,
   });
   final String hint;
   final String? label;
@@ -42,10 +45,14 @@ class AppTextFormField extends StatelessWidget {
   final Color? fillColor;
   final bool? withBorder;
   final OutlineInputBorder? border;
+  final bool? readOnly;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
+      readOnly: readOnly ?? false,
       style: style,
       initialValue: intialValue,
       keyboardType: keyboardType,
@@ -59,7 +66,7 @@ class AppTextFormField extends StatelessWidget {
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
         filled: true,
-        fillColor: fillColor ??getFillColor(context) ,
+        fillColor: fillColor ?? getFillColor(context),
         isDense: true,
         contentPadding:
             contentPadding ??
@@ -69,15 +76,17 @@ class AppTextFormField extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         errorBorder: _buildBorder(color: AppColors.errorColor),
-        enabledBorder: border ?? OutlineInputBorder(
-          borderSide: withBorder == true
-              ? BorderSide(
-                  color: AppColors.greyTextColor.withValues(alpha: 0.16),
-                  width: 1,
-                )
-              : BorderSide.none,
-          borderRadius: BorderRadius.circular(12.r),
-        ),
+        enabledBorder:
+            border ??
+            OutlineInputBorder(
+              borderSide: withBorder == true
+                  ? BorderSide(
+                      color: AppColors.greyTextColor.withValues(alpha: 0.16),
+                      width: 1,
+                    )
+                  : BorderSide.none,
+              borderRadius: BorderRadius.circular(12.r),
+            ),
         focusedBorder: _buildBorder(color: AppColors.primaryColor),
         focusedErrorBorder: _buildBorder(color: AppColors.errorColor),
       ),
@@ -91,8 +100,7 @@ class AppTextFormField extends StatelessWidget {
     );
   }
 
-
-  Color getFillColor(BuildContext context)=> context.isDarkMode
-            ? AppColors.darkBackgroundColor
-            : AppColors.lightBackgroundColor;
+  Color getFillColor(BuildContext context) => context.isDarkMode
+      ? AppColors.darkBackgroundColor
+      : AppColors.lightBackgroundColor;
 }

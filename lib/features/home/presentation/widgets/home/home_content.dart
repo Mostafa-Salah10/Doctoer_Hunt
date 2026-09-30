@@ -48,7 +48,10 @@ class HomeContent extends StatelessWidget {
             onTap: () {
               context.pushNamed(
                 AppRoutes.seeAllPopularDoctorsScreen,
-                arguments: context.read<HomeCubit>(),
+                arguments: {
+                  'homeCubit': context.read<HomeCubit>(),
+                  'favCubit': context.read<FavouriteCubit>(),
+                },
               );
             },
           ),

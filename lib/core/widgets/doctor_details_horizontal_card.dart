@@ -11,8 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class AppointmentDoctorCard extends StatelessWidget {
-  const AppointmentDoctorCard({super.key, required this.doctor});
+class DoctorDetailsHorizontalCard extends StatelessWidget {
+  const DoctorDetailsHorizontalCard({super.key, required this.doctor});
 
   final DoctorEntity doctor;
 

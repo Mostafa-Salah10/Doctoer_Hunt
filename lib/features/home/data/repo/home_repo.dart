@@ -10,4 +10,5 @@ abstract class HomeRepo {
     required String speciality,
     required int limit,
   });
+  Future<Either<String, List<DoctorEntity>>> getAllDoctors();
 }

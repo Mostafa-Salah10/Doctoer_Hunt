@@ -173,7 +173,22 @@ class DoctorDetailsHorizontalCard extends StatelessWidget {
                     height: 45,
 
                     text: 'Book Now',
-                    onPressed: () {
+                    onPressed: () async {
+                      // await FirebaseFirestore.instance
+                      //     .collection('availablity')
+                      //     .doc(doctor.id)
+                      //     .collection('days')
+                      //     .doc('2026-10-06')
+                      //     .set({});
+
+                      // await FirebaseFirestore.instance
+                      //     .collection('availablity')
+                      //     .doc(doctor.id)
+                      //     .collection('days')
+                      //     .doc('2026-10-06')
+                      //     .collection('slots')
+                      //     .doc('10:00 AM')
+                      //     .set({'isBooked': false});
                       context.pushNamed(
                         AppRoutes.doctorSelectTimeScreen,
                         arguments: {

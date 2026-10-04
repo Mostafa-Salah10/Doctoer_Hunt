@@ -7,12 +7,11 @@ class SelectTimeDataItem extends StatelessWidget {
   const SelectTimeDataItem({
     super.key,
     required this.isSelected,
-    required this.index,
+    required this.time,
   });
 
   final bool isSelected;
-
-  final int index;
+  final String time;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class SelectTimeDataItem extends StatelessWidget {
         textAlign: TextAlign.center,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        "$index:00 PM",
+        time,
         style: context.textTheme.bodyMedium!.copyWith(
           color: isSelected
               ? AppColors.lightBackgroundColor

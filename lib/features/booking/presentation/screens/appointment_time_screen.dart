@@ -1,8 +1,8 @@
 import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
-import 'package:doctor_hunt/features/appointment/presentation/widgets/availbale_time_widget.dart';
-import 'package:doctor_hunt/features/appointment/presentation/widgets/custom_calender.dart';
+import 'package:doctor_hunt/features/booking/presentation/widgets/availbale_time_widget.dart';
+import 'package:doctor_hunt/features/booking/presentation/widgets/custom_calender.dart';
 import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

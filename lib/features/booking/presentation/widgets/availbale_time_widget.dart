@@ -1,7 +1,7 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/size_extension.dart';
-import 'package:doctor_hunt/features/appointment/presentation/widgets/availble_time_content.dart';
+import 'package:doctor_hunt/features/booking/presentation/widgets/availble_time_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

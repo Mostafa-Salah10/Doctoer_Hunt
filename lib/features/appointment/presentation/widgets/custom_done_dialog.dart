@@ -50,12 +50,12 @@ class CustomDoneDialog extends StatelessWidget {
             ),
             const VerticalSpace(height: 12),
             Text('Thank You !', style: context.textTheme.displaySmall),
-            const VerticalSpace(height: 5),
+            const VerticalSpace(height: 10),
             Text(
               'Your Appointment Successful',
               textAlign: TextAlign.center,
 
-              style: context.textTheme.titleLarge!.copyWith(
+              style: context.textTheme.titleMedium!.copyWith(
                 color: AppColors.greyTextColor,
               ),
             ),

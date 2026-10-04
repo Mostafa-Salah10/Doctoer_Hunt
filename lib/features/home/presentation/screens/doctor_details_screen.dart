@@ -20,7 +20,7 @@ class DoctorDetailsScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            CustomScreensAppBar(title: "Doctor Details"),
+            CustomScreensAppBar(title: "Doctor Details", suffixIcon: true),
             const VerticalSpace(height: 34),
             DoctorDetailsHorizontalCard(doctor: doctor),
             const VerticalSpace(height: 30),

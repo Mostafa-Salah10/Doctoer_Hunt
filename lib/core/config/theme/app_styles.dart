@@ -99,4 +99,12 @@ abstract class AppStyles {
     height: 1,
     fontFamily: "Rubik",
   );
+  static final TextStyle font38WhiteBold = TextStyle(
+    fontSize: 38.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkTextColor,
+    letterSpacing: -0.3.sp,
+    height: 1,
+    fontFamily: "Rubik",
+  );
 }

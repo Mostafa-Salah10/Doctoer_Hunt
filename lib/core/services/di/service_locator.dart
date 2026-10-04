@@ -11,6 +11,7 @@ import 'package:doctor_hunt/features/admin/features/home/domain/use_case/get_doc
 import 'package:doctor_hunt/features/admin/features/home/domain/use_case/update_doctor.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
+import 'package:doctor_hunt/features/appointment/presentation/manager/select_time_cubit.dart';
 import 'package:doctor_hunt/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
@@ -42,6 +43,7 @@ void setupServiceLocator() async {
   );
 
   gi.registerLazySingleton(() => OnboardingCubit());
+  gi.registerLazySingleton(() => SelectTimeCubit());
   gi.registerLazySingleton(() => ThemeCubit());
   gi.registerLazySingleton(
     () => AdminHomeRepoImpl(

@@ -29,6 +29,7 @@ abstract class AppTheme {
       labelMedium: AppStyles.font10WhiteBold,
       bodyMedium: AppStyles.font15DarkTextMedium,
       bodySmall: AppStyles.font12PrimaryRegular,
+      displaySmall: AppStyles.font38WhiteBold,
     ),
   );
   static final ThemeData darkTheme = ThemeData(
@@ -70,6 +71,10 @@ abstract class AppTheme {
       bodyLarge: AppStyles.font16GreyTextLight,
       labelSmall: AppStyles.font20lightTextColorregularRubik,
       bodySmall: AppStyles.font12PrimaryRegular,
+
+      displaySmall: AppStyles.font38WhiteBold.copyWith(
+        color: AppColors.lightBackgroundColor,
+      ),
     ),
   );
 }

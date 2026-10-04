@@ -66,6 +66,14 @@ class Assets {
   /// assets/images/hom_app_bar_image.png
   static const String assetsImagesHomAppBarImage = "assets/images/hom_app_bar_image.png";
 
+  /// Assets for assetsImagesLike
+  /// assets/images/like.png
+  static const String assetsImagesLike = "assets/images/like.png";
+
+  /// Assets for assetsImagesLikeBg
+  /// assets/images/like_bg.png
+  static const String assetsImagesLikeBg = "assets/images/like_bg.png";
+
   /// Assets for assetsImagesLiveDocOne
   /// assets/images/live_doc_one.png
   static const String assetsImagesLiveDocOne = "assets/images/live_doc_one.png";
@@ -81,6 +89,10 @@ class Assets {
   /// Assets for assetsImagesMap
   /// assets/images/map.png
   static const String assetsImagesMap = "assets/images/map.png";
+
+  /// Assets for assetsImagesNoSlots
+  /// assets/images/no_slots.png
+  static const String assetsImagesNoSlots = "assets/images/no_slots.png";
 
   /// Assets for assetsImagesOnboardingOne
   /// assets/images/onboarding_one.png

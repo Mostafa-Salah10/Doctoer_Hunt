@@ -9,6 +9,8 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/ad
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
+import 'package:doctor_hunt/features/appointment/presentation/manager/select_time_cubit.dart';
+import 'package:doctor_hunt/features/appointment/presentation/screens/select_time_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/doctor_details_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_time_screen.dart';
 
@@ -34,7 +36,7 @@ abstract class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: _getInitialRoute(),
 
-    // initialLocation: AppRoutes.adminbottomNavBar,
+    // initialLocation: AppRoutes.doctorSelectTimeScreen,
     routes: [
       GoRoute(
         path: AppRoutes.onboarding,
@@ -87,8 +89,11 @@ abstract class AppRouter {
           var data = state.extra as Map<String, dynamic>;
           DoctorEntity doctor = data['doctor'];
           FavouriteCubit cubit = data['cubit'];
-          return BlocProvider.value(
-            value: cubit,
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: cubit),
+              BlocProvider(create: (context) => gi.get<HomeCubit>()),
+            ],
             child: DoctorDetailsScreen(doctor: doctor),
           );
         },
@@ -172,6 +177,22 @@ abstract class AppRouter {
               BlocProvider.value(value: favouriteCubit),
             ],
             child: HomeFindDoctorScreen(),
+          );
+        },
+      ),
+
+      GoRoute(
+        path: AppRoutes.doctorSelectTimeScreen,
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          DoctorEntity doctor = data['doctor'] as DoctorEntity;
+          FavouriteCubit cubit = data['cubit'] as FavouriteCubit;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => cubit),
+              BlocProvider(create: (context) => gi<SelectTimeCubit>()),
+            ],
+            child: SelectTimeScreen(doctor: doctor),
           );
         },
       ),

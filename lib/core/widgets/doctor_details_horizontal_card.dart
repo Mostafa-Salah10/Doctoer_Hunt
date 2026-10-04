@@ -1,6 +1,8 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/extensions/size_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
@@ -141,12 +143,14 @@ class DoctorDetailsHorizontalCard extends StatelessWidget {
                           ),
                         ),
                         const VerticalSpace(height: 3),
-                        Text(
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          "\$ ${doctor.cost} / hr",
-                          style: context.textTheme.titleSmall,
-                        ),
+
+                        if (withBookingButton == true)
+                          Text(
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            "\$ ${doctor.cost} / hr",
+                            style: context.textTheme.titleSmall,
+                          ),
                       ],
                     ),
                   ],
@@ -155,22 +159,32 @@ class DoctorDetailsHorizontalCard extends StatelessWidget {
             ],
           ),
 
-          const VerticalSpace(height: 15),
-
           if (withBookingButton == true)
-            SizedBox(
-              width: context.width / 2.35,
-              child: AppButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.r),
-                ),
-                height: 45,
+            Column(
+              children: [
+                const VerticalSpace(height: 15),
 
-                text: 'Book Now',
-                onPressed: () {
-                  /// navigate to booking screen
-                },
-              ),
+                SizedBox(
+                  width: context.width / 2.35,
+                  child: AppButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                    height: 45,
+
+                    text: 'Book Now',
+                    onPressed: () {
+                      context.pushNamed(
+                        AppRoutes.doctorSelectTimeScreen,
+                        arguments: {
+                          "doctor": doctor,
+                          "cubit": context.read<FavouriteCubit>(),
+                        },
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
         ],
       ),

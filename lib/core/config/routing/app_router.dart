@@ -26,6 +26,7 @@ import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_feat
 import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_popular_doctors_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:doctor_hunt/features/settings/presentation/screens/privacy_screen.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -108,6 +109,12 @@ abstract class AppRouter {
         path: AppRoutes.adminbottomNavBar,
         builder: (context, state) {
           return AdminBottomNavBar();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.privacyPolicyScreen,
+        builder: (context, state) {
+          return PrivacyScreen();
         },
       ),
       GoRoute(

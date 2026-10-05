@@ -130,6 +130,10 @@ class Assets {
   /// assets/images/popular_doc_two.png
   static const String assetsImagesPopularDocTwo = "assets/images/popular_doc_two.png";
 
+  /// Assets for assetsImagesPrivacyContent
+  /// assets/images/privacy_content.png
+  static const String assetsImagesPrivacyContent = "assets/images/privacy_content.png";
+
   /// Assets for assetsImagesSettingsLock
   /// assets/images/settings_lock.png
   static const String assetsImagesSettingsLock = "assets/images/settings_lock.png";

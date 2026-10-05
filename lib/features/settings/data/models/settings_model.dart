@@ -1,3 +1,4 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 
 class SettingsModel {
@@ -24,7 +25,7 @@ class SettingsModel {
     ),
     SettingsModel(
       image: Assets.assetsImagesSettingsPrivacy,
-      targetRoute: '',
+      targetRoute: AppRoutes.privacyPolicyScreen,
       title: 'Privacy Policy',
     ),
   ];

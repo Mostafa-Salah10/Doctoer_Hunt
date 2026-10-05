@@ -1,4 +1,6 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/features/settings/data/models/settings_model.dart';
 import 'package:flutter/material.dart';
@@ -35,26 +37,33 @@ class AdditionalSettingsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      spacing: 16,
-      children: [
-        CircleAvatar(
-          radius: 24,
-          backgroundImage: AssetImage(settingsModel.image),
-        ),
-        Expanded(
-          child: Text(
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-
-            settingsModel.title,
-            style: context.textTheme.bodyLarge,
+    return GestureDetector(
+      onTap: () {
+        if (settingsModel.targetRoute.isNotEmpty) {
+          context.pushNamed(AppRoutes.privacyPolicyScreen);
+        }
+      },
+      child: Row(
+        spacing: 16,
+        children: [
+          CircleAvatar(
+            radius: 24,
+            backgroundImage: AssetImage(settingsModel.image),
           ),
-        ),
-        showSwitch
-            ? Image.asset(Assets.assetsImagesSettingsSwitch, width: 50)
-            : Image.asset(Assets.assetsImagesArrowGo, width: 8),
-      ],
+          Expanded(
+            child: Text(
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+
+              settingsModel.title,
+              style: context.textTheme.bodyLarge,
+            ),
+          ),
+          showSwitch
+              ? Image.asset(Assets.assetsImagesSettingsSwitch, width: 50)
+              : Image.asset(Assets.assetsImagesArrowGo, width: 8),
+        ],
+      ),
     );
   }
 }

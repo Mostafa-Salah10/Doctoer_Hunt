@@ -29,7 +29,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
       child: SafeArea(
         child: Column(
           children: [
-            CustomScreensAppBar(title: context.t.favouriteDoctors),
+            CustomScreensAppBar(
+              title: context.t.favouriteDoctors,
+              showBackButton: false,
+            ),
 
             const VerticalSpace(height: 34),
             CustomSearchBar(

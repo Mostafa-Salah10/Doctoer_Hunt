@@ -7,6 +7,7 @@ import 'package:doctor_hunt/features/favourite/presentation/screens/favourite_sc
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/bottom_nav_bar/custom_bottom_nav_bar.dart';
+import 'package:doctor_hunt/features/settings/presentation/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,9 +44,13 @@ class BottomNavBarScreen extends StatelessWidget {
   ];
 
   final List<Widget> _screens = [
+    // BlocProvider(
+    //   create: (context) => gi<AppointmentCubit>(),
+    //   child: PatientAppointmentScreen(),
+    // ),
     BlocProvider(
       create: (context) => gi<AppointmentCubit>(),
-      child: PatientAppointmentScreen(),
+      child: SettingScreen(),
     ),
     MultiBlocProvider(
       providers: [

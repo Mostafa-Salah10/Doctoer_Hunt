@@ -14,7 +14,10 @@ class PatientAppointmentScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            const CustomScreensAppBar(title: "Appointment"),
+            const CustomScreensAppBar(
+              title: "Appointment",
+              showBackButton: false,
+            ),
             const VerticalSpace(height: 34),
             const AppointmentCategoryList(),
             const VerticalSpace(height: 24),

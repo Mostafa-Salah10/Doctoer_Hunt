@@ -34,6 +34,10 @@ class Assets {
   /// assets/images/appointment_boy_two.png
   static const String assetsImagesAppointmentBoyTwo = "assets/images/appointment_boy_two.png";
 
+  /// Assets for assetsImagesArrowGo
+  /// assets/images/arrow_go.png
+  static const String assetsImagesArrowGo = "assets/images/arrow_go.png";
+
   /// Assets for assetsImagesBottomEllipse
   /// assets/images/bottom_ellipse.png
   static const String assetsImagesBottomEllipse = "assets/images/bottom_ellipse.png";
@@ -66,6 +70,10 @@ class Assets {
   /// assets/images/hom_app_bar_image.png
   static const String assetsImagesHomAppBarImage = "assets/images/hom_app_bar_image.png";
 
+  /// Assets for assetsImagesLanguage
+  /// assets/images/Language.png
+  static const String assetsImagesLanguage = "assets/images/Language.png";
+
   /// Assets for assetsImagesLike
   /// assets/images/like.png
   static const String assetsImagesLike = "assets/images/like.png";
@@ -85,6 +93,14 @@ class Assets {
   /// Assets for assetsImagesLiveDocTwo
   /// assets/images/live_doc_two.png
   static const String assetsImagesLiveDocTwo = "assets/images/live_doc_two.png";
+
+  /// Assets for assetsImagesLogout
+  /// assets/images/logout.png
+  static const String assetsImagesLogout = "assets/images/logout.png";
+
+  /// Assets for assetsImagesLogoutButton
+  /// assets/images/logout_button.png
+  static const String assetsImagesLogoutButton = "assets/images/logout_button.png";
 
   /// Assets for assetsImagesMap
   /// assets/images/map.png
@@ -114,6 +130,22 @@ class Assets {
   /// assets/images/popular_doc_two.png
   static const String assetsImagesPopularDocTwo = "assets/images/popular_doc_two.png";
 
+  /// Assets for assetsImagesSettingsLock
+  /// assets/images/settings_lock.png
+  static const String assetsImagesSettingsLock = "assets/images/settings_lock.png";
+
+  /// Assets for assetsImagesSettingsNotification
+  /// assets/images/settings_notification.png
+  static const String assetsImagesSettingsNotification = "assets/images/settings_notification.png";
+
+  /// Assets for assetsImagesSettingsPrivacy
+  /// assets/images/settings_privacy.png
+  static const String assetsImagesSettingsPrivacy = "assets/images/settings_privacy.png";
+
+  /// Assets for assetsImagesSettingsSwitch
+  /// assets/images/settings_switch.png
+  static const String assetsImagesSettingsSwitch = "assets/images/settings_switch.png";
+
   /// Assets for assetsImagesSplashAboveAndroid12
   /// assets/images/splash_above_android_12.png
   static const String assetsImagesSplashAboveAndroid12 = "assets/images/splash_above_android_12.png";
@@ -125,6 +157,10 @@ class Assets {
   /// Assets for assetsImagesTopEllipse
   /// assets/images/top_ellipse.png
   static const String assetsImagesTopEllipse = "assets/images/top_ellipse.png";
+
+  /// Assets for assetsImagesVersions
+  /// assets/images/versions.png
+  static const String assetsImagesVersions = "assets/images/versions.png";
 
   /// Assets for assetsLaunchersLaucherIcon
   /// assets/launchers/laucher_icon.png

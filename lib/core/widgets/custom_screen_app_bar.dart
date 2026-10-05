@@ -16,11 +16,13 @@ class CustomScreensAppBar extends StatelessWidget {
     super.key,
     required this.title,
     this.suffixIcon = false,
+    this.showBackButton = true,
   });
 
   final String title;
 
   final bool? suffixIcon;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -28,27 +30,28 @@ class CustomScreensAppBar extends StatelessWidget {
       padding: EdgeInsets.only(top: 14.h),
       child: Row(
         children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                color: context.isDarkMode
-                    ? AppColors.darkBackgroundColor
-                    : AppColors.lightBackgroundColor,
+          if (showBackButton)
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                width: 30.w,
+                height: 30.w,
+                decoration: BoxDecoration(
+                  color: context.isDarkMode
+                      ? AppColors.darkBackgroundColor
+                      : AppColors.lightBackgroundColor,
 
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: Center(
-                child: SvgPicture.asset(
-                  Assets.assetsSvgsArrrowBack,
-                  width: 7.w,
-                  height: 13.h,
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                child: Center(
+                  child: SvgPicture.asset(
+                    Assets.assetsSvgsArrrowBack,
+                    width: 7.w,
+                    height: 13.h,
+                  ),
                 ),
               ),
             ),
-          ),
 
           const HorizontalSpace(width: 20),
           Text(

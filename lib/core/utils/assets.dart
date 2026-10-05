@@ -150,6 +150,10 @@ class Assets {
   /// assets/svgs/burger.svg
   static const String assetsSvgsBurger = "assets/svgs/burger.svg";
 
+  /// Assets for assetsSvgsClock
+  /// assets/svgs/clock.svg
+  static const String assetsSvgsClock = "assets/svgs/clock.svg";
+
   /// Assets for assetsSvgsClose
   /// assets/svgs/close.svg
   static const String assetsSvgsClose = "assets/svgs/close.svg";
@@ -157,6 +161,14 @@ class Assets {
   /// Assets for assetsSvgsClothes
   /// assets/svgs/clothes.svg
   static const String assetsSvgsClothes = "assets/svgs/clothes.svg";
+
+  /// Assets for assetsSvgsDate
+  /// assets/svgs/date.svg
+  static const String assetsSvgsDate = "assets/svgs/date.svg";
+
+  /// Assets for assetsSvgsDollar
+  /// assets/svgs/dollar.svg
+  static const String assetsSvgsDollar = "assets/svgs/dollar.svg";
 
   /// Assets for assetsSvgsEye
   /// assets/svgs/eye.svg
@@ -221,6 +233,10 @@ class Assets {
   /// Assets for assetsSvgsStar
   /// assets/svgs/star.svg
   static const String assetsSvgsStar = "assets/svgs/star.svg";
+
+  /// Assets for assetsSvgsStarOutline
+  /// assets/svgs/star_outline.svg
+  static const String assetsSvgsStarOutline = "assets/svgs/star_outline.svg";
 
   /// Assets for assetsSvgsTeam
   /// assets/svgs/team.svg

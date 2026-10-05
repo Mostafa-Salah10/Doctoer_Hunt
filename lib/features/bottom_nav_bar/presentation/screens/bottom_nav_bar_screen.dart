@@ -1,5 +1,7 @@
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
+import 'package:doctor_hunt/features/appointment/presentation/screens/patient_appointment_screen.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/favourite/presentation/screens/favourite_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
@@ -41,6 +43,10 @@ class BottomNavBarScreen extends StatelessWidget {
   ];
 
   final List<Widget> _screens = [
+    BlocProvider(
+      create: (context) => gi<AppointmentCubit>(),
+      child: PatientAppointmentScreen(),
+    ),
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => gi<HomeCubit>()),
@@ -59,7 +65,10 @@ class BottomNavBarScreen extends StatelessWidget {
       ],
       child: FavouriteScreen(),
     ),
-    Container(color: Colors.yellow),
+    // BlocProvider(
+    //   create: (context) => gi<AppointmentCubit>(),
+    //   child: PatientAppointmentScreen(),
+    // ),
     Container(color: Colors.purple),
   ];
 }

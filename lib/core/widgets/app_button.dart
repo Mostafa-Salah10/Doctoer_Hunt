@@ -35,7 +35,8 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       splashColor: splashColor,
-      elevation: elevation,
+      elevation: elevation ?? 0,
+
       textColor: textColor,
       minWidth: double.infinity,
       height: height ?? 54.h,

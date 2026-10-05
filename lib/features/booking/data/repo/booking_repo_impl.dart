@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:doctor_hunt/features/booking/data/models/doctor_available_day_model.dart';
@@ -16,8 +15,6 @@ class BookingRepoImpl implements BookingRepo {
   getAvailableDaysWithSlots({required String doctorId}) async {
     try {
       final daysResponse = await _getAvailableDays(doctorId);
-
-      // log("Available days found: ${daysResponse.docs.length}");
 
       final days = await Future.wait(
         daysResponse.docs.map((dayDoc) async {

@@ -31,7 +31,13 @@ class SettingScreen extends StatelessWidget {
 
               const VerticalSpace(height: 34),
 
-              const SettingCard(),
+              InkWell(
+                onTap: () {
+                  context.pushNamed(AppRoutes.profileScreen);
+                },
+
+                child: const SettingCard(),
+              ),
 
               const VerticalSpace(height: 10),
               Text(

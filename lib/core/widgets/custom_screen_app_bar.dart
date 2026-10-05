@@ -17,12 +17,16 @@ class CustomScreensAppBar extends StatelessWidget {
     required this.title,
     this.suffixIcon = false,
     this.showBackButton = true,
+
+    this.isLight = false,
   });
 
   final String title;
 
   final bool? suffixIcon;
   final bool showBackButton;
+
+  final bool isLight;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +61,9 @@ class CustomScreensAppBar extends StatelessWidget {
           Text(
             title,
             style: context.textTheme.titleMedium!.copyWith(
-              color: context.isDarkMode
+              color: isLight
+                  ? AppColors.lightBackgroundColor
+                  : context.isDarkMode
                   ? AppColors.lightBackgroundColor
                   : AppColors.darkTextColor,
 

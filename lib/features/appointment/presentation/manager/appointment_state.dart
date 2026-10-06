@@ -3,11 +3,26 @@ part of 'appointment_cubit.dart';
 class AppointmentState {
   final BookingStatus bookingStatus;
 
-  AppointmentState({required this.bookingStatus});
+  final BoxState<List<AppointmentModel>> getAppointments;
 
-  AppointmentState.init() : this(bookingStatus: BookingStatus.upcoming);
+  AppointmentState({
+    required this.bookingStatus,
+    required this.getAppointments,
+  });
 
-  AppointmentState copyWith({BookingStatus? bookingStatus}) {
-    return AppointmentState(bookingStatus: bookingStatus ?? this.bookingStatus);
+  AppointmentState.init()
+    : this(
+        bookingStatus: BookingStatus.upcoming,
+        getAppointments: BoxState.initial(),
+      );
+
+  AppointmentState copyWith({
+    BookingStatus? bookingStatus,
+    BoxState<List<AppointmentModel>>? getAppointments,
+  }) {
+    return AppointmentState(
+      bookingStatus: bookingStatus ?? this.bookingStatus,
+      getAppointments: getAppointments ?? this.getAppointments,
+    );
   }
 }

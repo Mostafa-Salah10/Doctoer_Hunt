@@ -40,7 +40,7 @@ class BottomNavBarScreen extends StatelessWidget {
     Assets.assetsSvgsHome,
     Assets.assetsSvgsFav,
     Assets.assetsSvgsBook,
-    Assets.assetsSvgsMsg,
+    Assets.assetsSvgsSettingsOutline,
   ];
 
   final List<Widget> _screens = [
@@ -64,7 +64,7 @@ class BottomNavBarScreen extends StatelessWidget {
     ),
 
     BlocProvider(
-      create: (context) => gi<AppointmentCubit>(),
+      create: (context) => gi<AppointmentCubit>()..getPatientAppointments(),
       child: PatientAppointmentScreen(),
     ),
 

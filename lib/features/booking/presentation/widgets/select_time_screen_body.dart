@@ -82,7 +82,7 @@ class SelectTimeScreenBody extends StatelessWidget {
                           final patientId = getPatientId();
                           await book.bookWithDoctor(
                             patientId: patientId!,
-                            doctorId: doctor.id,
+                            doctor: doctor,
                           );
                         },
                       );

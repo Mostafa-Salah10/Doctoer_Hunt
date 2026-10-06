@@ -1,12 +1,14 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
-import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppinmentTopSection extends StatelessWidget {
-  const AppinmentTopSection({super.key});
+  const AppinmentTopSection({super.key, required this.appointmentModel});
+  final AppointmentModel appointmentModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,11 @@ class AppinmentTopSection extends StatelessWidget {
           width: 84.w,
           height: 84.w,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-          // child: CustomCachedNetworkImage(imageUrl: doctor.imageUrl),
+          child: CustomCachedNetworkImage(
+            imageUrl: appointmentModel.doctorImage,
+          ),
 
-          child: Image.asset(Assets.assetsImagesAppointment),
+          // child: Image.asset(Assets.assetsImagesAppointment),
         ),
 
         Expanded(
@@ -28,7 +32,7 @@ class AppinmentTopSection extends StatelessWidget {
               Text(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                "Dr. Ananya Shah",
+                appointmentModel.doctorName,
                 style: context.textTheme.bodyLarge!.copyWith(
                   color: context.isDarkMode
                       ? AppColors.lightBackgroundColor
@@ -68,7 +72,10 @@ class AppinmentTopSection extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
               ),
-              Text("Upcoming", style: context.textTheme.bodySmall),
+              Text(
+                appointmentModel.status.name,
+                style: context.textTheme.bodySmall,
+              ),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/helpers/box_state.dart';
 import 'package:doctor_hunt/features/booking/data/models/doctor_available_day_model.dart';
 import 'package:doctor_hunt/features/booking/data/models/slot_model.dart';
@@ -70,7 +71,7 @@ class SelectTimeCubit extends Cubit<SelectTimeState> {
 
   Future<void> bookWithDoctor({
     required String patientId,
-    required String doctorId,
+    required DoctorEntity doctor,
   }) async {
     emit(state.copyWith(bookWithDoctor: BoxState.loading()));
 
@@ -85,7 +86,7 @@ class SelectTimeCubit extends Cubit<SelectTimeState> {
 
     final res = await _bookingRepo.bookWithDoctor(
       patientId: patientId,
-      doctorId: doctorId,
+      doctor: doctor,
       slot: currentSlot!,
       date: state.availableDaysState.data![state.currenDaytIndex].availableDay,
     );
@@ -96,7 +97,7 @@ class SelectTimeCubit extends Cubit<SelectTimeState> {
       },
       (_) {
         currentSlot = null;
-        fetchDoctorAvailableDays(doctorId);
+        fetchDoctorAvailableDays(doctor.id);
         emit(
           state.copyWith(
             bookWithDoctor: BoxState.success(),

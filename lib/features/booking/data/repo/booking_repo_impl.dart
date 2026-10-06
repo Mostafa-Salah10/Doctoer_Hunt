@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/enums/booking_status.dart';
 import 'package:doctor_hunt/features/booking/data/models/doctor_available_day_model.dart';
 import 'package:doctor_hunt/features/booking/data/models/slot_model.dart';
@@ -65,7 +66,7 @@ class BookingRepoImpl implements BookingRepo {
   @override
   Future<Either<String, Null>> bookWithDoctor({
     required String patientId,
-    required String doctorId,
+    required DoctorEntity doctor,
     required SlotModel slot,
     required String date,
   }) async {
@@ -73,7 +74,7 @@ class BookingRepoImpl implements BookingRepo {
       return await _firestore.runTransaction((transaction) async {
         final slotRef = _firestore
             .collection('availablity')
-            .doc(doctorId)
+            .doc(doctor.id)
             .collection('days')
             .doc(date)
             .collection('slots')
@@ -87,11 +88,16 @@ class BookingRepoImpl implements BookingRepo {
           transaction.update(slotRef, {"isBooked": true});
           final appointmentRef = _firestore.collection("appoinments").doc();
           transaction.set(appointmentRef, {
-            "doctorId": doctorId,
+            "doctorId": doctor.id,
             "patientId": patientId,
             "date": date,
             "slot": slot.id,
             "status": BookingStatus.upcoming.name,
+            "doctorName": doctor.name,
+            "doctorImage": doctor.imageUrl,
+            "patientName": "Handwerker",
+            "patientImage":
+                "https://avatars.githubusercontent.com/u/144556734?v=4",
           });
 
           return right(null);

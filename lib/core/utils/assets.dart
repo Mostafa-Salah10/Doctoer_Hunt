@@ -274,6 +274,10 @@ class Assets {
   /// assets/svgs/settings.svg
   static const String assetsSvgsSettings = "assets/svgs/settings.svg";
 
+  /// Assets for assetsSvgsSettingsOutline
+  /// assets/svgs/settings_outline.svg
+  static const String assetsSvgsSettingsOutline = "assets/svgs/settings_outline.svg";
+
   /// Assets for assetsSvgsStar
   /// assets/svgs/star.svg
   static const String assetsSvgsStar = "assets/svgs/star.svg";

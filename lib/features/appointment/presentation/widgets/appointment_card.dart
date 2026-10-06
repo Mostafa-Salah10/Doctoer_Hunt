@@ -2,13 +2,16 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_card_buttons.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_card_top_section.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_specific_data.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentCard extends StatelessWidget {
-  const AppointmentCard({super.key});
+  const AppointmentCard({super.key, required this.appointmentModel});
+
+  final AppointmentModel appointmentModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,7 @@ class AppointmentCard extends StatelessWidget {
 
       child: Column(
         children: [
-          const AppinmentTopSection(),
+          AppinmentTopSection(appointmentModel: appointmentModel),
           const Divider(height: 30, color: AppColors.greyColor),
           Row(
             children: [

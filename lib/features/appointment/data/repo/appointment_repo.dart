@@ -5,4 +5,13 @@ abstract class AppointmentRepo {
   Future<Either<String, List<AppointmentModel>>> getPatientAppointment({
     required String patientId,
   });
+  Future<Either<String, Null>> cancelAppointment({
+    required AppointmentModel appoitment,
+  });
+  Future<Either<String, Null>> rateDoctor({
+    required String doctorId,
+    required String patientId,
+    required String appointmentId,
+    required int rate,
+  });
 }

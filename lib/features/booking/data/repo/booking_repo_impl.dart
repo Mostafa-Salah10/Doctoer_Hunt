@@ -91,6 +91,8 @@ class BookingRepoImpl implements BookingRepo {
             "doctorId": doctor.id,
             "patientId": patientId,
             "date": date,
+            "consulationFee": doctor.cost,
+            "speciality": doctor.speciality,
             "slot": slot.id,
             "status": BookingStatus.upcoming.name,
             "doctorName": doctor.name,

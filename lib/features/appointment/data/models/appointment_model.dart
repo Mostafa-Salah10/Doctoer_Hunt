@@ -5,13 +5,16 @@ class AppointmentModel {
   final String doctorId;
   final String patientId;
   final String slot;
-  final BookingStatus status;
+   BookingStatus status;
   final String bookingId;
 
   final String doctorName;
   final String doctorImage;
   final String patientName;
   final String paientImage;
+
+  final String speciality;
+  final double consulationFee;
 
   AppointmentModel({
     required this.date,
@@ -24,6 +27,9 @@ class AppointmentModel {
     required this.doctorImage,
     required this.patientName,
     required this.paientImage,
+
+    required this.consulationFee,
+    required this.speciality,
   });
 
   factory AppointmentModel.fromJson(
@@ -31,6 +37,8 @@ class AppointmentModel {
     required String bookingId,
   }) {
     return AppointmentModel(
+      consulationFee: json['consulationFee'],
+      speciality: json['speciality'],
       date: json['date'],
       doctorId: json['doctorId'],
       patientId: json['patientId'],

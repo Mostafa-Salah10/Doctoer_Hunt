@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/enums/booking_status.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
@@ -13,6 +14,7 @@ class AppinmentTopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      spacing: 12,
       children: [
         Container(
           clipBehavior: Clip.hardEdge,
@@ -26,8 +28,12 @@ class AppinmentTopSection extends StatelessWidget {
           // child: Image.asset(Assets.assetsImagesAppointment),
         ),
 
+
+        
+
         Expanded(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 maxLines: 1,
@@ -44,7 +50,7 @@ class AppinmentTopSection extends StatelessWidget {
               Text(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                'Specialist Cardiologist',
+                appointmentModel.speciality,
                 style: context.textTheme.bodySmall!.copyWith(
                   color: AppColors.greyColor,
                   fontWeight: FontWeight.w500,
@@ -58,7 +64,9 @@ class AppinmentTopSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
           decoration: ShapeDecoration(
             shape: const StadiumBorder(),
-            color: AppColors.primaryColor.withValues(alpha: 0.1),
+            color: appointmentModel.status == BookingStatus.cancelled
+                ? AppColors.errorColor.withValues(alpha: 0.1)
+                : AppColors.primaryColor.withValues(alpha: 0.1),
           ),
 
           child: Row(
@@ -68,13 +76,19 @@ class AppinmentTopSection extends StatelessWidget {
                 width: 7,
                 height: 7,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
+                  color: appointmentModel.status == BookingStatus.cancelled
+                      ? AppColors.errorColor
+                      : AppColors.primaryColor,
                   shape: BoxShape.circle,
                 ),
               ),
               Text(
                 appointmentModel.status.name,
-                style: context.textTheme.bodySmall,
+                style: context.textTheme.bodySmall!.copyWith(
+                  color: appointmentModel.status == BookingStatus.cancelled
+                      ? AppColors.errorColor
+                      : AppColors.primaryColor,
+                ),
               ),
             ],
           ),

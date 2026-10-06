@@ -97,12 +97,14 @@ class SelectTimeCubit extends Cubit<SelectTimeState> {
       },
       (_) {
         currentSlot = null;
+
         fetchDoctorAvailableDays(doctor.id);
         emit(
           state.copyWith(
             bookWithDoctor: BoxState.success(),
             currenAfterNoontIndex: -1,
             currenEveningtIndex: -1,
+            currenDaytIndex: 0
           ),
         );
       },

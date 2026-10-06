@@ -31,6 +31,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     emit(state.copyWith(getAppointments: BoxState.loading()));
 
     final patientId = getPatientId();
+
     final res = await _appointmentRepo.getPatientAppointment(
       patientId: patientId!,
     );
@@ -55,5 +56,76 @@ class AppointmentCubit extends Cubit<AppointmentState> {
 
   List<AppointmentModel> filterAppointmentsByStatus(BookingStatus status) {
     return appointments.where((appo) => appo.status == status).toList();
+  }
+
+  void updateDoctorRate({required int rate, required String appointmentId}) {
+    final rates = Map<String, int>.from(state.rates);
+
+    rates[appointmentId] = rate;
+
+    emit(state.copyWith(rates: rates));
+  }
+
+  Future<void> cancelAppointment({
+    required AppointmentModel appointment,
+  }) async {
+    emit(
+      state.copyWith(
+        cancelAppointment: BoxState.loading(data: appointment.bookingId),
+      ),
+    );
+
+    final res = await _appointmentRepo.cancelAppointment(
+      appoitment: appointment,
+    );
+
+    res.fold(
+      (error) {
+        emit(state.copyWith(cancelAppointment: BoxState.error(error: error)));
+      },
+      (_) {
+        appointment.status = BookingStatus.cancelled;
+
+        emit(
+          state.copyWith(
+            cancelAppointment: BoxState.success(),
+            getAppointments: BoxState.success(
+              data: filterAppointmentsByStatus(state.bookingStatus),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> rateDoctor({
+    required String doctorId,
+    required String appointmentId,
+  }) async {
+    final patientId = getPatientId();
+
+    final rate = state.rates[appointmentId];
+
+    if (rate == null) {
+      return;
+    }
+
+    emit(state.copyWith(rateDoctor: BoxState.loading(data: appointmentId)));
+
+    final res = await _appointmentRepo.rateDoctor(
+      doctorId: doctorId,
+      patientId: patientId!,
+      appointmentId: appointmentId,
+      rate: rate,
+    );
+
+    res.fold(
+      (error) {
+        emit(state.copyWith(rateDoctor: BoxState.error(error: error)));
+      },
+      (_) {
+        emit(state.copyWith(rateDoctor: BoxState.success(data: null)));
+      },
+    );
   }
 }

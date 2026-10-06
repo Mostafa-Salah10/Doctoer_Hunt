@@ -1,10 +1,12 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/enums/booking_status.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_card_buttons.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_card_top_section.dart';
+import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_rate_doctor.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_specific_data.dart';
 import 'package:flutter/material.dart';
 
@@ -44,14 +46,14 @@ class AppointmentCard extends StatelessWidget {
                 child: AppointmentShowSpecificDataCard(
                   image: Assets.assetsSvgsDate,
                   title: 'Appointment date',
-                  subTitle: '02 Oct 2026',
+                  subTitle: appointmentModel.date,
                 ),
               ),
               Expanded(
                 child: AppointmentShowSpecificDataCard(
                   image: Assets.assetsSvgsClock,
                   title: 'Appointment time',
-                  subTitle: '10:30 AM',
+                  subTitle: appointmentModel.slot,
                 ),
               ),
             ],
@@ -60,13 +62,17 @@ class AppointmentCard extends StatelessWidget {
           AppointmentShowSpecificDataCard(
             image: Assets.assetsSvgsDollar,
             title: 'Consultation fee',
-            subTitle: r'$28.00',
+            subTitle: '\$${appointmentModel.consulationFee}',
           ),
-          // AppointmentRateDoctorWidget(),
+
+          if (appointmentModel.status == BookingStatus.completed)
+            AppointmentRateDoctorWidget(
+              appoinmentId: appointmentModel.bookingId,
+            ),
 
           const VerticalSpace(height: 10),
 
-          AppointmentCardButtons(),
+          AppointmentCardButtons(appointmentModel: appointmentModel),
         ],
       ),
     );

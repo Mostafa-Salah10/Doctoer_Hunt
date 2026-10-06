@@ -1,5 +1,7 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
+import 'package:doctor_hunt/core/functions/get_patient_id.dart';
+import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
@@ -52,7 +54,40 @@ class SelectTimeScreenBody extends StatelessWidget {
                   const VerticalSpace(height: 20),
                   const SelectDayDataWithTitle(),
                   const VerticalSpace(height: 20),
-                  AppButton(text: "Confirm", onPressed: () async {}),
+                  BlocConsumer<SelectTimeCubit, SelectTimeState>(
+                    buildWhen: (previous, current) =>
+                        previous.bookWithDoctor != current.bookWithDoctor,
+                    listenWhen: (previous, current) =>
+                        previous.bookWithDoctor != current.bookWithDoctor,
+                    listener: (context, state) {
+                      if (state.bookWithDoctor.isError) {
+                        toastAlert(
+                          msg: state.bookWithDoctor.error!,
+                          color: AppColors.errorColor,
+                        );
+                      } else if (state.bookWithDoctor.isSuccess) {
+                        toastAlert(
+                          msg: "Slot Booking Successfully",
+                          color: AppColors.primaryColor,
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      return AppButton(
+                        text: state.bookWithDoctor.isLoading
+                            ? "Loading..."
+                            : "Confirm",
+                        onPressed: () async {
+                          final book = context.read<SelectTimeCubit>();
+                          final patientId = getPatientId();
+                          await book.bookWithDoctor(
+                            patientId: patientId!,
+                            doctorId: doctor.id,
+                          );
+                        },
+                      );
+                    },
+                  ),
                   const VerticalSpace(height: 40),
                 ],
               );

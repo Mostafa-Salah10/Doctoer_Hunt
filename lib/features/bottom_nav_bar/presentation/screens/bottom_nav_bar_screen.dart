@@ -44,14 +44,6 @@ class BottomNavBarScreen extends StatelessWidget {
   ];
 
   final List<Widget> _screens = [
-    // BlocProvider(
-    //   create: (context) => gi<AppointmentCubit>(),
-    //   child: PatientAppointmentScreen(),
-    // ),
-    BlocProvider(
-      create: (context) => gi<AppointmentCubit>(),
-      child: SettingScreen(),
-    ),
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => gi<HomeCubit>()),
@@ -70,10 +62,12 @@ class BottomNavBarScreen extends StatelessWidget {
       ],
       child: FavouriteScreen(),
     ),
-    // BlocProvider(
-    //   create: (context) => gi<AppointmentCubit>(),
-    //   child: PatientAppointmentScreen(),
-    // ),
-    Container(color: Colors.purple),
+
+    BlocProvider(
+      create: (context) => gi<AppointmentCubit>(),
+      child: PatientAppointmentScreen(),
+    ),
+
+    SettingScreen(),
   ];
 }

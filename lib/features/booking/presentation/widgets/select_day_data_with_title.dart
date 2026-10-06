@@ -64,7 +64,10 @@ class SelectDayDataWithTitle extends StatelessWidget {
                       onTap: (index) {
                         context
                             .read<SelectTimeCubit>()
-                            .changeSelectedAfterNoonTime(index);
+                            .changeSelectedAfterNoonTime(
+                              index,
+                              slot: state.afternoonSlots.elementAt(index),
+                            );
                       },
                     ),
                   ],
@@ -92,7 +95,10 @@ class SelectDayDataWithTitle extends StatelessWidget {
                       onTap: (index) {
                         context
                             .read<SelectTimeCubit>()
-                            .changeSelectedEveningTime(index);
+                            .changeSelectedEveningTime(
+                              index,
+                              slot: state.eveningSlots.elementAt(index),
+                            );
                       },
                     ),
                   ],

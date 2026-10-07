@@ -25,5 +25,6 @@ abstract class AppColors {
   static const Color greyBorderColor = Color(0xffC4C4C4);
   static const Color greyBorderColorAppoitment = Color(0xff76809F);
   static const Color roleBackgroundColor = Color(0xFFD5E6E1);
+  static const Color doctorGreyColor = Color(0xFF52625E);
   static const Color errorColor = Color(0xFFF44336);
 }

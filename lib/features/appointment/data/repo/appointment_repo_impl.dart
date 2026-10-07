@@ -79,4 +79,42 @@ class AppointmentRepoImpl implements AppointmentRepo {
       return left(e.toString());
     }
   }
+
+  @override
+  Future<Either<String, List<AppointmentModel>>> getAllAppointment() async {
+    try {
+      final response = await _firebaseFirestore.collection('appoinments').get();
+
+      return right([
+        ...response.docs.map(
+          (doc) => AppointmentModel.fromJson(doc.data(), bookingId: doc.id),
+        ),
+      ]);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, Null>> markAppointmentAsCompleted({
+    required AppointmentModel appoitment,
+  }) async {
+    try {
+      await _firebaseFirestore
+          .collection('availablity')
+          .doc(appoitment.doctorId)
+          .collection('days')
+          .doc(appoitment.date)
+          .collection('slots')
+          .doc(appoitment.slot)
+          .update({'isBooked': false});
+      await _firebaseFirestore
+          .collection("appoinments")
+          .doc(appoitment.bookingId)
+          .update({'status': BookingStatus.completed.name});
+      return right(null);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
 }

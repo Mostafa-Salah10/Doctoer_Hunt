@@ -5,7 +5,11 @@ abstract class AppointmentRepo {
   Future<Either<String, List<AppointmentModel>>> getPatientAppointment({
     required String patientId,
   });
+  Future<Either<String, List<AppointmentModel>>> getAllAppointment();
   Future<Either<String, Null>> cancelAppointment({
+    required AppointmentModel appoitment,
+  });
+  Future<Either<String, Null>> markAppointmentAsCompleted({
     required AppointmentModel appoitment,
   });
   Future<Either<String, Null>> rateDoctor({

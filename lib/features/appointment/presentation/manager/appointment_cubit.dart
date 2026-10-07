@@ -54,6 +54,29 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     );
   }
 
+  Future<void> getAllAppointment() async {
+    emit(state.copyWith(getAppointments: BoxState.loading()));
+
+    final res = await _appointmentRepo.getAllAppointment();
+
+    res.fold(
+      (error) {
+        emit(state.copyWith(getAppointments: BoxState.error(error: error)));
+      },
+      (appointments) {
+        this.appointments = appointments;
+
+        emit(
+          state.copyWith(
+            getAppointments: BoxState.success(
+              data: filterAppointmentsByStatus(state.bookingStatus),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   List<AppointmentModel> filterAppointmentsByStatus(BookingStatus status) {
     return appointments.where((appo) => appo.status == status).toList();
   }
@@ -89,6 +112,44 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         emit(
           state.copyWith(
             cancelAppointment: BoxState.success(),
+            getAppointments: BoxState.success(
+              data: filterAppointmentsByStatus(state.bookingStatus),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> markAppointmentAsCompleted({
+    required AppointmentModel appointment,
+  }) async {
+    emit(
+      state.copyWith(
+        markAppointmentAsCompleted: BoxState.loading(
+          data: appointment.bookingId,
+        ),
+      ),
+    );
+
+    final res = await _appointmentRepo.markAppointmentAsCompleted(
+      appoitment: appointment,
+    );
+
+    res.fold(
+      (error) {
+        emit(
+          state.copyWith(
+            markAppointmentAsCompleted: BoxState.error(error: error),
+          ),
+        );
+      },
+      (_) {
+        appointment.status = BookingStatus.completed;
+
+        emit(
+          state.copyWith(
+            markAppointmentAsCompleted: BoxState.success(),
             getAppointments: BoxState.success(
               data: filterAppointmentsByStatus(state.bookingStatus),
             ),

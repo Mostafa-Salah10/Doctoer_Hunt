@@ -39,7 +39,7 @@ class CustomBottomNavBar extends StatelessWidget {
           color: context.isDarkMode
               ? AppColors.darkBackgroundColor
               : AppColors.lightBackgroundColor,
-          height: !titles.isNull ? 90.h : 74.h,
+          height: 74,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(
@@ -49,7 +49,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 child: !titles.isNull
                     ? Column(
                         children: [
-                          _buildCircleIcon(index),
+                          _buildIconWithoutContainer(index),
                           SizedBox(height: 5.h),
                           Text(
                             titles![index],
@@ -90,6 +90,18 @@ class CustomBottomNavBar extends StatelessWidget {
             BlendMode.srcIn,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildIconWithoutContainer(int index) {
+    return SvgPicture.asset(
+      icons[index],
+      height: currentIndex == index ? 19.89.h : 20.h,
+      width: currentIndex == index ? 20.w : 22.79.w,
+      colorFilter: ColorFilter.mode(
+        currentIndex == index ? AppColors.primaryColor : AppColors.greyColor,
+        BlendMode.srcIn,
       ),
     );
   }

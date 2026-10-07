@@ -5,6 +5,7 @@ class AppointmentState {
   final BoxState<List<AppointmentModel>> getAppointments;
   final Map<String, int> rates;
   final BoxState<String> cancelAppointment;
+  final BoxState<String> markAppointmentAsCompleted;
   final BoxState<String> rateDoctor;
 
   AppointmentState({
@@ -12,6 +13,7 @@ class AppointmentState {
     required this.getAppointments,
     required this.rates,
     required this.cancelAppointment,
+    required this.markAppointmentAsCompleted,
     required this.rateDoctor,
   });
 
@@ -21,6 +23,7 @@ class AppointmentState {
           bookingStatus: BookingStatus.upcoming,
           getAppointments: BoxState.initial(),
           cancelAppointment: BoxState.initial(),
+          markAppointmentAsCompleted: BoxState.initial(),
           rateDoctor: BoxState.initial(),
         );
 
@@ -29,13 +32,19 @@ class AppointmentState {
     BoxState<List<AppointmentModel>>? getAppointments,
     Map<String, int>? rates,
     BoxState<String>? cancelAppointment,
+    BoxState<String>? markAppointmentAsCompleted,
     BoxState<String>? rateDoctor,
   }) {
     return AppointmentState(
       rates: rates ?? this.rates,
       bookingStatus: bookingStatus ?? this.bookingStatus,
-      getAppointments: getAppointments ?? this.getAppointments,
-      cancelAppointment: cancelAppointment ?? this.cancelAppointment,
+      getAppointments:
+          getAppointments ?? this.getAppointments,
+      cancelAppointment:
+          cancelAppointment ?? this.cancelAppointment,
+      markAppointmentAsCompleted:
+          markAppointmentAsCompleted ??
+          this.markAppointmentAsCompleted,
       rateDoctor: rateDoctor ?? this.rateDoctor,
     );
   }

@@ -46,6 +46,10 @@ class Assets {
   /// assets/images/camera.png
   static const String assetsImagesCamera = "assets/images/camera.png";
 
+  /// Assets for assetsImagesFakeRateDoctor
+  /// assets/images/fake_rate_doctor.png
+  static const String assetsImagesFakeRateDoctor = "assets/images/fake_rate_doctor.png";
+
   /// Assets for assetsImagesFavDocOne
   /// assets/images/fav_doc_one.png
   static const String assetsImagesFavDocOne = "assets/images/fav_doc_one.png";
@@ -173,6 +177,14 @@ class Assets {
   /// Assets for assetsLaunchersLaucherIcon
   /// assets/launchers/laucher_icon.png
   static const String assetsLaunchersLaucherIcon = "assets/launchers/laucher_icon.png";
+
+  /// Assets for assetsSvgsAdminActions
+  /// assets/svgs/admin_actions.svg
+  static const String assetsSvgsAdminActions = "assets/svgs/admin_actions.svg";
+
+  /// Assets for assetsSvgsAdminDoctor
+  /// assets/svgs/admin_doctor.svg
+  static const String assetsSvgsAdminDoctor = "assets/svgs/admin_doctor.svg";
 
   /// Assets for assetsSvgsAdminRole
   /// assets/svgs/admin_role.svg

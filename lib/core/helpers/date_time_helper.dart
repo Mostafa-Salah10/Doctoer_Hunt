@@ -14,4 +14,12 @@ class DateTimeHelper {
         ? 'Today, ${DateFormat('d MMM').format(parsedDate)}'
         : DateFormat('EEE, d MMM').format(parsedDate);
   }
+  static String formatDateWithDayName(String date) {
+    final parsedDate = DateTime.parse(date);
+
+  
+
+      
+    return  DateFormat('dd MMM yyyy').format(parsedDate);
+  }
 }

@@ -23,7 +23,7 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
       spacing: 10,
       children: [
         Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(7),
           decoration: BoxDecoration(
             color: AppColors.primaryColor.withValues(alpha: 0.1),
 
@@ -33,32 +33,40 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
           child: SvgPicture.asset(image, width: 20, height: 20),
         ),
 
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 7,
-          children: [
-            Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              title,
-              style: context.textTheme.bodySmall!.copyWith(
-                color: AppColors.greyColor,
-                fontSize: 11.sp,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 7,
+            children: [
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  // maxLines: 1,
+                  // overflow: TextOverflow.ellipsis,
+                  title,
+                  style: context.textTheme.bodySmall!.copyWith(
+                    color: AppColors.greyColor,
+                    fontSize: 11.sp,
+                  ),
+                ),
               ),
-            ),
-            Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              subTitle,
-              style: context.textTheme.bodySmall!.copyWith(
-                fontSize: 14.sp,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  // maxLines: 1,
+                  // overflow: TextOverflow.ellipsis,
+                  subTitle,
+                  style: context.textTheme.bodySmall!.copyWith(
+                    fontSize: 14.sp,
 
-                color: context.isDarkMode
-                    ? AppColors.lightBackgroundColor
-                    : AppColors.darkBackgroundColor,
+                    color: context.isDarkMode
+                        ? AppColors.lightBackgroundColor
+                        : AppColors.darkBackgroundColor,
+                  ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

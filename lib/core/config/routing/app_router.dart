@@ -9,6 +9,9 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/ad
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
+import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
+import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
+import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_view_details_screen.dart';
 import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cubit.dart';
 import 'package:doctor_hunt/features/booking/presentation/screens/select_time_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/doctor_details_screen.dart';
@@ -83,6 +86,36 @@ abstract class AppRouter {
         path: AppRoutes.bottomNavBar,
         builder: (context, state) {
           return BottomNavBarScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.doctorDetailsScreen,
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          DoctorEntity doctor = data['doctor'];
+          FavouriteCubit cubit = data['cubit'];
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: cubit),
+              BlocProvider(create: (context) => gi.get<HomeCubit>()),
+            ],
+            child: DoctorDetailsScreen(doctor: doctor),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.appointmentViewDetailsScreen,
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          AppointmentModel appoointment = data['appointment'];
+          AppointmentCubit cubit = data['cubit'];
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: cubit),
+              BlocProvider(create: (context) => gi.get<HomeCubit>()),
+            ],
+            child: AppointmentViewDetailsScreen(appointmentModel: appoointment),
+          );
         },
       ),
       GoRoute(

@@ -13,6 +13,7 @@ abstract class AppRoutes {
   static const String doctorDetailsScreen = '/doctorDetailsScreen';
   static const String doctorSelectTimeScreen = '/doctorSelectTimeScreen';
   static const String privacyPolicyScreen = '/privacyPolicyScreen';
+  static const String appointmentViewDetailsScreen = '/appointmentViewDetailsScreen';
   static const String profileScreen = '/profileScreen';
   static const String seeAllFeatureDoctoraScreen =
       '/seeAllFeatureDoctoraScreen';

@@ -254,6 +254,10 @@ class Assets {
   /// assets/svgs/live.svg
   static const String assetsSvgsLive = "assets/svgs/live.svg";
 
+  /// Assets for assetsSvgsLocation
+  /// assets/svgs/location.svg
+  static const String assetsSvgsLocation = "assets/svgs/location.svg";
+
   /// Assets for assetsSvgsLove
   /// assets/svgs/love.svg
   static const String assetsSvgsLove = "assets/svgs/love.svg";

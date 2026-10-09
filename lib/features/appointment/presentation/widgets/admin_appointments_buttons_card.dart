@@ -1,6 +1,8 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/enums/booking_status.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +60,15 @@ class AdminAppointmentCardButtons extends StatelessWidget {
               )
             : Expanded(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(
+                      AppRoutes.appointmentViewDetailsScreen,
+                      arguments: {
+                        "cubit": context.read<AppointmentCubit>(),
+                        "appointment": appointmentModel,
+                      },
+                    );
+                  },
                   child: BlocBuilder<AppointmentCubit, AppointmentState>(
                     builder: (context, state) {
                       return Container(

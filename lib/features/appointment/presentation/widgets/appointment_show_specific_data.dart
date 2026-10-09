@@ -7,6 +7,8 @@ import 'package:flutter_svg/svg.dart';
 class AppointmentShowSpecificDataCard extends StatelessWidget {
   const AppointmentShowSpecificDataCard({
     super.key,
+
+    this.showContainer = false,
     required this.image,
     required this.title,
     required this.subTitle,
@@ -16,8 +18,24 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
   final String title;
   final String subTitle;
 
+  final bool showContainer;
+
   @override
   Widget build(BuildContext context) {
+    return showContainer
+        ? Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Color(0xffF7FAF8),
+              borderRadius: BorderRadius.circular(10),
+            ),
+
+            child: _buildWidget(context),
+          )
+        : _buildWidget(context);
+  }
+
+  Row _buildWidget(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 10,

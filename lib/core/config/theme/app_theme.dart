@@ -12,7 +12,11 @@ abstract class AppTheme {
       scrolledUnderElevation: 0,
       backgroundColor: AppColors.lightBackgroundColor,
       elevation: 0,
-      // titleTextStyle: AppStyles.font18BlackBold(),
+      titleTextStyle: AppStyles.font18WhiteTextMedium.copyWith(
+        color: AppColors.darkTextColor,
+        fontWeight: FontWeight.bold,
+      ),
+      iconTheme: IconThemeData(color: AppColors.darkBackgroundColor),
     ),
 
     textTheme: TextTheme(
@@ -41,7 +45,11 @@ abstract class AppTheme {
       scrolledUnderElevation: 0,
       backgroundColor: AppColors.darkBackgroundColor,
       elevation: 0,
-      // titleTextStyle: AppStyles.font18BlackBold(),
+      titleTextStyle: AppStyles.font18WhiteTextMedium.copyWith(
+        fontWeight: FontWeight.bold,
+      ),
+
+      iconTheme: IconThemeData(color: AppColors.lightBackgroundColor),
     ),
 
     textTheme: TextTheme(

@@ -1,36 +1,42 @@
-import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/core/manager/bottom_nav_bar/patient_bottom_nav_bar_cubit.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_doctors_screen.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/screens/admin_settings_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/admin_appointment_screen.dart';
 
 import 'package:doctor_hunt/features/home/presentation/widgets/bottom_nav_bar/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminBottomNavBar extends StatelessWidget {
   AdminBottomNavBar({super.key});
 
-  final ValueNotifier<int> _currentIndex = ValueNotifier(0);
-
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: _currentIndex,
-      builder: (context, value, child) {
+    return BlocBuilder<BottomNavBarCubit, BottomNavBarState>(
+      builder: (context, state) {
         return Scaffold(
           bottomNavigationBar: CustomBottomNavBar(
+            onPop: () {
+              if (state.bottomNavBarIndex == 0) {
+                SystemNavigator.pop();
+              } else {
+                context.read<BottomNavBarCubit>().updateBottomNavBarIndex(0);
+              }
+            },
             titles: titles,
-            currentIndex: _currentIndex.value,
+            currentIndex: state.bottomNavBarIndex,
             onBottomNavBarChanged: (index) {
-              _currentIndex.value = index;
+              context.read<BottomNavBarCubit>().updateBottomNavBarIndex(index);
             },
             icons: _icons,
           ),
 
-          body: _screens.elementAt(_currentIndex.value),
+          body: _screens.elementAt(state.bottomNavBarIndex),
         );
       },
     );
@@ -54,6 +60,6 @@ class AdminBottomNavBar extends StatelessWidget {
       child: AdminAppointmentScreen(),
     ),
 
-    Container(color: AppColors.redLinearOne),
+    AdminSettingsScreen(),
   ];
 }

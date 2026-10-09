@@ -9,11 +9,13 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/ad
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/screens/admin_edit_profile_screen.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_view_details_screen.dart';
 import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cubit.dart';
 import 'package:doctor_hunt/features/booking/presentation/screens/select_time_screen.dart';
+import 'package:doctor_hunt/core/manager/bottom_nav_bar/patient_bottom_nav_bar_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/doctor_details_screen.dart';
 import 'package:doctor_hunt/features/booking/presentation/screens/appointment_time_screen.dart';
 
@@ -85,7 +87,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.bottomNavBar,
         builder: (context, state) {
-          return BottomNavBarScreen();
+          return BlocProvider(
+            create: (context) => gi<BottomNavBarCubit>(),
+            child: PatientBottomNavBarScreen(),
+          );
         },
       ),
       GoRoute(
@@ -140,9 +145,18 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
+        path: AppRoutes.AdminEditProfileScreen,
+        builder: (context, state) {
+          return AdminEditProfileScreen();
+        },
+      ),
+      GoRoute(
         path: AppRoutes.adminbottomNavBar,
         builder: (context, state) {
-          return AdminBottomNavBar();
+          return BlocProvider(
+            create: (context) => gi<BottomNavBarCubit>(),
+            child: AdminBottomNavBar(),
+          );
         },
       ),
       GoRoute(

@@ -22,6 +22,22 @@ class Assets {
   /// assets/images/add_patient.png
   static const String assetsImagesAddPatient = "assets/images/add_patient.png";
 
+  /// Assets for assetsImagesAdminAppInfo
+  /// assets/images/admin_app_info.png
+  static const String assetsImagesAdminAppInfo = "assets/images/admin_app_info.png";
+
+  /// Assets for assetsImagesAdminCamera
+  /// assets/images/admin_camera.png
+  static const String assetsImagesAdminCamera = "assets/images/admin_camera.png";
+
+  /// Assets for assetsImagesAdminChangePass
+  /// assets/images/admin_change_pass.png
+  static const String assetsImagesAdminChangePass = "assets/images/admin_change_pass.png";
+
+  /// Assets for assetsImagesAdminProfile
+  /// assets/images/admin_profile.png
+  static const String assetsImagesAdminProfile = "assets/images/admin_profile.png";
+
   /// Assets for assetsImagesAppointment
   /// assets/images/appointment.png
   static const String assetsImagesAppointment = "assets/images/appointment.png";
@@ -77,6 +93,10 @@ class Assets {
   /// Assets for assetsImagesHomAppBarImage
   /// assets/images/hom_app_bar_image.png
   static const String assetsImagesHomAppBarImage = "assets/images/hom_app_bar_image.png";
+
+  /// Assets for assetsImagesHorizontalDivider
+  /// assets/images/horizontal_divider.png
+  static const String assetsImagesHorizontalDivider = "assets/images/horizontal_divider.png";
 
   /// Assets for assetsImagesLanguage
   /// assets/images/Language.png
@@ -142,6 +162,10 @@ class Assets {
   /// assets/images/privacy_content.png
   static const String assetsImagesPrivacyContent = "assets/images/privacy_content.png";
 
+  /// Assets for assetsImagesProfileContainer
+  /// assets/images/profile_container.png
+  static const String assetsImagesProfileContainer = "assets/images/profile_container.png";
+
   /// Assets for assetsImagesSettingsLock
   /// assets/images/settings_lock.png
   static const String assetsImagesSettingsLock = "assets/images/settings_lock.png";
@@ -158,6 +182,10 @@ class Assets {
   /// assets/images/settings_switch.png
   static const String assetsImagesSettingsSwitch = "assets/images/settings_switch.png";
 
+  /// Assets for assetsImagesSettingsTopAction
+  /// assets/images/settings_top_action.png
+  static const String assetsImagesSettingsTopAction = "assets/images/settings_top_action.png";
+
   /// Assets for assetsImagesSplashAboveAndroid12
   /// assets/images/splash_above_android_12.png
   static const String assetsImagesSplashAboveAndroid12 = "assets/images/splash_above_android_12.png";
@@ -165,6 +193,10 @@ class Assets {
   /// Assets for assetsImagesSplashBelowAndroid12
   /// assets/images/splash_below_android_12.png
   static const String assetsImagesSplashBelowAndroid12 = "assets/images/splash_below_android_12.png";
+
+  /// Assets for assetsImagesTapPhoto
+  /// assets/images/tap_photo.png
+  static const String assetsImagesTapPhoto = "assets/images/tap_photo.png";
 
   /// Assets for assetsImagesTopEllipse
   /// assets/images/top_ellipse.png

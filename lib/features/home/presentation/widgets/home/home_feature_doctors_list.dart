@@ -21,8 +21,11 @@ class HomeFeatureDoctorsList extends StatelessWidget {
       builder: (context, state) {
         if (state.getFeatureDoctors.isInitial ||
             state.getFeatureDoctors.isLoading) {
-          return Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
+          return SizedBox(
+            height: 140.h,
+            child: Center(
+              child: CircularProgressIndicator(color: AppColors.primaryColor),
+            ),
           );
         }
 

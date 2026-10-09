@@ -21,8 +21,11 @@ class HomePopularDoctors extends StatelessWidget {
       builder: (context, state) {
         if (state.getPopularDoctors.isInitial ||
             state.getPopularDoctors.isLoading) {
-          return Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
+          return SizedBox(
+            height: 250.h,
+            child: Center(
+              child: CircularProgressIndicator(color: AppColors.primaryColor),
+            ),
           );
         }
         return SizedBox(

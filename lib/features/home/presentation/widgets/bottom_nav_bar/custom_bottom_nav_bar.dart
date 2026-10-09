@@ -12,56 +12,62 @@ class CustomBottomNavBar extends StatelessWidget {
     required this.onBottomNavBarChanged,
     required this.icons,
     this.titles,
+    required this.onPop,
   });
   final int currentIndex;
   final ValueChanged<int> onBottomNavBarChanged;
   final List<String> icons;
   final List<String>? titles;
+  final VoidCallback onPop;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.blackColor.withValues(alpha: 0.25),
-            blurRadius: 180.r,
-            offset: Offset(0, 4.h),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.r),
-          topRight: Radius.circular(20.r),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) => onPop(),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.blackColor.withValues(alpha: 0.25),
+              blurRadius: 180.r,
+              offset: Offset(0, 4.h),
+            ),
+          ],
         ),
-        child: BottomAppBar(
-          color: context.isDarkMode
-              ? AppColors.darkBackgroundColor
-              : AppColors.lightBackgroundColor,
-          height: 74,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: List.generate(
-              icons.length,
-              (index) => GestureDetector(
-                onTap: () => onBottomNavBarChanged(index),
-                child: !titles.isNull
-                    ? Column(
-                        children: [
-                          _buildIconWithoutContainer(index),
-                          SizedBox(height: 5.h),
-                          Text(
-                            titles![index],
-                            style: context.textTheme.bodySmall!.copyWith(
-                              color: currentIndex == index
-                                  ? AppColors.primaryColor
-                                  : AppColors.greyColor,
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.r),
+            topRight: Radius.circular(20.r),
+          ),
+          child: BottomAppBar(
+            color: context.isDarkMode
+                ? AppColors.darkBackgroundColor
+                : AppColors.lightBackgroundColor,
+            height: 74,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(
+                icons.length,
+                (index) => GestureDetector(
+                  onTap: () => onBottomNavBarChanged(index),
+                  child: !titles.isNull
+                      ? Column(
+                          children: [
+                            _buildIconWithoutContainer(index),
+                            SizedBox(height: 5.h),
+                            Text(
+                              titles![index],
+                              style: context.textTheme.bodySmall!.copyWith(
+                                color: currentIndex == index
+                                    ? AppColors.primaryColor
+                                    : AppColors.greyColor,
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    : _buildCircleIcon(index),
+                          ],
+                        )
+                      : _buildCircleIcon(index),
+                ),
               ),
             ),
           ),

@@ -18,6 +18,7 @@ import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cu
 import 'package:doctor_hunt/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
+import 'package:doctor_hunt/core/manager/bottom_nav_bar/patient_bottom_nav_bar_cubit.dart';
 import 'package:doctor_hunt/features/favourite/data/repo/fav_repo_imp.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/data/repo/home_repo_imp.dart';
@@ -71,6 +72,7 @@ void setupServiceLocator() async {
 
   ///all cubits
 
+  gi.registerFactory(() => BottomNavBarCubit());
   gi.registerFactory(
     () => SelectTimeCubit(bookingRepo: gi.get<BookingRepoImpl>()),
   );

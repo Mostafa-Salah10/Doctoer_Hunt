@@ -1,6 +1,7 @@
-import 'package:doctor_hunt/core/config/theme/app_colors.dart';
-import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_edit_profile_form.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_settings_change_profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,36 +11,46 @@ class AdminEditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Edit Profile")),
-
-      body: Column(
-        children: [
-          const VerticalSpace(height: 20),
-          Center(
-            child: Container(
-              width: 120.w,
-              height: 120.w,
-              decoration: BoxDecoration(shape: BoxShape.circle),
-
-              child: Stack(
-                children: [
-                  Image.asset(Assets.assetsImagesProfileContainer),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: Image.asset(
-                      Assets.assetsImagesAdminCamera,
-                      height: 40.w,
+      appBar: AppBar(
+        title: const Text('Edit Profile'),
+      ),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    const AdminSetttingsTopChangeProfileImage(),
+                    AdminEditProfileForm(
+                      formKey: GlobalKey<FormState>(),
+                      nameController: TextEditingController(),
+                      emailController: TextEditingController(),
+                      locationController: TextEditingController(),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-
-          const VerticalSpace(height: 5),
-          Image.asset(Assets.assetsImagesTapPhoto,width: 120.w,),
-        ],
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    AppButton(
+                      text: 'Save Changes',
+                      onPressed: () {},
+                    ),
+                    const VerticalSpace(height: 20),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

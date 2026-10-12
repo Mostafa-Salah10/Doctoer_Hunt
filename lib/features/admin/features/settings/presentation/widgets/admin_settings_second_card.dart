@@ -34,7 +34,7 @@ class AdminSettingsSecondCard extends StatelessWidget {
         children: [
           InkWell(
             
-            onTap: () => context.pushNamed(AppRoutes.AdminEditProfileScreen),
+            onTap: () => context.pushNamed(AppRoutes.adminEditProfileScreen),
             child: Image.asset(Assets.assetsImagesAdminProfile)),
           Image.asset(Assets.assetsImagesHorizontalDivider),
 

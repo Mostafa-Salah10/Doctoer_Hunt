@@ -12,6 +12,8 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
     required this.image,
     required this.title,
     required this.subTitle,
+
+    this.isLarge = false,
   });
 
   final String image;
@@ -19,6 +21,8 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
   final String subTitle;
 
   final bool showContainer;
+
+  final bool isLarge;
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +45,22 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
       spacing: 10,
       children: [
         Container(
-          padding: EdgeInsets.all(7),
+          padding: EdgeInsets.all(isLarge ? 14 : 7),
           decoration: BoxDecoration(
             color: AppColors.primaryColor.withValues(alpha: 0.1),
 
             borderRadius: BorderRadius.circular(10),
           ),
 
-          child: SvgPicture.asset(image, width: 20, height: 20),
+          child: SvgPicture.asset(
+            image,
+            width: 20,
+            height: 20,
+            colorFilter: ColorFilter.mode(
+              AppColors.primaryColor,
+              BlendMode.srcIn,
+            ),
+          ),
         ),
 
         Expanded(
@@ -64,7 +76,7 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
                   title,
                   style: context.textTheme.bodySmall!.copyWith(
                     color: AppColors.greyColor,
-                    fontSize: 11.sp,
+                    fontSize: isLarge ? 14.sp : 11.sp,
                   ),
                 ),
               ),
@@ -75,7 +87,7 @@ class AppointmentShowSpecificDataCard extends StatelessWidget {
                   // overflow: TextOverflow.ellipsis,
                   subTitle,
                   style: context.textTheme.bodySmall!.copyWith(
-                    fontSize: 14.sp,
+                    fontSize: isLarge ? 16.sp : 14.sp,
 
                     color: context.isDarkMode
                         ? AppColors.lightBackgroundColor

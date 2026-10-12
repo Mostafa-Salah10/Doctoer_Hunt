@@ -1,5 +1,7 @@
+import 'package:doctor_hunt/core/config/routing/app_routes.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_all_doctors_item.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +25,15 @@ class AdminAllDoctorsList extends StatelessWidget {
             separatorBuilder: (_, __) =>
                 const Divider(height: 30, color: Colors.grey, thickness: 0.2),
             itemBuilder: (context, index) {
-              return AdminAllDoctorsItem(doctor: doctors.elementAt(index));
+              return InkWell(
+                onTap: () {
+                  context.pushNamed(
+                    AppRoutes.adminDoctorDetailsScreen,
+                    arguments: doctors.elementAt(index),
+                  );
+                },
+                child: AdminAllDoctorsItem(doctor: doctors.elementAt(index)),
+              );
             },
           );
   }

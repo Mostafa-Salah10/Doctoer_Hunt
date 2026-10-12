@@ -62,6 +62,14 @@ class Assets {
   /// assets/images/camera.png
   static const String assetsImagesCamera = "assets/images/camera.png";
 
+  /// Assets for assetsImagesDoctorEditButton
+  /// assets/images/doctor_edit_button.png
+  static const String assetsImagesDoctorEditButton = "assets/images/doctor_edit_button.png";
+
+  /// Assets for assetsImagesDoctorMangeAvailabiltiy
+  /// assets/images/doctor_mange_availabiltiy.png
+  static const String assetsImagesDoctorMangeAvailabiltiy = "assets/images/doctor_mange_availabiltiy.png";
+
   /// Assets for assetsImagesFakeRateDoctor
   /// assets/images/fake_rate_doctor.png
   static const String assetsImagesFakeRateDoctor = "assets/images/fake_rate_doctor.png";
@@ -210,6 +218,10 @@ class Assets {
   /// assets/launchers/laucher_icon.png
   static const String assetsLaunchersLaucherIcon = "assets/launchers/laucher_icon.png";
 
+  /// Assets for assetsSvgsActiveDoctor
+  /// assets/svgs/active_doctor.svg
+  static const String assetsSvgsActiveDoctor = "assets/svgs/active_doctor.svg";
+
   /// Assets for assetsSvgsAdminActions
   /// assets/svgs/admin_actions.svg
   static const String assetsSvgsAdminActions = "assets/svgs/admin_actions.svg";
@@ -254,6 +266,10 @@ class Assets {
   /// assets/svgs/date.svg
   static const String assetsSvgsDate = "assets/svgs/date.svg";
 
+  /// Assets for assetsSvgsDoctorVerificationIcon
+  /// assets/svgs/doctor_verification_icon.svg
+  static const String assetsSvgsDoctorVerificationIcon = "assets/svgs/doctor_verification_icon.svg";
+
   /// Assets for assetsSvgsDollar
   /// assets/svgs/dollar.svg
   static const String assetsSvgsDollar = "assets/svgs/dollar.svg";
@@ -281,6 +297,10 @@ class Assets {
   /// Assets for assetsSvgsHome
   /// assets/svgs/home.svg
   static const String assetsSvgsHome = "assets/svgs/home.svg";
+
+  /// Assets for assetsSvgsInactiveDoctor
+  /// assets/svgs/inactive_doctor.svg
+  static const String assetsSvgsInactiveDoctor = "assets/svgs/inactive_doctor.svg";
 
   /// Assets for assetsSvgsLive
   /// assets/svgs/live.svg

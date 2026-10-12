@@ -4,10 +4,12 @@ import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.d
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
+import 'package:doctor_hunt/features/admin/features/availability/presentation/screens/doctor_availability_screen.dart';
 import 'package:doctor_hunt/features/admin/features/bottom_nav_bar/presentation/screens/admin_bottom_nav_bar.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
+import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_doctor_details_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/screens/admin_edit_profile_screen.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
@@ -145,9 +147,15 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: AppRoutes.AdminEditProfileScreen,
+        path: AppRoutes.adminEditProfileScreen,
         builder: (context, state) {
-          return AdminEditProfileScreen();
+          return adminEditProfileScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.adminDoctorDetailsScreen,
+        builder: (context, state) {
+          return AdminDoctorDetailsScreen(doctor: state.extra as DoctorEntity);
         },
       ),
       GoRoute(
@@ -169,6 +177,12 @@ abstract class AppRouter {
         path: AppRoutes.profileScreen,
         builder: (context, state) {
           return ProfileScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.doctorAvailabilityScreen,
+        builder: (context, state) {
+          return DoctorAvailabilityScreen(doctor: state.extra as DoctorEntity);
         },
       ),
       GoRoute(

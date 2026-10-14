@@ -1,4 +1,3 @@
-import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -51,11 +50,7 @@ class CustomAdminTextField extends StatelessWidget {
           keyboardType: keyboardType,
           readOnly: readOnly,
           onTap: onTap,
-          style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.darkTextColor,
-          ),
+
           fillColor: enabled ? Colors.white : const Color(0xFFF3F5F8),
           contentPadding: EdgeInsets.symmetric(
             horizontal: 20.w,

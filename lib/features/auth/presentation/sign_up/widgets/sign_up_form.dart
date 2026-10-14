@@ -86,7 +86,7 @@ class _SignUpFormState extends State<SignUpForm> {
             buildWhen: (previous, current) => current.signUp != previous.signUp,
             listener: (context, state) {
               if (state.signUp.isSuccess) {
-                context.pushReplacementNamed(AppRoutes.signIn);
+                context.pushReplacementNamed(AppRoutes.patientCompleteInfoScreen);
               } else if (state.signUp.isError) {
                 toastAlert(
                   msg: state.signUp.error!,

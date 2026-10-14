@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
+import 'package:doctor_hunt/core/functions/upload_image.dart';
 import 'package:doctor_hunt/features/auth/data/repo/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -80,7 +83,29 @@ class AuthRepoImpl implements AuthRepo {
       await _fireStore.collection("patients").doc("patient_${user.uid}").set({
         "name": name,
         "email": email,
+        "phone": "",
+        "imageUrl": "",
       });
+    }
+  }
+
+  @override
+  Future<Either<String, Null>> setPaientProfile({
+    required String patientId,
+    required File image,
+    required String phone,
+  }) async {
+    try {
+      final imageUrl = await uploadImage(image);
+
+      await _fireStore.collection("patients").doc("patient_$patientId").update({
+        "phone": phone,
+        "imageUrl": imageUrl,
+      });
+
+      return right(null);
+    } catch (e) {
+      return left(e.toString());
     }
   }
 

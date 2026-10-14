@@ -16,6 +16,7 @@ import 'package:doctor_hunt/features/admin/features/settings/presentation/screen
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/appointment_view_details_screen.dart';
+import 'package:doctor_hunt/features/auth/presentation/sign_up/screens/complete_info_screen.dart';
 import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cubit.dart';
 import 'package:doctor_hunt/features/booking/presentation/screens/select_time_screen.dart';
 import 'package:doctor_hunt/core/manager/bottom_nav_bar/patient_bottom_nav_bar_cubit.dart';
@@ -46,7 +47,7 @@ abstract class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: _getInitialRoute(),
 
-    // initialLocation: AppRoutes.doctorSelectTimeScreen,
+    // initialLocation: AppRoutes.patientCompleteInfoScreen,
     routes: [
       GoRoute(
         path: AppRoutes.onboarding,
@@ -151,6 +152,15 @@ abstract class AppRouter {
         path: AppRoutes.adminEditProfileScreen,
         builder: (context, state) {
           return AdminEditProfileScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.patientCompleteInfoScreen,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => gi<SignUpCubit>(),
+            child: CompleteInfoScreen(),
+          );
         },
       ),
       GoRoute(

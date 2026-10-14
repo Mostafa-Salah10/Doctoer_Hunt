@@ -18,6 +18,10 @@ class Assets {
   /// assets/i18n/strings_en.i18n.json
   static const String assetsI18nStringsEnI18n = "assets/i18n/strings_en.i18n.json";
 
+  /// Assets for assetsImagesAddImage
+  /// assets/images/add_image.png
+  static const String assetsImagesAddImage = "assets/images/add_image.png";
+
   /// Assets for assetsImagesAddPatient
   /// assets/images/add_patient.png
   static const String assetsImagesAddPatient = "assets/images/add_patient.png";

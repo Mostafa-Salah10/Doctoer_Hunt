@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 
@@ -14,4 +16,9 @@ abstract class AuthRepo {
   });
 
   Future<Either<String, Null>> resetPass({required String email});
+  Future<Either<String, Null>> setPaientProfile({
+    required String patientId,
+    required File image,
+    required String phone,
+  });
 }

@@ -16,10 +16,53 @@ class BookingRepoImpl implements BookingRepo {
   Future<Either<String, List<DoctorAvailableDayModel>>>
   getAvailableDaysWithSlots({required String doctorId}) async {
     try {
+      final settingsResponse = await _firestore
+          .collection('doctor_availability')
+          .doc(doctorId)
+          .get();
+
+      if (!settingsResponse.exists) {
+        return right([]);
+      }
+
+      final weeklySettings =
+          settingsResponse.data()?['weeklySettings'] as Map<String, dynamic>? ??
+          {};
+
       final daysResponse = await _getAvailableDays(doctorId);
 
+      final now = DateTime.now();
+      final today = DateTime(now.year, now.month, now.day);
+
+      const weekdayKeys = [
+        '',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday',
+      ];
+
+      final validDays = daysResponse.docs.where((dayDoc) {
+        final date = DateTime.tryParse(dayDoc.id);
+
+        if (date == null) return false;
+
+        final dayDate = DateTime(date.year, date.month, date.day);
+
+        if (dayDate.isBefore(today)) return false;
+
+        final weekdayKey = weekdayKeys[date.weekday];
+
+        if (weeklySettings[weekdayKey] != true) return false;
+
+        return true;
+      }).toList();
+
       final days = await Future.wait(
-        daysResponse.docs.map((dayDoc) async {
+        validDays.map((dayDoc) async {
           final slotsResponse = await dayDoc.reference
               .collection('slots')
               .get();

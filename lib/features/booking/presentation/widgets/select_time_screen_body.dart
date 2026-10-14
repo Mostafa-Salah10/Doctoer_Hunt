@@ -8,6 +8,7 @@ import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
 import 'package:doctor_hunt/core/widgets/doctor_details_horizontal_card.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cubit.dart';
+import 'package:doctor_hunt/features/booking/presentation/widgets/custom_done_dialog.dart';
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_day_data_with_title.dart';
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_day_list.dart';
 import 'package:flutter/material.dart';
@@ -66,9 +67,15 @@ class SelectTimeScreenBody extends StatelessWidget {
                           color: AppColors.errorColor,
                         );
                       } else if (state.bookWithDoctor.isSuccess) {
-                        toastAlert(
-                          msg: "Slot Booking Successfully",
-                          color: AppColors.primaryColor,
+                        // toastAlert(
+                        //   msg: "Slot Booking Successfully",
+                        //   color: AppColors.primaryColor,
+                        // );
+
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) => CustomDoneDialog(),
                         );
                       }
                     },

@@ -1,5 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/extensions/size_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
@@ -71,7 +72,17 @@ class CustomDoneDialog extends StatelessWidget {
 
             const VerticalSpace(height: 29),
 
-            AppButton(text: "Done", onPressed: () {}),
+            AppButton(
+              text: "Done",
+              onPressed: () {
+                int i = 0;
+                while (i < 3) {
+                  context.pop();
+
+                  i++;
+                }
+              },
+            ),
           ],
         ),
       ),

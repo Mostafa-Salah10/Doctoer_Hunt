@@ -2,8 +2,12 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart' show AppColors;
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/helpers/date_time_helper.dart';
 import 'package:doctor_hunt/features/admin/features/availability/data/models/doctor_working_day_model.dart';
+import 'package:doctor_hunt/features/admin/features/availability/presentation/manager/doctor_availability_cubit.dart';
+import 'package:doctor_hunt/features/admin/features/availability/presentation/widgets/determine_slot_duration.dart';
 import 'package:doctor_hunt/features/admin/features/availability/presentation/widgets/doctor_availability_time_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DoctorAvailabilityWorkingHours extends StatelessWidget {
   const DoctorAvailabilityWorkingHours({super.key, required this.model});
@@ -11,6 +15,7 @@ class DoctorAvailabilityWorkingHours extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<DoctorAvailabilityCubit>();
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -28,35 +33,64 @@ class DoctorAvailabilityWorkingHours extends StatelessWidget {
         ],
       ),
 
-      child: Column(
-        spacing: 20,
-        children: [
-          Row(
-            spacing: 15,
+      child: BlocBuilder<DoctorAvailabilityCubit, DoctorAvailabilityState>(
+        builder: (context, state) {
+          return Column(
+            spacing: 20,
             children: [
-              Expanded(
-                child: DoctorAvailabilityTimeContainer(
-                  onTap: () {},
-                  title: "Start Time".toUpperCase(),
-                  time: DateTimeHelper.formateTimeToAMAndPM(model.startTime),
-                ),
+              Row(
+                spacing: 15,
+                children: [
+                  Expanded(
+                    child: DoctorAvailabilityTimeContainer(
+                      onTap: () {
+                        showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.now(),
+                        ).then((time) {
+                          if (time != null) {
+                            cubit.updateWorkingHours(time, true);
+                          }
+                        });
+                      },
+                      title: "Start Time".toUpperCase(),
+                      time: DateTimeHelper.formateTimeToAMAndPM(
+                        model.startTime,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: DoctorAvailabilityTimeContainer(
+                      onTap: () {
+                        showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.now(),
+                        ).then((time) {
+                          if (time != null) {
+                            cubit.updateWorkingHours(time, false);
+                          }
+                        });
+                      },
+                      time: DateTimeHelper.formateTimeToAMAndPM(model.endTime),
+                      title: "End Time".toUpperCase(),
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: DoctorAvailabilityTimeContainer(
-                  onTap: () {},
-                  time: DateTimeHelper.formateTimeToAMAndPM(model.endTime),
-                  title: "End Time".toUpperCase(),
-                ),
+
+              DoctorAvailabilityTimeContainer(
+                onTap: () async {
+                  final minutes = await showSlotDurationDialog(context, 30);
+                  if (minutes != null) {
+                    cubit.updateSlotDuration(minutes.toDouble());
+                  }
+                },
+                title: "Slot Duration".toUpperCase(),
+                time: DateTimeHelper.formatDuration(model.slotDuration.toInt()),
               ),
             ],
-          ),
-
-          DoctorAvailabilityTimeContainer(
-            onTap: () {},
-            title: "Slot Duration".toUpperCase(),
-            time: "${model.slotDuration.toStringAsFixed(0)} Minutes",
-          ),
-        ],
+          );
+        },
       ),
     );
   }

@@ -218,6 +218,10 @@ class Assets {
   /// assets/launchers/laucher_icon.png
   static const String assetsLaunchersLaucherIcon = "assets/launchers/laucher_icon.png";
 
+  /// Assets for assetsSvgsActiveAvailability
+  /// assets/svgs/active_availability.svg
+  static const String assetsSvgsActiveAvailability = "assets/svgs/active_availability.svg";
+
   /// Assets for assetsSvgsActiveDoctor
   /// assets/svgs/active_doctor.svg
   static const String assetsSvgsActiveDoctor = "assets/svgs/active_doctor.svg";
@@ -253,6 +257,10 @@ class Assets {
   /// Assets for assetsSvgsClock
   /// assets/svgs/clock.svg
   static const String assetsSvgsClock = "assets/svgs/clock.svg";
+
+  /// Assets for assetsSvgsClockAva
+  /// assets/svgs/clock_ava.svg
+  static const String assetsSvgsClockAva = "assets/svgs/clock_ava.svg";
 
   /// Assets for assetsSvgsClose
   /// assets/svgs/close.svg
@@ -297,6 +305,10 @@ class Assets {
   /// Assets for assetsSvgsHome
   /// assets/svgs/home.svg
   static const String assetsSvgsHome = "assets/svgs/home.svg";
+
+  /// Assets for assetsSvgsInactiveAvailability
+  /// assets/svgs/inactive_availability.svg
+  static const String assetsSvgsInactiveAvailability = "assets/svgs/inactive_availability.svg";
 
   /// Assets for assetsSvgsInactiveDoctor
   /// assets/svgs/inactive_doctor.svg

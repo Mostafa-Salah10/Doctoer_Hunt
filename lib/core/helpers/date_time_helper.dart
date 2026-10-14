@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeHelper {
@@ -14,12 +15,21 @@ class DateTimeHelper {
         ? 'Today, ${DateFormat('d MMM').format(parsedDate)}'
         : DateFormat('EEE, d MMM').format(parsedDate);
   }
+
   static String formatDateWithDayName(String date) {
     final parsedDate = DateTime.parse(date);
 
-  
+    return DateFormat('dd MMM yyyy').format(parsedDate);
+  }
 
-      
-    return  DateFormat('dd MMM yyyy').format(parsedDate);
+  static TimeOfDay formateTimeFromAMAndPM(String time) {
+    final format = DateFormat.jm();
+    final dateTime = format.parse(time);
+    return TimeOfDay.fromDateTime(dateTime);
+  }
+
+  static String formateTimeToAMAndPM(TimeOfDay time) {
+    final dateTime = DateTime(2026, 1, 1, time.hour, time.minute);
+    return DateFormat('hh:mm a').format(dateTime);
   }
 }

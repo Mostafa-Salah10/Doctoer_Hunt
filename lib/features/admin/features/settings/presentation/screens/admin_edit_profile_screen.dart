@@ -5,8 +5,8 @@ import 'package:doctor_hunt/features/admin/features/settings/presentation/widget
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class adminEditProfileScreen extends StatelessWidget {
-  const adminEditProfileScreen({super.key});
+class AdminEditProfileScreen extends StatelessWidget {
+  const AdminEditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,8 @@ import 'package:doctor_hunt/core/config/theme/manager/theme_cubit.dart';
 import 'package:doctor_hunt/core/database/shared/data/data_source/shared_remote_data_source.dart';
 import 'package:doctor_hunt/core/database/shared/data/repo/shared_repo_impl.dart';
 import 'package:doctor_hunt/core/database/shared/domain/usecases/get_all_doctors.dart';
+import 'package:doctor_hunt/features/admin/features/availability/data/repo/doctor_availability_repo_impl.dart';
+import 'package:doctor_hunt/features/admin/features/availability/presentation/manager/doctor_availability_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/data/data_source/admin_home_remote_data_source.dart';
 import 'package:doctor_hunt/features/admin/features/home/data/repo/admin_home_repo_impl.dart';
 import 'package:doctor_hunt/features/admin/features/home/domain/use_case/create_doctor.dart';
@@ -53,6 +55,11 @@ void setupServiceLocator() async {
   );
 
   gi.registerLazySingleton(() => OnboardingCubit());
+  gi.registerLazySingleton(
+    () => DoctorAvailabilityRepoImpl(
+      firebaseFirestore: FirebaseFirestore.instance,
+    ),
+  );
 
   gi.registerLazySingleton(() => ThemeCubit());
   gi.registerLazySingleton(
@@ -73,6 +80,9 @@ void setupServiceLocator() async {
   ///all cubits
 
   gi.registerFactory(() => BottomNavBarCubit());
+  gi.registerFactory(
+    () => DoctorAvailabilityCubit(repo: gi<DoctorAvailabilityRepoImpl>()),
+  );
   gi.registerFactory(
     () => SelectTimeCubit(bookingRepo: gi.get<BookingRepoImpl>()),
   );

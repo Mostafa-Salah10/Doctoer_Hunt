@@ -4,6 +4,7 @@ import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.d
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/app_strings.dart';
+import 'package:doctor_hunt/features/admin/features/availability/presentation/manager/doctor_availability_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/availability/presentation/screens/doctor_availability_screen.dart';
 import 'package:doctor_hunt/features/admin/features/bottom_nav_bar/presentation/screens/admin_bottom_nav_bar.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
@@ -149,7 +150,7 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.adminEditProfileScreen,
         builder: (context, state) {
-          return adminEditProfileScreen();
+          return AdminEditProfileScreen();
         },
       ),
       GoRoute(
@@ -182,7 +183,13 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.doctorAvailabilityScreen,
         builder: (context, state) {
-          return DoctorAvailabilityScreen(doctor: state.extra as DoctorEntity);
+          final doctor = state.extra as DoctorEntity;
+          return BlocProvider(
+            create: (context) =>
+                gi<DoctorAvailabilityCubit>()
+                  ..getWorkingDays(doctorId: doctor.id),
+            child: DoctorAvailabilityScreen(doctor: doctor),
+          );
         },
       ),
       GoRoute(

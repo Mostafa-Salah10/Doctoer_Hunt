@@ -15,7 +15,7 @@ abstract class AppRoutes {
   static const String privacyPolicyScreen = '/privacyPolicyScreen';
   static const String appointmentViewDetailsScreen = '/appointmentViewDetailsScreen';
   static const String profileScreen = '/profileScreen';
-  static const String adminEditProfileScreen = '/adminEditProfileScreen';
+  static const String adminEditProfileScreen = '/AdminEditProfileScreen';
   static const String adminDoctorDetailsScreen = '/adminDoctorDetailsScreen';
   static const String doctorAvailabilityScreen = '/doctorAvailabilityScreen';
   static const String seeAllFeatureDoctoraScreen =

@@ -35,6 +35,8 @@ import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_feat
 import 'package:doctor_hunt/features/home/presentation/screens/home_see_all_popular_doctors_screen.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:doctor_hunt/features/settings/data/models/patient_model.dart';
+import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:doctor_hunt/features/settings/presentation/screens/privacy_screen.dart';
 import 'package:doctor_hunt/features/settings/presentation/screens/profile_screen.dart';
 
@@ -187,7 +189,13 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.profileScreen,
         builder: (context, state) {
-          return ProfileScreen();
+          var data = state.extra as Map<String, dynamic>;
+          PatientModel patient = data['patient'];
+          SettingsCubit cubit = data['cubit'];
+          return BlocProvider(
+            create: (context) => cubit,
+            child: ProfileScreen(patient: patient),
+          );
         },
       ),
       GoRoute(

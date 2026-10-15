@@ -26,6 +26,8 @@ import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cu
 import 'package:doctor_hunt/features/home/data/repo/home_repo_imp.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
+import 'package:doctor_hunt/features/settings/data/repo/settings_repo_impl.dart';
+import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -60,6 +62,11 @@ void setupServiceLocator() async {
       firebaseFirestore: FirebaseFirestore.instance,
     ),
   );
+  gi.registerLazySingleton(
+    () => SettingsRepoImpl(
+      firebaseFirestore: FirebaseFirestore.instance,
+    ),
+  );
 
   gi.registerLazySingleton(() => ThemeCubit());
   gi.registerLazySingleton(
@@ -79,6 +86,9 @@ void setupServiceLocator() async {
 
   ///all cubits
 
+  gi.registerFactory(() => SettingsCubit(
+    settingsRepo: gi<SettingsRepoImpl>()
+  ));
   gi.registerFactory(() => BottomNavBarCubit());
   gi.registerFactory(
     () => DoctorAvailabilityCubit(repo: gi<DoctorAvailabilityRepoImpl>()),

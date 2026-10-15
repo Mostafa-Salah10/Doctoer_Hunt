@@ -7,9 +7,11 @@ import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:doctor_hunt/core/widgets/custom_log_out_widget.dart';
 import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:doctor_hunt/features/settings/presentation/widgets/addtional_settings_list.dart';
 import 'package:doctor_hunt/features/settings/presentation/widgets/setting_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -29,12 +31,26 @@ class SettingScreen extends StatelessWidget {
 
               const VerticalSpace(height: 34),
 
-              InkWell(
-                onTap: () {
-                  context.pushNamed(AppRoutes.profileScreen);
-                },
+              BlocBuilder<SettingsCubit, SettingsState>(
+                buildWhen: (previous, current) =>
+                    previous.getCurrentPatient != current.getCurrentPatient,
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () {
+                      if (state.getCurrentPatient.data != null) {
+                        context.pushNamed(
+                          AppRoutes.profileScreen,
+                          arguments: {
+                            'cubit': context.read<SettingsCubit>(),
+                            'patient': state.getCurrentPatient.data,
+                          },
+                        );
+                      }
+                    },
 
-                child: const SettingCard(),
+                    child: SettingCard(patient: state.getCurrentPatient.data),
+                  );
+                },
               ),
 
               const VerticalSpace(height: 10),

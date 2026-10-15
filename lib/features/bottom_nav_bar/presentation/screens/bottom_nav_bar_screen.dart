@@ -1,4 +1,3 @@
-
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
@@ -9,6 +8,7 @@ import 'package:doctor_hunt/features/favourite/presentation/screens/favourite_sc
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/screens/home_screen.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/bottom_nav_bar/custom_bottom_nav_bar.dart';
+import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:doctor_hunt/features/settings/presentation/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,16 +29,12 @@ class PatientBottomNavBarScreen extends StatelessWidget {
               if (state.bottomNavBarIndex == 0) {
                 SystemNavigator.pop();
               } else {
-                context
-                    .read<BottomNavBarCubit>()
-                    .updateBottomNavBarIndex(0);
+                context.read<BottomNavBarCubit>().updateBottomNavBarIndex(0);
               }
             },
             currentIndex: state.bottomNavBarIndex,
             onBottomNavBarChanged: (index) {
-              context.read<BottomNavBarCubit>().updateBottomNavBarIndex(
-                index,
-              );
+              context.read<BottomNavBarCubit>().updateBottomNavBarIndex(index);
             },
             icons: _icons,
           ),
@@ -81,6 +77,9 @@ class PatientBottomNavBarScreen extends StatelessWidget {
       child: PatientAppointmentScreen(),
     ),
 
-    SettingScreen(),
+    BlocProvider(
+      create: (context) => gi<SettingsCubit>()..getCurrentPatient(),
+      child: SettingScreen(),
+    ),
   ];
 }

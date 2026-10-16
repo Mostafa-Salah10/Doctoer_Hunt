@@ -172,7 +172,7 @@ class DoctorDetailsHorizontalCard extends StatelessWidget {
                     ),
                     height: 45,
 
-                    text: 'Book Now',
+                    text: context.t.bookNow,
                     onPressed: () async {
                       // await FirebaseFirestore.instance
                       //     .collection('availablity')

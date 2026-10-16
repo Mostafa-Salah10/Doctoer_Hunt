@@ -2,6 +2,7 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/booking/data/models/available_time_model.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -62,7 +63,7 @@ class AvailableTimeListItem extends StatelessWidget {
           const VerticalSpace(height: 2),
 
           Text(
-            availableTime.title,
+            context.t[availableTime.title],
             style: context.textTheme.bodySmall!.copyWith(
               color: index == 2 ? Colors.white : AppColors.primaryColor,
             ),

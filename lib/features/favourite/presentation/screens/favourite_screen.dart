@@ -39,7 +39,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               onSearch: (word) {
                 context.read<FavouriteCubit>().searchForDoctor(word: word);
               },
-              title: "Dentist",
+              title: context.t.dentist,
             ),
             const VerticalSpace(height: 24),
             const FavDoctorsGrid(),

@@ -1,10 +1,10 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/enums/role_enum.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
-import 'package:doctor_hunt/core/extensions/upper_lower_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/data/models/role_model.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -38,7 +38,9 @@ class ChooseRoleListItem extends StatelessWidget {
               border: Border.all(
                 color: selectedRole == role.role
                     ? AppColors.secondaryColor
-                    :context.isDarkMode? AppColors.blackColor.withValues(alpha: 0.16): AppColors.greyBorder,
+                    : context.isDarkMode
+                    ? AppColors.blackColor.withValues(alpha: 0.16)
+                    : AppColors.greyBorder,
                 width: selectedRole == role.role ? 2.w : 1.w,
               ),
             ),
@@ -69,12 +71,14 @@ class ChooseRoleListItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        role.role.name.toUpperCaseFirst,
+                        role.role == Role.patient
+                            ? context.t.patientRole
+                            : context.t.administrator,
                         style: context.textTheme.titleLarge,
                       ),
                       const VerticalSpace(height: 4),
                       Text(
-                        role.description,
+                        context.t[role.description],
                         style: context.textTheme.titleSmall!.copyWith(
                           fontFamily: "PlusJakartaSans",
                           height: 20 / 14,

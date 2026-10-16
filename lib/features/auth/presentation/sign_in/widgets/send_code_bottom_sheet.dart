@@ -7,6 +7,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/widgets/custom_otp_field.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/widgets/reset_password_bottom_sheet.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,12 +53,12 @@ class _ForgotPasswordBottomSheetState extends State<SendCodeBottomSheet> {
 
               const VerticalSpace(height: 55),
               Text(
-                "Enter 4 Digits Code",
+                context.t.enter4DigitsCode,
                 style: context.textTheme.displayLarge,
               ),
               const VerticalSpace(height: 12),
               Text(
-                "Enter the 4 digits code that you received on\nyour email.",
+                context.t.enter4DigitsCodeDescription,
                 style: context.textTheme.titleSmall,
               ),
               const VerticalSpace(height: 27),
@@ -71,7 +72,7 @@ class _ForgotPasswordBottomSheetState extends State<SendCodeBottomSheet> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: AppButton(
-                  text: "Continue",
+                  text: context.t.continueAction,
                   onPressed: () {
                     // if (cubit.sendCodeFormKey.currentState!.validate()) {
                     // }

@@ -2,6 +2,7 @@ import 'package:doctor_hunt/features/admin/features/settings/data/models/admin_m
 import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_edit_profile_form.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_settings_change_profile_image.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class AdminEditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: const Text('Edit Profile')),
+      appBar: AppBar(title: Text(context.t.editProfile)),
       body: SafeArea(
         child: Column(
           children: [

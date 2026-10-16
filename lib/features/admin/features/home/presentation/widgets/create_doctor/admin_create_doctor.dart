@@ -55,15 +55,19 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomTextHeader(text: t.doctorName),
+          CustomTextHeader(text: context.t.doctorName),
 
           AppTextFormField(
             intialValue: widget.doctor?.name,
             onChanged: (name) {
               doctorName = name;
             },
-            validator: AppValidators.required,
-            hint: t.enterDoctorName,
+            validator: (value) => AppValidators.required(
+              context,
+              value,
+              fieldName: context.t.doctorName,
+            ),
+            hint: context.t.enterDoctorName,
             prefixIcon: Icon(
               Icons.person,
               color: AppColors.greyColor,
@@ -73,15 +77,15 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
 
           const VerticalSpace(height: 30),
 
-          CustomTextHeader(text: t.speciality),
+          CustomTextHeader(text: context.t.speciality),
 
           CustomDropDownMenu<String>(
             initialValue: widget.doctor?.speciality,
-            title: t.speciality,
+            title: context.t.speciality,
             items: DoctorSpeciality.values
                 .map(
                   (speciality) => DropDownMenuItemModel(
-                    title: speciality.toStringValue(),
+                    title: speciality.localizedName(context),
                     value: speciality.name,
                   ),
                 )
@@ -94,7 +98,7 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
 
           const VerticalSpace(height: 30),
 
-          CustomTextHeader(text: t.doctorImage),
+          CustomTextHeader(text: context.t.doctorImage),
 
           const VerticalSpace(height: 10),
 
@@ -128,8 +132,8 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
                   state.updateDoctor.isSuccess) {
                 toastAlert(
                   msg: isEdit
-                      ? 'Doctor Updated Successfully'
-                      : 'Doctor Added Successfully',
+                      ? context.t.doctorUpdatedSuccessfully
+                      : context.t.doctorAddedSuccessfully,
                   color: AppColors.primaryColor,
                 );
                 context.pop();
@@ -140,10 +144,10 @@ class _AdminCreateDoctorFormState extends State<AdminCreateDoctorForm> {
               return AppButton(
                 text:
                     state.createDoctor.isLoading || state.updateDoctor.isLoading
-                    ? "Loading..."
+                    ? context.t.loading
                     : isEdit
-                    ? "Update"
-                    : "Create",
+                    ? context.t.update
+                    : context.t.create,
                 onPressed: () {
                   final isValid = cubit.formKey.currentState!.validate();
 

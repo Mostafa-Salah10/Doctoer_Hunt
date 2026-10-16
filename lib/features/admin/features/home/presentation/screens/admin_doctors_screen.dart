@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/widgets/error_widget.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_floating_action_button.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_home_body.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class AdminDoctorsScreen extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: const CustomAdminAppBarScreens(title: "Doctors"),
+              child: CustomAdminAppBarScreens(title: context.t.doctors),
             ),
 
             Expanded(

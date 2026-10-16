@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.d
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_all_doctors_item.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class AdminAllDoctorsList extends StatelessWidget {
@@ -15,7 +16,7 @@ class AdminAllDoctorsList extends StatelessWidget {
     return doctors.isEmpty
         ? Center(
             child: Text(
-              "No Doctors Found",
+              context.t.noDoctorsFound,
               style: context.textTheme.bodyMedium,
             ),
           )

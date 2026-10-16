@@ -35,7 +35,7 @@ class SelectDayListItem extends StatelessWidget {
         spacing: 4.h,
         children: [
           Text(
-            DateTimeHelper.formatDate(day.availableDay),
+            DateTimeHelper.formatDate(context, day.availableDay),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: context.textTheme.bodyLarge!.copyWith(
@@ -45,7 +45,10 @@ class SelectDayListItem extends StatelessWidget {
             ),
           ),
           Text(
-            StringHelper.formatAvailableSlots(day.numberOfAvailableSlots),
+            StringHelper.formatAvailableSlots(
+              context,
+              day.numberOfAvailableSlots,
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: context.textTheme.labelMedium!.copyWith(

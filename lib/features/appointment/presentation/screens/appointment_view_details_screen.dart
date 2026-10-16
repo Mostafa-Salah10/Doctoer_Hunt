@@ -8,6 +8,7 @@ import 'package:doctor_hunt/features/appointment/presentation/widgets/appointmen
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_patient_doctor_card.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_details_button.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_details_card.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,7 @@ class AppointmentViewDetailsScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryColorLight,
 
       appBar: AppBar(
-        title: Text("Appointment Details"),
+        title: Text(context.t.appointmentDetails),
         backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
@@ -68,7 +69,7 @@ class AppointmentViewDetailsScreen extends StatelessWidget {
                     );
                   } else if (state.cancelAppointment.isSuccess) {
                     toastAlert(
-                      msg: "Booking cancelled successfully",
+                      msg: context.t.bookingCancelledSuccessfully,
                       color: AppColors.primaryColor,
                     );
                   }

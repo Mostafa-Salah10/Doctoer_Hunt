@@ -1,5 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class HomeTitleAndSeeAll extends StatelessWidget {
@@ -23,7 +24,7 @@ class HomeTitleAndSeeAll extends StatelessWidget {
         if (onTap != null)
           GestureDetector(
             onTap: onTap,
-            child: Text("See all >", style: context.textTheme.titleSmall),
+            child: Text(context.t.seeAll, style: context.textTheme.titleSmall),
           ),
       ],
     );

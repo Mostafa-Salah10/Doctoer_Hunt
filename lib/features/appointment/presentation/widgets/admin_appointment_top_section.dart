@@ -75,7 +75,6 @@ class AdminAppointmentTopSection extends StatelessWidget {
             color: appointmentModel.status == BookingStatus.cancelled
                 ? AppColors.errorColor.withValues(alpha: 0.1)
                 : AppColors.primaryColor.withValues(alpha: 0.1),
-
           ),
 
           child: Row(
@@ -92,12 +91,11 @@ class AdminAppointmentTopSection extends StatelessWidget {
                 ),
               ),
               Text(
-                appointmentModel.status.name,
+                appointmentModel.status.localizedLabel(context),
                 style: context.textTheme.bodySmall!.copyWith(
                   color: appointmentModel.status == BookingStatus.cancelled
                       ? AppColors.errorColor
                       : AppColors.primaryColor,
-
                 ),
               ),
             ],

@@ -6,6 +6,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/see_all_feature_doctors_list.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +33,7 @@ class _HomeSeeAllFeatureDoctorsScreenState
       child: SafeArea(
         child: Column(
           children: [
-            CustomScreensAppBar(title: "Feature Doctors"),
+            CustomScreensAppBar(title: context.t.featuredDoctors),
             const VerticalSpace(height: 34),
             Expanded(
               child: BlocBuilder<HomeCubit, HomeState>(
@@ -53,7 +54,7 @@ class _HomeSeeAllFeatureDoctorsScreenState
                       },
                     );
                   }
-        
+
                   return SeeAllFeatureDoctorsList(
                     doctors: state.getFeatureDoctors.data!,
                   );

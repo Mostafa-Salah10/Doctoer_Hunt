@@ -6,6 +6,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_feature_doctor_list_item.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,7 @@ class HomeFeatureDoctorsList extends StatelessWidget {
           child: state.getFeatureDoctors.data!.isEmpty
               ? Center(
                   child: Text(
-                    "No Doctors Found",
+                    context.t.noDoctorsFound,
                     style: context.textTheme.bodyMedium,
                   ),
                 )

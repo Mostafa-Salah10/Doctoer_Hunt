@@ -7,6 +7,7 @@ import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/core/widgets/ustom_admin_text_field.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,16 +30,19 @@ class CompelteInfoForm extends StatelessWidget {
             onChanged: (ph) {
               phone = ph;
             },
-            hint: 'ex : 01006828614',
-            label: 'Contact Number',
+            hint: context.t.phoneNumberExample,
+            label: context.t.contactNumber,
             keyboardType: TextInputType.number,
             prefixIcon: Icon(
               Icons.phone_iphone_outlined,
               size: 24.sp,
               color: const Color(0xFF8DA0BB),
             ),
-            validator: (name) =>
-                AppValidators.required(name, fieldName: "Phone"),
+            validator: (name) => AppValidators.required(
+              context,
+              name,
+              fieldName: context.t.contactNumber,
+            ),
           ),
           const Spacer(),
           BlocConsumer<SignUpCubit, SignUpState>(
@@ -47,7 +51,7 @@ class CompelteInfoForm extends StatelessWidget {
             listener: (context, state) {
               if (state.completeInfo.isError) {
                 toastAlert(
-                  msg: "Something went wrong",
+                  msg: context.t.somethingWentWrong,
                   color: AppColors.errorColor,
                 );
               } else if (state.completeInfo.isSuccess) {
@@ -60,7 +64,7 @@ class CompelteInfoForm extends StatelessWidget {
                   if (state.signUp.isLoading) return;
                   if (cubit.state.profileImage == null) {
                     toastAlert(
-                      msg: "Choose Profile Image",
+                      msg: context.t.chooseProfileImage,
                       color: AppColors.errorColor,
                     );
 
@@ -71,7 +75,9 @@ class CompelteInfoForm extends StatelessWidget {
                     cubit.completeInfo(phone: phone);
                   }
                 },
-                text: state.completeInfo.isLoading ? "Loading..." : "Save",
+                text: state.completeInfo.isLoading
+                    ? context.t.loading
+                    : context.t.save,
               );
             },
           ),

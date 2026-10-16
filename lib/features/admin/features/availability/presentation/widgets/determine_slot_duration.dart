@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 
 Future<int?> showSlotDurationDialog(BuildContext context, int initial) {
   final controller = TextEditingController(text: initial.toString());
@@ -7,21 +8,21 @@ Future<int?> showSlotDurationDialog(BuildContext context, int initial) {
   return showDialog<int>(
     context: context,
     builder: (context) => AlertDialog(
-      title: const Text("Slot Duration"),
+      title: Text(context.t.slotDuration),
       content: TextField(
         controller: controller,
         autofocus: true,
         keyboardType: TextInputType.number,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        decoration: const InputDecoration(
-          hintText: "e.g. 90",
-          suffixText: "Minutes",
+        decoration: InputDecoration(
+          hintText: context.t.slotDurationExample,
+          suffixText: context.t.minutes,
         ),
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text("Cancel"),
+          child: Text(context.t.cancel),
         ),
         TextButton(
           onPressed: () {
@@ -30,7 +31,7 @@ Future<int?> showSlotDurationDialog(BuildContext context, int initial) {
               Navigator.pop(context, value);
             }
           },
-          child: const Text("Save"),
+          child: Text(context.t.save),
         ),
       ],
     ),

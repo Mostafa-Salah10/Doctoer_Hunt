@@ -5,6 +5,7 @@ import 'package:doctor_hunt/features/admin/features/availability/data/models/doc
 import 'package:doctor_hunt/features/admin/features/availability/presentation/manager/doctor_availability_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/availability/presentation/widgets/determine_slot_duration.dart';
 import 'package:doctor_hunt/features/admin/features/availability/presentation/widgets/doctor_availability_time_container.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,8 +54,9 @@ class DoctorAvailabilityWorkingHours extends StatelessWidget {
                           }
                         });
                       },
-                      title: "Start Time".toUpperCase(),
-                      time: DateTimeHelper.formateTimeToAMAndPM(
+                      title: context.t.startTime.toUpperCase(),
+                      time: DateTimeHelper.formatTimeForDisplay(
+                        context,
                         model.startTime,
                       ),
                     ),
@@ -71,8 +73,11 @@ class DoctorAvailabilityWorkingHours extends StatelessWidget {
                           }
                         });
                       },
-                      time: DateTimeHelper.formateTimeToAMAndPM(model.endTime),
-                      title: "End Time".toUpperCase(),
+                      time: DateTimeHelper.formatTimeForDisplay(
+                        context,
+                        model.endTime,
+                      ),
+                      title: context.t.endTime.toUpperCase(),
                     ),
                   ),
                 ],
@@ -85,8 +90,11 @@ class DoctorAvailabilityWorkingHours extends StatelessWidget {
                     cubit.updateSlotDuration(minutes.toDouble());
                   }
                 },
-                title: "Slot Duration".toUpperCase(),
-                time: DateTimeHelper.formatDuration(model.slotDuration.toInt()),
+                title: context.t.slotDuration.toUpperCase(),
+                time: DateTimeHelper.formatDuration(
+                  context,
+                  model.slotDuration.toInt(),
+                ),
               ),
             ],
           );

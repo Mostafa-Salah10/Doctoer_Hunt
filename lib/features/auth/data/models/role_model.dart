@@ -16,14 +16,12 @@ class RoleModel {
     RoleModel(
       role: Role.patient,
       icon: Assets.assetsSvgsPatientRole,
-      description:
-          'Find doctors, book\n appointments,\n and manage your medical\n records.',
+      description: 'patientRoleDescription',
     ),
     RoleModel(
       role: Role.admin,
       icon: Assets.assetsSvgsAdminRole,
-      description:
-          'Find doctors, book appointments,\nand manage your medical records.',
+      description: 'administratorRoleDescription',
     ),
   ];
 }

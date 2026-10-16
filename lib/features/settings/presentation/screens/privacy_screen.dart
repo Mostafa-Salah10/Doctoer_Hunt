@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,19 +18,19 @@ class PrivacyScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomScreensAppBar(title: "Privacy policy"),
+              CustomScreensAppBar(title: context.t.privacyPolicy),
 
               const VerticalSpace(height: 34),
 
               Text(
-                'Doctor Hunt Apps Privacy Policy',
+                context.t.privacyPolicyHeading,
                 style: context.textTheme.bodyLarge,
               ),
 
               const VerticalSpace(height: 10),
 
               Text(
-                'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words believable. It is a long established fact that reader will distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a moreIt is a long established fact that reader will distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more ',
+                context.t.privacyPolicyParagraphOne,
                 style: context.textTheme.bodyMedium!.copyWith(
                   color: Color(0xff959CB4).withValues(alpha: 0.8),
                   fontSize: 14.sp,
@@ -47,7 +48,7 @@ class PrivacyScreen extends StatelessWidget {
               const VerticalSpace(height: 10),
 
               Text(
-                'It is a long established fact that reader distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a moreIt is a long established.',
+                context.t.privacyPolicyParagraphTwo,
                 style: context.textTheme.bodyMedium!.copyWith(
                   color: Color(0xff959CB4).withValues(alpha: 0.8),
                   fontSize: 14.sp,

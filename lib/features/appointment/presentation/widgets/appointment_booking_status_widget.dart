@@ -1,6 +1,7 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/enums/booking_status.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentBookingStatusWidget extends StatelessWidget {
@@ -15,7 +16,7 @@ class AppointmentBookingStatusWidget extends StatelessWidget {
 
       children: [
         Text(
-          "Appointment",
+          context.t.Appointment,
           style: context.textTheme.bodyLarge!.copyWith(
             color: context.isDarkMode
                 ? AppColors.lightBackgroundColor
@@ -47,7 +48,7 @@ class AppointmentBookingStatusWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                status.name,
+                status.localizedLabel(context),
                 style: context.textTheme.bodySmall!.copyWith(
                   color: status == BookingStatus.cancelled
                       ? AppColors.errorColor

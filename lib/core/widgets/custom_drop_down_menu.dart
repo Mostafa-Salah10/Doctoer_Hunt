@@ -1,5 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropDownMenu<T> extends StatelessWidget {
@@ -85,7 +86,7 @@ class CustomDropDownMenu<T> extends StatelessWidget {
           validator ??
           (value) {
             if (value == null) {
-              return "Please select a $title";
+              return context.t.selectValue(title: title);
             }
 
             return null;

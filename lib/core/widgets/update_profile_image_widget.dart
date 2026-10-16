@@ -4,6 +4,7 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/functions/pick_image_from_device.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,7 +38,7 @@ class UpdateProfileImageWidget extends StatelessWidget {
             onTap(image);
           },
           child: Text(
-            "Add Image",
+            context.t.addImage,
             style: context.textTheme.bodyLarge!.copyWith(
               color: AppColors.primaryColor,
             ),

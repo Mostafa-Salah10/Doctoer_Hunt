@@ -6,6 +6,7 @@ import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,7 +42,7 @@ class AppointmentCardButtons extends StatelessWidget {
 
               child: Center(
                 child: Text(
-                  "View Details",
+                  context.t.viewDetails,
                   style: context.textTheme.bodySmall!.copyWith(
                     color: AppColors.primaryColor,
                   ),
@@ -74,8 +75,8 @@ class AppointmentCardButtons extends StatelessWidget {
                         builder: (context, state) {
                           return Text(
                             state.cancelAppointment.isLoading
-                                ? "Loading..."
-                                : "Cancel Appointment",
+                                ? context.t.loading
+                                : context.t.cancelAppointment,
                             style: context.textTheme.bodySmall!.copyWith(
                               color: AppColors.errorColor,
                             ),
@@ -95,8 +96,8 @@ class AppointmentCardButtons extends StatelessWidget {
                   builder: (context, state) {
                     return AppButton(
                       text: state.rateDoctor.isLoading
-                          ? "Loading..."
-                          : "Rate Doctor",
+                          ? context.t.loading
+                          : context.t.rateDoctor,
                       onPressed: () {
                         if (state.rateDoctor.isLoading) return;
                         cubit.rateDoctor(

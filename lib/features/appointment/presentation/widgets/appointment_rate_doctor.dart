@@ -1,9 +1,9 @@
-
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,7 +40,7 @@ class AppointmentRateDoctorWidget extends StatelessWidget {
                     child: Text(
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      "Tap to rate your visit",
+                      context.t.tapToRateYourVisit,
                       style: context.textTheme.bodySmall!.copyWith(
                         color: AppColors.greyColor,
                       ),

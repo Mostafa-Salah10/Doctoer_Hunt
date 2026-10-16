@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +32,7 @@ class HomeSearchBar extends StatelessWidget {
           );
         },
         // style: context.textTheme.titleSmall,
-        hint: "Search...",
+        hint: context.t.search,
         onChanged: (word) {},
         borderRadius: 6.r,
         prefixIcon: FittedBox(

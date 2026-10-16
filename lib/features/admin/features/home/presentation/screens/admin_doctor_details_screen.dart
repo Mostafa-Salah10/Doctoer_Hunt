@@ -6,6 +6,7 @@ import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_doctor_details.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_doctor_details_image.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,7 +18,7 @@ class AdminDoctorDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Doctor Details"), centerTitle: true),
+      appBar: AppBar(title: Text(context.t.doctorDetails), centerTitle: true),
 
       body: SafeArea(
         child: Padding(

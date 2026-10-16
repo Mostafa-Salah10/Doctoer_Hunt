@@ -8,6 +8,7 @@ import 'package:doctor_hunt/features/appointment/data/models/appointment_model.d
 import 'package:doctor_hunt/features/appointment/presentation/widgets/admin_appointment_top_section.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/admin_appointments_buttons_card.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_specific_data.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class AdminAppointmentCard extends StatelessWidget {
@@ -47,8 +48,9 @@ class AdminAppointmentCard extends StatelessWidget {
               Expanded(
                 child: AppointmentShowSpecificDataCard(
                   image: Assets.assetsSvgsDate,
-                  title: 'Date',
+                  title: context.t.date,
                   subTitle: DateTimeHelper.formatDateWithDayName(
+                    context,
                     appointmentModel.date,
                   ),
                 ),
@@ -56,14 +58,14 @@ class AdminAppointmentCard extends StatelessWidget {
               Expanded(
                 child: AppointmentShowSpecificDataCard(
                   image: Assets.assetsSvgsClock,
-                  title: 'Time',
+                  title: context.t.time,
                   subTitle: appointmentModel.slot,
                 ),
               ),
               Expanded(
                 child: AppointmentShowSpecificDataCard(
                   image: Assets.assetsSvgsDollar,
-                  title: 'Fee',
+                  title: context.t.fee,
                   subTitle: "\$${appointmentModel.consulationFee}",
                 ),
               ),

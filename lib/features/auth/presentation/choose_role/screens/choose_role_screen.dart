@@ -6,6 +6,7 @@ import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/choose_role/widgets/choose_role_list.dart';
 import 'package:doctor_hunt/features/auth/presentation/choose_role/widgets/choose_role_top_text_section.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class ChooseRoleScreen extends StatefulWidget {
@@ -37,7 +38,7 @@ class _ChooseRoleScreenState extends State<ChooseRoleScreen> {
           ),
 
           AppButton(
-            text: "Continue",
+            text: context.t.continueAction,
             onPressed: () {
               context.pushReplacementNamed(AppRoutes.signUp, arguments: role);
             },

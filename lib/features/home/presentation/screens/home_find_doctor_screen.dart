@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/favourite/presentation/widgets/favourite_search_bar.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/see_all_popular_doctors_list.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,13 +29,13 @@ class _HomeFindDoctorScreenState extends State<HomeFindDoctorScreen> {
       child: SafeArea(
         child: Column(
           children: [
-            const CustomScreensAppBar(title: "Find Doctor"),
+            CustomScreensAppBar(title: context.t.findYourDoctor),
             const VerticalSpace(height: 34),
             CustomSearchBar(
               onSearch: (word) {
                 context.read<HomeCubit>().searchForDoctor(word: word);
               },
-              title: "Dentist",
+              title: context.t.dentist,
             ),
             const VerticalSpace(height: 20),
             Expanded(

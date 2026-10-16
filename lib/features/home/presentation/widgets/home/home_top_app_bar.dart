@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/settings/data/models/patient_model.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -33,7 +34,9 @@ class HomeTopAppBar extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        'Hi ${patient?.name ?? 'Patient User'}',
+                        context.t.greeting(
+                          name: patient?.name ?? context.t.patientUser,
+                        ),
                         style: context.textTheme.labelSmall,
                       ),
                     ),
@@ -41,7 +44,7 @@ class HomeTopAppBar extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        'Find Your Doctor',
+                        context.t.findYourDoctor,
                         style: context.textTheme.headlineSmall!.copyWith(
                           color: AppColors.lightBackgroundColor,
                         ),

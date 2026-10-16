@@ -5,6 +5,7 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/ad
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_all_doctors_list.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_search_bar.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/widgets/admin_statistics.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,7 +49,7 @@ class AdminHomeBody extends StatelessWidget {
                   );
                 } else if (state.deleteDoctor.isSuccess) {
                   toastAlert(
-                    msg: "Doctor Deleted Successfully",
+                    msg: context.t.doctorDeletedSuccessfully,
                     color: AppColors.primaryColor,
                   );
                 }

@@ -9,6 +9,7 @@ import 'package:doctor_hunt/features/appointment/presentation/manager/appointmen
 import 'package:doctor_hunt/features/appointment/presentation/screens/admin_appointment_screen.dart';
 
 import 'package:doctor_hunt/features/home/presentation/widgets/bottom_nav_bar/custom_bottom_nav_bar.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +30,11 @@ class AdminBottomNavBar extends StatelessWidget {
                 context.read<BottomNavBarCubit>().updateBottomNavBarIndex(0);
               }
             },
-            titles: titles,
+            titles: [
+              context.t.doctors,
+              context.t.appointments,
+              context.t.settings,
+            ],
             currentIndex: state.bottomNavBarIndex,
             onBottomNavBarChanged: (index) {
               context.read<BottomNavBarCubit>().updateBottomNavBarIndex(index);
@@ -48,8 +53,6 @@ class AdminBottomNavBar extends StatelessWidget {
     Assets.assetsSvgsBook,
     Assets.assetsSvgsSettings,
   ];
-
-  final List<String> titles = ["Doctors", "Appointments", "Settings"];
 
   final List<Widget> _screens = [
     BlocProvider(

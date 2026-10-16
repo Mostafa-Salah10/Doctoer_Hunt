@@ -1,3 +1,6 @@
+import 'package:doctor_hunt/gen/strings.g.dart';
+import 'package:flutter/widgets.dart';
+
 enum DoctorSpeciality {
   dentistry,
   cardiology,
@@ -22,4 +25,11 @@ enum DoctorSpeciality {
         return 'Internal Medicine';
     }
   }
+
+  String localizedName(BuildContext context) => switch (this) {
+    DoctorSpeciality.dentistry => context.t.dentistry,
+    DoctorSpeciality.cardiology => context.t.cardiology,
+    DoctorSpeciality.ophthalmology => context.t.ophthalmology,
+    DoctorSpeciality.internalMedicine => context.t.internalMedicine,
+  };
 }

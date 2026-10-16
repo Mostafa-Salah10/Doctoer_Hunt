@@ -16,17 +16,17 @@ class SettingsModel {
     SettingsModel(
       image: Assets.assetsImagesSettingsLock,
       targetRoute: '',
-      title: 'Change Password',
+      title: 'changePassword',
     ),
     SettingsModel(
       image: Assets.assetsImagesSettingsNotification,
       targetRoute: '',
-      title: 'Notifications',
+      title: 'notifications',
     ),
     SettingsModel(
       image: Assets.assetsImagesSettingsPrivacy,
       targetRoute: AppRoutes.privacyPolicyScreen,
-      title: 'Privacy Policy',
+      title: 'privacyPolicy',
     ),
   ];
 }

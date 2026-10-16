@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/settings/data/models/patient_model.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -44,7 +45,7 @@ class SettingCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    patient?.name ?? 'Patient User',
+                    patient?.name ?? context.t.patientUser,
                     style: context.textTheme.bodyLarge!.copyWith(
                       color: context.isDarkMode
                           ? AppColors.lightBackgroundColor

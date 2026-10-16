@@ -2,6 +2,7 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CustomCalendar extends StatefulWidget {
@@ -18,6 +19,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
+      locale: Localizations.localeOf(context).toString(),
       firstDay: DateTime.utc(2020, 1, 1),
       lastDay: DateTime.utc(2030, 12, 31),
 
@@ -75,15 +77,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
       calendarBuilders: CalendarBuilders(
         dowBuilder: (context, day) {
-          final text = [
-            'SU',
-            'MO',
-            'TU',
-            'WE',
-            'TH',
-            'FR',
-            'SA',
-          ][day.weekday % 7];
+          final text = DateFormat.E(
+            Localizations.localeOf(context).toString(),
+          ).format(day);
 
           return Center(
             child: Text(

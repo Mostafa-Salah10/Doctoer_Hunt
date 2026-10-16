@@ -6,6 +6,7 @@ import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/custom_bottom_sheet_confirm_widget.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,7 +60,7 @@ class AdminAllDoctorsItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Text(
-                  doctor.isActive ? "Active" : "Not Active",
+                  doctor.isActive ? context.t.active : context.t.notActive,
                   style: context.textTheme.bodySmall!.copyWith(
                     color: AppColors.primaryColor,
                   ),
@@ -79,31 +80,25 @@ class AdminAllDoctorsItem extends StatelessWidget {
               builder: (context) => BlocProvider(
                 create: (context) => cubit,
                 child: CustomBottomSheetConfirmWidget(
-                  cancelText: "Delete",
-                  confirmText: "Update",
+                  cancelText: context.t.delete,
+                  confirmText: context.t.update,
                   onConfirm: () {
                     Navigator.pop(context);
                     context.pushNamed(
                       AppRoutes.adminUpdateDoctorScreen,
-                      arguments: {
-                        'cubit': cubit,
-                        'doctor': doctor,
-                      },
+                      arguments: {'cubit': cubit, 'doctor': doctor},
                     );
                   },
                   onCancel: () async {
-                    await cubit.deleteDoctor(
-                      doctorId: doctor.id,
-                    );
+                    await cubit.deleteDoctor(doctorId: doctor.id);
 
                     if (!context.mounted) return;
                     Navigator.pop(context);
                   },
                   cancelColor: AppColors.errorColor,
 
-                  title: 'Manage Doctor?',
-                  description:
-                      'Update the doctor\'s information or remove the doctor from your account',
+                  title: context.t.manageDoctorQuestion,
+                  description: context.t.manageDoctorDescription,
                 ),
               ),
             );

@@ -8,6 +8,7 @@ import 'package:doctor_hunt/features/home/presentation/widgets/home/home_feature
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_popular_doctors.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_search_bar.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_title_see_all.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +39,7 @@ class HomeContent extends StatelessWidget {
           const VerticalSpace(height: 30),
 
           HomeTitleAndSeeAll(
-            title: "Popular Doctor",
+            title: context.t.popularDoctor,
             onTap: () {
               context.pushNamed(
                 AppRoutes.seeAllPopularDoctorsScreen,
@@ -57,7 +58,7 @@ class HomeContent extends StatelessWidget {
           const VerticalSpace(height: 30),
 
           HomeTitleAndSeeAll(
-            title: "Feature Doctor",
+            title: context.t.featuredDoctor,
 
             onTap: () {
               context.pushNamed(

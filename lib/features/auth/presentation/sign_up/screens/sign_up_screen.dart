@@ -4,6 +4,7 @@ import 'package:doctor_hunt/core/widgets/when_pop_screen.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/widgets/auth_social_secton.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/widgets/sign_up_form.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/widgets/sign_up_text_section.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -18,9 +19,8 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             children: [
               AuthTextSection(
-                title: "Join us to start searching",
-                subTitle:
-                    "You can search c ourse, apply course and find\nscholarship for abroad studies",
+                title: context.t.joinUsToStartSearching,
+                subTitle: context.t.authDescription,
               ),
               const AuthSocialSection(),
               SignUpForm(role: role),

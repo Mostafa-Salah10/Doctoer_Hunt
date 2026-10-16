@@ -7,6 +7,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/core/widgets/ustom_admin_text_field.dart';
 import 'package:doctor_hunt/features/settings/data/models/patient_model.dart';
 import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,15 +48,18 @@ class _ProfileFormState extends State<ProfileForm> {
               onChanged: (n) {
                 name = n;
               },
-              hint: 'enter your name',
-              label: 'Full Name',
+              hint: context.t.enterYourName,
+              label: context.t.fullName,
               prefixIcon: Icon(
                 Icons.person_outline,
                 size: 24.sp,
                 color: const Color(0xFF8DA0BB),
               ),
-              validator: (name) =>
-                  AppValidators.required(name, fieldName: "Name"),
+              validator: (name) => AppValidators.required(
+                context,
+                name,
+                fieldName: context.t.fullName,
+              ),
             ),
 
             const VerticalSpace(height: 20),
@@ -63,17 +67,20 @@ class _ProfileFormState extends State<ProfileForm> {
               onChanged: (ph) {
                 phone = ph;
               },
-              hint: 'ex : 01006828614',
+              hint: context.t.phoneNumberExample,
               initialValue: phone,
-              label: 'Contact Number',
+              label: context.t.contactNumber,
               keyboardType: TextInputType.number,
               prefixIcon: Icon(
                 Icons.phone_iphone_outlined,
                 size: 24.sp,
                 color: const Color(0xFF8DA0BB),
               ),
-              validator: (name) =>
-                  AppValidators.required(name, fieldName: "Phone"),
+              validator: (name) => AppValidators.required(
+                context,
+                name,
+                fieldName: context.t.contactNumber,
+              ),
             ),
             const Spacer(),
             BlocConsumer<SettingsCubit, SettingsState>(
@@ -82,7 +89,7 @@ class _ProfileFormState extends State<ProfileForm> {
               listener: (context, state) {
                 if (state.updateCurrentPatient.isError) {
                   toastAlert(
-                    msg: "Something went wrong",
+                    msg: context.t.somethingWentWrong,
                     color: AppColors.errorColor,
                   );
                 } else if (state.updateCurrentPatient.isSuccess) {
@@ -108,8 +115,8 @@ class _ProfileFormState extends State<ProfileForm> {
                       }
                     },
                     text: state.updateCurrentPatient.isLoading
-                        ? "Loading..."
-                        : "Save",
+                        ? context.t.loading
+                        : context.t.save,
                   ),
                 );
               },

@@ -11,6 +11,7 @@ import 'package:doctor_hunt/features/booking/presentation/widgets/custom_done_di
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_day_data_with_title.dart';
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_day_list.dart';
 import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class SelectTimeScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomScreensAppBar(title: "Select Time"),
+        CustomScreensAppBar(title: context.t.selectTime),
         const VerticalSpace(height: 34),
         DoctorDetailsHorizontalCard(doctor: doctor, withBookingButton: false),
         Expanded(
@@ -41,7 +42,7 @@ class SelectTimeScreenBody extends StatelessWidget {
               }
 
               if (state.availableDaysState.isError) {
-                return const Center(child: Text("Something went wrong"));
+                return Center(child: Text(context.t.somethingWentWrong));
               }
 
               if (state.availableDaysState.data!.isEmpty) {
@@ -82,8 +83,8 @@ class SelectTimeScreenBody extends StatelessWidget {
                     builder: (context, state) {
                       return AppButton(
                         text: state.bookWithDoctor.isLoading
-                            ? "Loading..."
-                            : "Confirm",
+                            ? context.t.loading
+                            : context.t.confirm,
                         onPressed: () async {
                           final book = context.read<SelectTimeCubit>();
                           await book.bookWithDoctor(

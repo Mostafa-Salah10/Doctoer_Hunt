@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/extensions/size_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -50,10 +51,10 @@ class CustomDoneDialog extends StatelessWidget {
               ),
             ),
             const VerticalSpace(height: 12),
-            Text('Thank You !', style: context.textTheme.displaySmall),
+            Text(context.t.thankYou, style: context.textTheme.displaySmall),
             const VerticalSpace(height: 10),
             Text(
-              'Your Appointment Successful',
+              context.t.appointmentSuccessful,
               textAlign: TextAlign.center,
 
               style: context.textTheme.titleMedium!.copyWith(
@@ -64,7 +65,11 @@ class CustomDoneDialog extends StatelessWidget {
             const VerticalSpace(height: 29),
 
             Text(
-              'You booked an appointment with Dr. Pediatrician Purpieson on February 21, at 02:00 PM',
+              context.t.appointmentConfirmation(
+                doctor: 'Pediatrician Purpieson',
+                date: 'February 21',
+                time: '02:00 PM',
+              ),
               textAlign: TextAlign.center,
 
               style: context.textTheme.titleSmall,
@@ -73,7 +78,7 @@ class CustomDoneDialog extends StatelessWidget {
             const VerticalSpace(height: 29),
 
             AppButton(
-              text: "Done",
+              text: context.t.done,
               onPressed: () {
                 int i = 0;
                 while (i < 3) {

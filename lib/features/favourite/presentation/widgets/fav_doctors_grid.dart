@@ -4,6 +4,7 @@ import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
 import 'package:doctor_hunt/features/favourite/presentation/widgets/fav_doctor_card.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +30,7 @@ class FavDoctorsGrid extends StatelessWidget {
           return state.getFavouritesDoctors.data!.isEmpty
               ? Center(
                   child: Text(
-                    "No Doctors Found",
+                    context.t.noDoctorsFound,
                     style: context.textTheme.bodyMedium,
                   ),
                 )

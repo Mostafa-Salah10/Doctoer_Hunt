@@ -1,6 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
-import 'package:doctor_hunt/core/extensions/upper_lower_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/admin/features/availability/data/models/doctor_working_day_model.dart';
@@ -35,7 +34,7 @@ class DoctorAvailabilityDaysList extends StatelessWidget {
       child: ListView.separated(
         shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
-      
+
         itemCount: workingDays.length,
         separatorBuilder: (context, index) => const VerticalSpace(height: 12),
         itemBuilder: (context, index) =>
@@ -86,7 +85,7 @@ class _DoctorAvailabilityDayItemState extends State<DoctorAvailabilityDayItem> {
 
             const HorizontalSpace(width: 8),
             Text(
-              widget.day.weekday.name.toUpperCaseFirst,
+              widget.day.weekday.localizedName(context),
               style: context.textTheme.bodyLarge!.copyWith(
                 color: context.isDarkMode
                     ? AppColors.lightBackgroundColor

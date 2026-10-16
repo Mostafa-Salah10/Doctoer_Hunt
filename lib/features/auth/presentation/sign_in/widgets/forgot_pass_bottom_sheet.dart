@@ -7,6 +7,7 @@ import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,10 +53,13 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
               ),
 
               const VerticalSpace(height: 55),
-              Text("Forgot password", style: context.textTheme.displayLarge),
+              Text(
+                context.t.forgotPassword,
+                style: context.textTheme.displayLarge,
+              ),
               const VerticalSpace(height: 12),
               Text(
-                "Enter your email for the verification proccesss,\n we will send 4 digits code to your email.",
+                context.t.enterEmailVerificationDescription,
                 style: context.textTheme.titleSmall,
               ),
               const VerticalSpace(height: 36),
@@ -65,8 +69,8 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
                     current.forgotPassValidEmail,
                 builder: (context, state) {
                   return AppTextFormField(
-                    hint: "Email",
-                    validator: (value) => AppValidators.email(value),
+                    hint: context.t.email,
+                    validator: (value) => AppValidators.email(context, value),
                     onChanged: (value) {
                       cubit.validateForgotPassEmail(value);
                       email = value;
@@ -89,7 +93,7 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
                     if (state.resetPassword.isSuccess) {
                       context.pop();
                       toastAlert(
-                        msg: "Check Your Email",
+                        msg: context.t.checkYourEmail,
                         color: AppColors.primaryColor,
                       );
                       context.pop();
@@ -103,8 +107,8 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
                   builder: (context, state) {
                     return AppButton(
                       text: state.resetPassword.isLoading
-                          ? "Sending...."
-                          : "Continue",
+                          ? context.t.sending
+                          : context.t.continueAction,
                       onPressed: () {
                         // showModalBottomSheet(
                         //   isDismissible: false,

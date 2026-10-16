@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_card.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,13 +24,16 @@ class AppointmentsList extends StatelessWidget {
           );
         } else if (state.cancelAppointment.isSuccess) {
           toastAlert(
-            msg: "Booking cancelled successfully",
+            msg: context.t.bookingCancelledSuccessfully,
             color: AppColors.primaryColor,
           );
         } else if (state.rateDoctor.isError) {
           toastAlert(msg: state.rateDoctor.error!, color: AppColors.errorColor);
         } else if (state.rateDoctor.isSuccess) {
-          toastAlert(msg: "Rated successfully", color: AppColors.primaryColor);
+          toastAlert(
+            msg: context.t.ratedSuccessfully,
+            color: AppColors.primaryColor,
+          );
         }
       },
       buildWhen: (previous, current) =>
@@ -43,7 +47,7 @@ class AppointmentsList extends StatelessWidget {
         }
 
         return state.getAppointments.data!.isEmpty
-            ? Center(child: Text("No Appointments"))
+            ? Center(child: Text(context.t.noAppointments))
             : ListView.separated(
                 itemCount: state.getAppointments.data!.length,
                 separatorBuilder: (context, index) =>

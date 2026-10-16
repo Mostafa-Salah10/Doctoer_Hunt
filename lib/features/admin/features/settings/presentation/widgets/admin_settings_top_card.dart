@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/user_image_placeholder.dart';
 import 'package:doctor_hunt/features/admin/features/settings/data/models/admin_model.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -22,9 +23,7 @@ class AdminSettingsTopCard extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.all(16),
         tileColor: AppColors.lightBackgroundColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         leading: SizedBox(
           width: 60.w,
           height: 60.w,
@@ -32,18 +31,18 @@ class AdminSettingsTopCard extends StatelessWidget {
             child: isLoading
                 ? const Bone.circle(size: 60)
                 : imageUrl.isNotEmpty
-                    ? CustomCachedNetworkImage(
-                        imageUrl: imageUrl,
-                        fit: BoxFit.cover,
-                      )
-                    : UserImagePlaceholder(
-                        width: 60.w,
-                        height: 60.w,
-                        name: admin?.name ?? '',
-                      ),
+                ? CustomCachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: BoxFit.cover,
+                  )
+                : UserImagePlaceholder(
+                    width: 60.w,
+                    height: 60.w,
+                    name: admin?.name ?? '',
+                  ),
           ),
         ),
-        title: const Text('Administrator'),
+        title: Text(context.t.administrator),
         subtitle: Text(
           admin?.email ?? 'admin@email.com',
           style: context.textTheme.titleSmall,

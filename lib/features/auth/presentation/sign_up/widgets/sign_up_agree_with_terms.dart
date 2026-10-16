@@ -1,5 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,7 @@ class SignUpAgreeWithTerms extends StatelessWidget {
       initialValue: isChecked,
       validator: (value) {
         if (value != true) {
-          return 'You must agree to the terms';
+          return context.t.termsAgreementRequired;
         }
         return null;
       },
@@ -41,7 +42,7 @@ class SignUpAgreeWithTerms extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    "I agree with the Terms of Service & Privacy Policy",
+                    context.t.termsAgreement,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: context.textTheme.titleSmall!.copyWith(

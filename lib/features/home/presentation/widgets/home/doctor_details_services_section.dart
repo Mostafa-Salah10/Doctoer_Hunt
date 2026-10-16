@@ -1,5 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class DoctorDetailsServicesSection extends StatelessWidget {
@@ -25,7 +26,7 @@ class DoctorDetailsServicesSection extends StatelessWidget {
             child: Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              services.elementAt(index),
+              context.t[services.elementAt(index)],
               style: context.textTheme.titleSmall!.copyWith(),
             ),
           ),
@@ -35,8 +36,8 @@ class DoctorDetailsServicesSection extends StatelessWidget {
   }
 
   final List<String> services = [
-    "Patient care should be the number one priority.",
-    "If you run your practiceyou know how frustrating.",
-    "That’s why some of appointment reminder system.",
+    "doctorServicePatientCare",
+    "doctorServicePractice",
+    "doctorServiceAppointmentReminder",
   ];
 }

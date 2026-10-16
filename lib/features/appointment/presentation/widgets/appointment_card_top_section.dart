@@ -28,9 +28,6 @@ class AppinmentTopSection extends StatelessWidget {
           // child: Image.asset(Assets.assetsImagesAppointment),
         ),
 
-
-        
-
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +80,7 @@ class AppinmentTopSection extends StatelessWidget {
                 ),
               ),
               Text(
-                appointmentModel.status.name,
+                appointmentModel.status.localizedLabel(context),
                 style: context.textTheme.bodySmall!.copyWith(
                   color: appointmentModel.status == BookingStatus.cancelled
                       ? AppColors.errorColor

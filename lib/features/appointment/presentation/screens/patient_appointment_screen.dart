@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_category_list.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_list.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,8 +18,8 @@ class PatientAppointmentScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            const CustomScreensAppBar(
-              title: "Appointment",
+            CustomScreensAppBar(
+              title: context.t.Appointment,
               showBackButton: false,
             ),
             BlocBuilder<AppointmentCubit, AppointmentState>(

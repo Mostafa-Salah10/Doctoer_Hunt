@@ -6,6 +6,7 @@ import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/favourite/presentation/manager/favourite_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +48,7 @@ class HomeFeatureDoctorListItem extends StatelessWidget {
               Text(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                "\$ ${doctor.cost} / hours",
+                context.t.doctorHourlyRate(cost: doctor.cost.toString()),
                 style: context.textTheme.titleSmall!.copyWith(fontSize: 10.sp),
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class ErrorContent extends StatelessWidget {
@@ -28,13 +29,14 @@ class ErrorContent extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: _horizontalPadding(context)),
       child: Column(
-        mainAxisSize: MainAxisSize.min, // <-- المهم: ياخد حجمه بس، مش يحاول يتمدد
+        mainAxisSize:
+            MainAxisSize.min, // <-- المهم: ياخد حجمه بس، مش يحاول يتمدد
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _DoubleGearIcon(isDark: isDark),
           SizedBox(height: spacing * 1.3),
           Text(
-            'Page Not Found',
+            context.t.pageNotFound,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25,
@@ -46,7 +48,7 @@ class ErrorContent extends StatelessWidget {
           ),
           SizedBox(height: spacing / 2),
           Text(
-            'Something went wrong. Please try again later.',
+            context.t.errorDescription,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 17,
@@ -72,7 +74,7 @@ class ErrorContent extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Retry',
+                context.t.retry,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -97,8 +99,7 @@ class _DoubleGearIcon extends StatelessWidget {
 
   double _bigGear(BuildContext context) => _isTablet(context) ? 110.0 : 85.0;
 
-  double _smallGear(BuildContext context) =>
-      _isTablet(context) ? 65.0 : 50.0;
+  double _smallGear(BuildContext context) => _isTablet(context) ? 65.0 : 50.0;
 
   @override
   Widget build(BuildContext context) {

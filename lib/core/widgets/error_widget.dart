@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class MyErrorWidget extends StatelessWidget {
@@ -46,7 +47,7 @@ class MyErrorWidget extends StatelessWidget {
               _DoubleGearIcon(isDark: isDark),
               SizedBox(height: spacing * 1.3),
               Text(
-                'Page Not Found',
+                context.t.pageNotFound,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -58,7 +59,7 @@ class MyErrorWidget extends StatelessWidget {
               ),
               SizedBox(height: spacing / 2),
               Text(
-                'Something went wrong. Please try again later.',
+                context.t.errorDescription,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 17,
@@ -84,7 +85,7 @@ class MyErrorWidget extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Retry',
+                    context.t.retry,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,

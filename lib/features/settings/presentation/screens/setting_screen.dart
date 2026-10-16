@@ -10,6 +10,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:doctor_hunt/features/settings/presentation/widgets/addtional_settings_list.dart';
 import 'package:doctor_hunt/features/settings/presentation/widgets/setting_card.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,8 +25,8 @@ class SettingScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomScreensAppBar(
-                title: "Settings",
+              CustomScreensAppBar(
+                title: context.t.settings,
                 showBackButton: false,
               ),
 
@@ -55,7 +56,7 @@ class SettingScreen extends StatelessWidget {
 
               const VerticalSpace(height: 10),
               Text(
-                "Account settings",
+                context.t.accountSettings,
                 style: context.textTheme.bodyLarge!.copyWith(
                   color: AppColors.greyTextColor,
                 ),
@@ -63,11 +64,10 @@ class SettingScreen extends StatelessWidget {
 
               const VerticalSpace(height: 20),
 
-              
               const AddtionalSettingsList(),
               const VerticalSpace(height: 20),
               Text(
-                "More options",
+                context.t.moreOptions,
                 style: context.textTheme.bodyLarge!.copyWith(
                   color: AppColors.greyTextColor,
                 ),

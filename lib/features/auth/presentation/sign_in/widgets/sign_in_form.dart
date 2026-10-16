@@ -13,6 +13,7 @@ import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/widgets/forgot_pass_bottom_sheet.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,8 +41,8 @@ class _SignUpFormState extends State<SignInForm> {
                 previous.validEmail != current.validEmail,
             builder: (context, state) {
               return AppTextFormField(
-                hint: "Email",
-                validator: (value) => AppValidators.email(value),
+                hint: context.t.email,
+                validator: (value) => AppValidators.email(context, value),
                 onChanged: (value) {
                   cubit.validateEmail(value);
                   email = value;
@@ -58,8 +59,8 @@ class _SignUpFormState extends State<SignInForm> {
                 previous.showPassword != current.showPassword,
             builder: (context, state) {
               return AppTextFormField(
-                hint: "Password",
-                validator: (value) => AppValidators.password(value),
+                hint: context.t.password,
+                validator: (value) => AppValidators.password(context, value),
                 onChanged: (value) => password = value,
                 suffixIcon: IconButton(
                   icon: Icon(
@@ -93,7 +94,9 @@ class _SignUpFormState extends State<SignInForm> {
             },
             builder: (context, state) {
               return AppButton(
-                text: state.signIn.isLoading ? "Signing in..." : "Sign in",
+                text: state.signIn.isLoading
+                    ? context.t.signingIn
+                    : context.t.signIn,
                 onPressed: () {
                   if (state.signIn.isLoading) return;
                   cubit.signInWithEmailAndPassword(
@@ -118,7 +121,7 @@ class _SignUpFormState extends State<SignInForm> {
             },
             child: Text(
               textAlign: TextAlign.center,
-              "Forgot password?",
+              context.t.forgotPasswordQuestion,
               style: context.textTheme.titleSmall!.copyWith(
                 color: AppColors.primaryColor,
               ),
@@ -132,7 +135,7 @@ class _SignUpFormState extends State<SignInForm> {
             },
             child: Text(
               textAlign: TextAlign.center,
-              "Don’t have an account? Join us",
+              context.t.dontHaveAccountJoinUs,
               style: context.textTheme.titleSmall!.copyWith(
                 color: AppColors.primaryColor,
               ),

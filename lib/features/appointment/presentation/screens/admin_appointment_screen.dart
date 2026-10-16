@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/admin_appointments_list.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_category_list.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +18,7 @@ class AdminAppointmentScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            const CustomAdminAppBarScreens(title: "Appointment"),
+            CustomAdminAppBarScreens(title: context.t.Appointment),
             BlocBuilder<AppointmentCubit, AppointmentState>(
               buildWhen: (previous, current) =>
                   previous.getAppointments.error !=

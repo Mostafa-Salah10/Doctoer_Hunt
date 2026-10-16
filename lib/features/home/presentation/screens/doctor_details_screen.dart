@@ -7,6 +7,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/doctor_details_map.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/doctor_details_services_section.dart';
 
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class DoctorDetailsScreen extends StatelessWidget {
@@ -20,7 +21,10 @@ class DoctorDetailsScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            CustomScreensAppBar(title: "Doctor Details", suffixIcon: true),
+            CustomScreensAppBar(
+              title: context.t.doctorDetails,
+              suffixIcon: true,
+            ),
             const VerticalSpace(height: 34),
             DoctorDetailsHorizontalCard(doctor: doctor),
             const VerticalSpace(height: 30),

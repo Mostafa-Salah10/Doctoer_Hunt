@@ -2,6 +2,7 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,13 +14,13 @@ class AppointmentFrom extends StatelessWidget {
     return Column(
       children: [
         AppTextFormField(
-          hint: "Patient Name",
+          hint: context.t.patientName,
           border: _buildBorder(),
           style: context.textTheme.titleSmall,
         ),
         const VerticalSpace(height: 20),
         AppTextFormField(
-          hint: "Contact Number",
+          hint: context.t.contactNumber,
           style: context.textTheme.titleSmall,
 
           border: _buildBorder(),

@@ -10,6 +10,7 @@ import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/manager/cubit/sign_up_cubit.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_up/widgets/sign_up_agree_with_terms.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,14 +36,18 @@ class _SignUpFormState extends State<SignUpForm> {
         children: [
           const VerticalSpace(height: 34),
           AppTextFormField(
-            hint: "Name",
-            validator: (value) => AppValidators.required(value),
+            hint: context.t.name,
+            validator: (value) => AppValidators.required(
+              context,
+              value,
+              fieldName: context.t.name,
+            ),
             onChanged: (value) => name = value,
           ),
           const VerticalSpace(height: 18),
           AppTextFormField(
-            hint: "Email",
-            validator: (value) => AppValidators.email(value),
+            hint: context.t.email,
+            validator: (value) => AppValidators.email(context, value),
             onChanged: (value) => email = value,
           ),
           const VerticalSpace(height: 18),
@@ -51,8 +56,8 @@ class _SignUpFormState extends State<SignUpForm> {
                 previous.showPassword != current.showPassword,
             builder: (context, state) {
               return AppTextFormField(
-                hint: "Password",
-                validator: (value) => AppValidators.password(value),
+                hint: context.t.password,
+                validator: (value) => AppValidators.password(context, value),
                 onChanged: (value) => password = value,
                 suffixIcon: IconButton(
                   icon: Icon(
@@ -86,7 +91,9 @@ class _SignUpFormState extends State<SignUpForm> {
             buildWhen: (previous, current) => current.signUp != previous.signUp,
             listener: (context, state) {
               if (state.signUp.isSuccess) {
-                context.pushReplacementNamed(AppRoutes.patientCompleteInfoScreen);
+                context.pushReplacementNamed(
+                  AppRoutes.patientCompleteInfoScreen,
+                );
               } else if (state.signUp.isError) {
                 toastAlert(
                   msg: state.signUp.error!,
@@ -96,7 +103,9 @@ class _SignUpFormState extends State<SignUpForm> {
             },
             builder: (context, state) {
               return AppButton(
-                text: state.signUp.isLoading ? "Signing up..." : "Sign up",
+                text: state.signUp.isLoading
+                    ? context.t.signingUp
+                    : context.t.signUp,
                 onPressed: () {
                   if (state.signUp.isLoading) return;
                   cubit.signUpWithEmailAndPassword(
@@ -115,7 +124,7 @@ class _SignUpFormState extends State<SignUpForm> {
               context.pushReplacementNamed(AppRoutes.signIn);
             },
             child: Text(
-              "Have an account? Log in",
+              context.t.haveAccountLogIn,
               style: context.textTheme.titleSmall!.copyWith(
                 color: AppColors.primaryColor,
               ),

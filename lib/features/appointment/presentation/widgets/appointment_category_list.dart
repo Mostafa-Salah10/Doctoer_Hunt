@@ -1,7 +1,6 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/enums/booking_status.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
-import 'package:doctor_hunt/core/extensions/upper_lower_extension.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,8 +33,7 @@ class AppointmentCategoryList extends StatelessWidget {
                           BookingStatus.values.elementAt(index),
                       title: BookingStatus.values
                           .elementAt(index)
-                          .name
-                          .toUpperCaseFirst,
+                          .localizedLabel(context),
                     ),
                   ),
                 ),

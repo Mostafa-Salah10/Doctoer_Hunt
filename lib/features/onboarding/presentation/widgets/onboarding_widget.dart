@@ -8,6 +8,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/onboarding/data/models/onboarding_model.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/manager/cubit/onboarding_cubit.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/widgets/onboarding_page_view_item.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,8 +39,8 @@ class OnboardingWidget extends StatelessWidget {
                 text:
                     cubit.currentIndex ==
                         OnboardingModel.onboardingData.length - 1
-                    ? "Get Started"
-                    : "Next",
+                    ? context.t.getStarted
+                    : context.t.Next,
                 onPressed: () async {
                   if (cubit.currentIndex ==
                       OnboardingModel.onboardingData.length - 1) {
@@ -72,7 +73,7 @@ class OnboardingWidget extends StatelessWidget {
                 },
                 child: Text(
                   textAlign: TextAlign.center,
-                  "Skip",
+                  context.t.skip,
                   style: context.textTheme.titleSmall,
                 ),
               ),

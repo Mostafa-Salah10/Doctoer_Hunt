@@ -1,49 +1,74 @@
 import 'package:doctor_hunt/core/enums/week_days.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeHelper {
-  static String formatDate(String date) {
+  static String formatDate(BuildContext context, String date) {
     final parsedDate = DateTime.parse(date);
     final now = DateTime.now();
+    final locale = Localizations.localeOf(context).toString();
 
     final isToday =
         parsedDate.year == now.year &&
         parsedDate.month == now.month &&
         parsedDate.day == now.day;
 
+    final formattedDate = DateFormat('d MMM', locale).format(parsedDate);
     return isToday
-        ? 'Today, ${DateFormat('d MMM').format(parsedDate)}'
-        : DateFormat('EEE, d MMM').format(parsedDate);
+        ? context.t.todayDate(date: formattedDate)
+        : DateFormat('EEE, d MMM', locale).format(parsedDate);
   }
 
-  static String formatDateWithDayName(String date) {
+  static String formatDateWithDayName(BuildContext context, String date) {
     final parsedDate = DateTime.parse(date);
 
-    return DateFormat('dd MMM yyyy').format(parsedDate);
+    return DateFormat(
+      'dd MMM yyyy',
+      Localizations.localeOf(context).toString(),
+    ).format(parsedDate);
   }
 
-static TimeOfDay formateTimeFromAMAndPM(String time) {
-  final format = DateFormat('hh:mm a', 'en_US');
-  final dateTime = format.parse(time.trim());
-  return TimeOfDay.fromDateTime(dateTime);
-}
+  static TimeOfDay formateTimeFromAMAndPM(String time) {
+    final format = DateFormat('hh:mm a', 'en_US');
+    final dateTime = format.parse(time.trim());
+    return TimeOfDay.fromDateTime(dateTime);
+  }
 
   static String formateTimeToAMAndPM(TimeOfDay time) {
     final dateTime = DateTime(2026, 1, 1, time.hour, time.minute);
     return DateFormat('hh:mm a').format(dateTime);
   }
+
+  static String formatTimeForDisplay(BuildContext context, TimeOfDay time) {
+    return MaterialLocalizations.of(context).formatTimeOfDay(time);
+  }
+
   static String formateDateToRegularString(DateTime date) {
     return DateFormat('yyyy-MM-dd').format(date);
   }
 
-  static String formatDuration(int minutes) {
+  static String formatDuration(BuildContext context, int minutes) {
     final h = minutes ~/ 60;
     final m = minutes % 60;
 
-    if (h == 0) return "$m Minutes";
-    if (m == 0) return h == 1 ? "1 Hour" : "$h Hours";
-    return "$h ${h == 1 ? 'Hour' : 'Hours'} $m Minutes";
+    if (h == 0) {
+      return m == 1
+          ? context.t.oneMinuteDuration
+          : context.t.minutesDuration(count: m);
+    }
+    if (m == 0) {
+      return h == 1
+          ? context.t.oneHourDuration
+          : context.t.hoursDuration(count: h);
+    }
+    if (h == 1) {
+      return context.t.oneHourAndMinutesDuration(minutes: m);
+    }
+    if (m == 1) {
+      return context.t.hoursAndOneMinuteDuration(hours: h);
+    }
+    return context.t.hoursAndMinutesDuration(hours: h, minutes: m);
   }
 
   static TimeOfDay addMinutes(TimeOfDay time, int minutes) {

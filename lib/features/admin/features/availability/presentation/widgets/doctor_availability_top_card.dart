@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.d
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -60,7 +61,7 @@ class DoctorAvailabilityTopCard extends StatelessWidget {
                 ),
 
                 Text(
-                  "${doctor.speciality}.centeral clinic",
+                  "${doctor.speciality} · ${context.t.clinic}",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: context.textTheme.titleSmall!.copyWith(

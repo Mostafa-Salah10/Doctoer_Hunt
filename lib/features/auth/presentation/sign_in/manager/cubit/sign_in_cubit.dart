@@ -29,7 +29,7 @@ class SignInCubit extends Cubit<SignInState> {
 
   void validateEmail(String? email) {
     if (email == null) return;
-    if (AppValidators.email(email) == null) {
+    if (AppValidators.isValidEmail(email)) {
       emit(state.copyWith(validEmail: true));
     } else {
       emit(state.copyWith(validEmail: false));
@@ -38,7 +38,7 @@ class SignInCubit extends Cubit<SignInState> {
 
   void validateForgotPassEmail(String? email) {
     if (email == null) return;
-    if (AppValidators.email(email) == null) {
+    if (AppValidators.isValidEmail(email)) {
       emit(state.copyWith(forgotPassValidEmail: true));
     } else {
       emit(state.copyWith(forgotPassValidEmail: false));

@@ -7,6 +7,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/admin/features/availability/presentation/manager/doctor_availability_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/availability/presentation/widgets/doctor_availability_data.dart';
 import 'package:doctor_hunt/features/admin/features/availability/presentation/widgets/doctor_availability_top_card.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,7 @@ class DoctorAvailabilityScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.primaryColorLight,
       appBar: AppBar(
-        title: Text("Doctor Availability"),
+        title: Text(context.t.doctorAvailability),
         backgroundColor: AppColors.primaryColorLight,
       ),
 
@@ -50,7 +51,7 @@ class DoctorAvailabilityScreen extends StatelessWidget {
                 listener: (context, state) {
                   if (state.addSlotsAndWorkingDays.isSuccess) {
                     toastAlert(
-                      msg: "Slots Added Successfully",
+                      msg: context.t.slotsAddedSuccessfully,
                       color: AppColors.primaryColor,
                     );
 
@@ -59,13 +60,13 @@ class DoctorAvailabilityScreen extends StatelessWidget {
                   } else if (state.updateWorkingDays.isSuccess &&
                       state.workingDays.data!.fristSet == false) {
                     toastAlert(
-                      msg: "Working Days Updated Sucessfully",
+                      msg: context.t.workingDaysUpdatedSuccessfully,
                       color: AppColors.primaryColor,
                     );
                   } else if (state.addSlotsAndWorkingDays.isError ||
                       state.updateWorkingDays.isError) {
                     toastAlert(
-                      msg: "Something went wrong",
+                      msg: context.t.somethingWentWrong,
                       color: AppColors.errorColor,
                     );
                   }
@@ -75,7 +76,7 @@ class DoctorAvailabilityScreen extends StatelessWidget {
                       state.updateWorkingDays.isLoading ||
                       state.addSlotsAndWorkingDays.isLoading;
                   return AppButton(
-                    text: isLoading ? "Loading..." : "Save",
+                    text: isLoading ? context.t.loading : context.t.save,
                     onPressed: () {
                       if (isLoading) return;
                       final cubit = context.read<DoctorAvailabilityCubit>();

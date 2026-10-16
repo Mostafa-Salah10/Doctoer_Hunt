@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.d
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_specific_data.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class AdminDoctorDetailsCard extends StatelessWidget {
@@ -36,7 +37,7 @@ class AdminDoctorDetailsCard extends StatelessWidget {
           AppointmentShowSpecificDataCard(
             isLarge: true,
             image: Assets.assetsSvgsAdminDoctor,
-            title: 'Specaility',
+            title: context.t.speciality,
             subTitle: doctor.speciality,
           ),
 
@@ -45,7 +46,7 @@ class AdminDoctorDetailsCard extends StatelessWidget {
           AppointmentShowSpecificDataCard(
             isLarge: true,
             image: Assets.assetsSvgsStarOutline,
-            title: 'Rating',
+            title: context.t.rating,
             subTitle: doctor.rating.toString(),
           ),
           const Divider(height: 30),
@@ -53,7 +54,7 @@ class AdminDoctorDetailsCard extends StatelessWidget {
           AppointmentShowSpecificDataCard(
             isLarge: true,
             image: Assets.assetsSvgsDollar,
-            title: 'Consulation Fee',
+            title: context.t.consultationFee,
             subTitle: doctor.cost.toString(),
           ),
         ],

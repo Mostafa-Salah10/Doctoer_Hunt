@@ -9,7 +9,9 @@ import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // LocaleSettings.setLocale(AppLocale.ar);
   await Future.wait([
+    
     SharedPreferencesHelper().init(),
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
   ]);

@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,8 +47,8 @@ class AdminAppointmentCardButtons extends StatelessWidget {
                         builder: (context, state) {
                           return Text(
                             state.cancelAppointment.isLoading
-                                ? "Loading..."
-                                : "Cancel Appointment",
+                                ? context.t.loading
+                                : context.t.cancelAppointment,
                             style: context.textTheme.bodySmall!.copyWith(
                               color: AppColors.errorColor,
                             ),
@@ -83,7 +84,7 @@ class AdminAppointmentCardButtons extends StatelessWidget {
 
                         child: Center(
                           child: Text(
-                            "View Details",
+                            context.t.viewDetails,
                             style: context.textTheme.bodySmall!.copyWith(
                               color: AppColors.primaryColor,
                               fontWeight: FontWeight.bold,
@@ -118,8 +119,8 @@ class AdminAppointmentCardButtons extends StatelessWidget {
                     child: Center(
                       child: Text(
                         state.markAppointmentAsCompleted.isLoading
-                            ? "Loading..."
-                            : "Mark as completed",
+                            ? context.t.loading
+                            : context.t.markAsCompleted,
                         style: context.textTheme.bodySmall!.copyWith(
                           color: AppColors.lightBackgroundColor,
                           fontWeight: FontWeight.bold,

@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_settings_second_card.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_settings_top_card.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,7 @@ class AdminSettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColorLight,
-        title: Text("Settings"),
+        title: Text(context.t.settings),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),

@@ -7,6 +7,7 @@ import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/core/widgets/ustom_admin_text_field.dart';
 import 'package:doctor_hunt/features/admin/features/settings/data/models/admin_model.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,33 +42,35 @@ class _AdminEditProfileFormState extends State<AdminEditProfileForm> {
         children: [
           const VerticalSpace(height: 20),
           CustomAdminTextField(
-
             initialValue: name,
             onChanged: (n) {
               name = n;
             },
-            hint: 'Enter your full name',
-            label: 'Full name',
+            hint: context.t.enterYourFullName,
+            label: context.t.fullName,
             keyboardType: TextInputType.name,
             prefixIcon: Icon(
               Icons.person_outline,
               size: 24.sp,
               color: const Color(0xFF8DA0BB),
             ),
-            validator: (name) =>
-                AppValidators.required(name, fieldName: "Name"),
+            validator: (name) => AppValidators.required(
+              context,
+              name,
+              fieldName: context.t.fullName,
+            ),
           ),
           SizedBox(height: 20.h),
           CustomAdminTextField(
             initialValue: widget.admin.email,
-            hint: 'Enter your email address',
+            hint: context.t.enterYourEmailAddress,
             readOnly: true,
             prefixIcon: Icon(
               Icons.mail_outline,
               size: 24.sp,
               color: const Color(0xFF8DA0BB),
             ),
-            validator: (email) => AppValidators.email(email),
+            validator: (email) => AppValidators.email(context, email),
           ),
           SizedBox(height: 20.h),
           // CustomAdminTextField(
@@ -88,7 +91,7 @@ class _AdminEditProfileFormState extends State<AdminEditProfileForm> {
             listener: (context, state) {
               if (state.updateCurrentAdmin.isError) {
                 toastAlert(
-                  msg: "Something went wrong",
+                  msg: context.t.somethingWentWrong,
                   color: AppColors.errorColor,
                 );
               } else if (state.updateCurrentAdmin.isSuccess) {
@@ -98,8 +101,8 @@ class _AdminEditProfileFormState extends State<AdminEditProfileForm> {
             builder: (context, state) {
               return AppButton(
                 text: state.updateCurrentAdmin.isLoading
-                    ? "Loading..."
-                    : 'Save Changes',
+                    ? context.t.loading
+                    : context.t.saveChanges,
                 onPressed: () {
                   if (state.updateCurrentAdmin.isLoading) return;
 

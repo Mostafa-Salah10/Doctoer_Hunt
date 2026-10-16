@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/features/settings/data/models/settings_model.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class AddtionalSettingsList extends StatelessWidget {
@@ -55,7 +56,7 @@ class AdditionalSettingsItem extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
 
-              settingsModel.title,
+              context.t[settingsModel.title],
               style: context.textTheme.bodyLarge,
             ),
           ),

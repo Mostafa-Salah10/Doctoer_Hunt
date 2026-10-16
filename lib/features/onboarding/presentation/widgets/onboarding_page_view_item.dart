@@ -2,6 +2,7 @@ import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/onboarding/data/models/onboarding_model.dart';
 import 'package:doctor_hunt/features/onboarding/presentation/widgets/custom_onboarding_linear_circle.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -38,12 +39,15 @@ class OnboardingPageViewItem extends StatelessWidget {
 
             const VerticalSpace(height: 85),
 
-            Text(model.title, style: context.textTheme.headlineMedium),
+            Text(
+              context.t[model.title],
+              style: context.textTheme.headlineMedium,
+            ),
             const VerticalSpace(height: 11),
 
             Text(
               textAlign: TextAlign.center,
-              model.subTitle,
+              context.t[model.subTitle],
 
               style: context.textTheme.titleSmall,
             ),

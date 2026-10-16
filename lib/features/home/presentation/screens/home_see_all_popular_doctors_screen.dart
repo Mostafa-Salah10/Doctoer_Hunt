@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/widgets/error_widget.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/see_all_popular_doctors_list.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +31,7 @@ class _HomeSeeAllPopularDoctorsScreenState
       child: SafeArea(
         child: Column(
           children: [
-            CustomScreensAppBar(title: "Popular Doctors"),
+            CustomScreensAppBar(title: context.t.popularDoctors),
             const VerticalSpace(height: 34),
             Expanded(
               child: BlocBuilder<HomeCubit, HomeState>(

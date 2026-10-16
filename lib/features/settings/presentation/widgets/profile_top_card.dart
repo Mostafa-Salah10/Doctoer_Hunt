@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/widgets/cached_network_image.dart';
 import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +34,10 @@ class ProfileTopCard extends StatelessWidget {
         child: Column(
           children: [
             SafeArea(
-              child: const CustomScreensAppBar(title: "Profile", isLight: true),
+              child: CustomScreensAppBar(
+                title: context.t.profile,
+                isLight: true,
+              ),
             ),
 
             BlocBuilder<SettingsCubit, SettingsState>(

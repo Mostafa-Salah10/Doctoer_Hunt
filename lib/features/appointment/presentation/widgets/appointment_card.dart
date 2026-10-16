@@ -8,6 +8,7 @@ import 'package:doctor_hunt/features/appointment/presentation/widgets/appointmen
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_card_top_section.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_rate_doctor.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_specific_data.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentCard extends StatelessWidget {
@@ -45,14 +46,14 @@ class AppointmentCard extends StatelessWidget {
               Expanded(
                 child: AppointmentShowSpecificDataCard(
                   image: Assets.assetsSvgsDate,
-                  title: 'Appointment date',
+                  title: context.t.appointmentDate,
                   subTitle: appointmentModel.date,
                 ),
               ),
               Expanded(
                 child: AppointmentShowSpecificDataCard(
                   image: Assets.assetsSvgsClock,
-                  title: 'Appointment time',
+                  title: context.t.appointmentTime,
                   subTitle: appointmentModel.slot,
                 ),
               ),
@@ -61,7 +62,7 @@ class AppointmentCard extends StatelessWidget {
           const VerticalSpace(height: 10),
           AppointmentShowSpecificDataCard(
             image: Assets.assetsSvgsDollar,
-            title: 'Consultation fee',
+            title: context.t.consultationFee,
             subTitle: '\$${appointmentModel.consulationFee}',
           ),
 

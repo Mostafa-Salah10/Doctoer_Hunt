@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/widgets/app_button.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/auth/presentation/sign_in/manager/cubit/sign_in_cubit.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,10 +53,13 @@ class _ForgotPasswordBottomSheetState extends State<ResetPasswordBottomSheet> {
               ),
 
               const VerticalSpace(height: 55),
-              Text("Reset Password", style: context.textTheme.displayLarge),
+              Text(
+                context.t.resetPassword,
+                style: context.textTheme.displayLarge,
+              ),
               const VerticalSpace(height: 12),
               Text(
-                "Set the new password for your account so you can\n login and access all the features.",
+                context.t.resetPasswordDescription,
                 style: context.textTheme.titleSmall,
               ),
               const VerticalSpace(height: 36),
@@ -64,8 +68,9 @@ class _ForgotPasswordBottomSheetState extends State<ResetPasswordBottomSheet> {
                     previous.showNewPassword != current.showNewPassword,
                 builder: (context, state) {
                   return AppTextFormField(
-                    hint: "New Password",
-                    validator: (value) => AppValidators.password(value),
+                    hint: context.t.newPassword,
+                    validator: (value) =>
+                        AppValidators.password(context, value),
                     onChanged: (value) => newPassword = value,
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -87,8 +92,9 @@ class _ForgotPasswordBottomSheetState extends State<ResetPasswordBottomSheet> {
                     previous.showReEnterPassword != current.showReEnterPassword,
                 builder: (context, state) {
                   return AppTextFormField(
-                    hint: "Re Enter Password",
-                    validator: (value) => AppValidators.password(value),
+                    hint: context.t.reEnterPassword,
+                    validator: (value) =>
+                        AppValidators.password(context, value),
                     onChanged: (value) => reEnterPassword = value,
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -109,7 +115,7 @@ class _ForgotPasswordBottomSheetState extends State<ResetPasswordBottomSheet> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: AppButton(
-                  text: "Update Password",
+                  text: context.t.updatePassword,
                   onPressed: () {
                     if (cubit.resetFormKey.currentState!.validate()) {}
                   },

@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/widgets/appointment_show_specific_data.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentShowDetailsCard extends StatelessWidget {
@@ -41,8 +42,9 @@ class AppointmentShowDetailsCard extends StatelessWidget {
                 child: AppointmentShowSpecificDataCard(
                   showContainer: true,
                   image: Assets.assetsSvgsDate,
-                  title: 'Appointment date',
+                  title: context.t.appointmentDate,
                   subTitle: DateTimeHelper.formatDateWithDayName(
+                    context,
                     appointmentModel.date,
                   ),
                 ),
@@ -51,7 +53,7 @@ class AppointmentShowDetailsCard extends StatelessWidget {
                 child: AppointmentShowSpecificDataCard(
                   showContainer: true,
                   image: Assets.assetsSvgsClock,
-                  title: 'Appointment time',
+                  title: context.t.appointmentTime,
                   subTitle: appointmentModel.slot,
                 ),
               ),
@@ -62,14 +64,14 @@ class AppointmentShowDetailsCard extends StatelessWidget {
           AppointmentShowSpecificDataCard(
             showContainer: true,
             image: Assets.assetsSvgsDollar,
-            title: 'Consulation Fee',
+            title: context.t.consultationFee,
             subTitle: '\$ ${appointmentModel.consulationFee}',
           ),
           const VerticalSpace(height: 12),
           AppointmentShowSpecificDataCard(
             showContainer: true,
             image: Assets.assetsSvgsLocation,
-            title: 'Clinic Location',
+            title: context.t.clinicLocation,
             subTitle: "Central Clinic · 24 Garden Avenue",
           ),
         ],

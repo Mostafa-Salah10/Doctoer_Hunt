@@ -4,6 +4,7 @@ import 'package:doctor_hunt/core/helpers/date_time_helper.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cubit.dart';
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_time_data_list.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,6 +26,7 @@ class SelectDayDataWithTitle extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     DateTimeHelper.formatDate(
+                      context,
                       state
                           .availableDaysState
                           .data![state.currenDaytIndex]
@@ -60,7 +62,9 @@ class SelectDayDataWithTitle extends StatelessWidget {
                       data: state.afternoonSlots
                           .where((element) => element.isBooked == false)
                           .toList(),
-                      title: 'Afternoon ${state.afternoonSlots.length} slots',
+                      title: context.t.afternoonSlots(
+                        count: state.afternoonSlots.length,
+                      ),
                       onTap: (index) {
                         context
                             .read<SelectTimeCubit>()
@@ -91,7 +95,9 @@ class SelectDayDataWithTitle extends StatelessWidget {
                       data: state.eveningSlots
                           .where((element) => element.isBooked == false)
                           .toList(),
-                      title: 'Evening ${state.eveningSlots.length} slots',
+                      title: context.t.eveningSlots(
+                        count: state.eveningSlots.length,
+                      ),
                       onTap: (index) {
                         context
                             .read<SelectTimeCubit>()

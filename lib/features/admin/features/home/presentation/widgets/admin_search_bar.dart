@@ -1,6 +1,7 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/widgets/app_text_form_field.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +21,7 @@ class AdminSearchBar extends StatelessWidget {
 
             onChanged: (doctor) {},
 
-            hint: 'Search doctors',
+            hint: context.t.searchDoctors,
           ),
         ),
 

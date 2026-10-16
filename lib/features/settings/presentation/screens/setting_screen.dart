@@ -9,7 +9,9 @@ import 'package:doctor_hunt/core/widgets/custom_screen_app_bar.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
 import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:doctor_hunt/features/settings/presentation/widgets/addtional_settings_list.dart';
+import 'package:doctor_hunt/features/settings/presentation/widgets/language_selector.dart';
 import 'package:doctor_hunt/features/settings/presentation/widgets/setting_card.dart';
+import 'package:doctor_hunt/features/settings/presentation/widgets/theme_selector.dart';
 import 'package:doctor_hunt/gen/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,8 +77,11 @@ class SettingScreen extends StatelessWidget {
 
               const VerticalSpace(height: 20),
 
-              Image.asset(Assets.assetsImagesLanguage),
+              const LanguageSelector(),
+              const VerticalSpace(height: 12),
+              const ThemeSelector(),
 
+              const VerticalSpace(height: 16),
               Image.asset(Assets.assetsImagesVersions),
               const VerticalSpace(height: 53),
 

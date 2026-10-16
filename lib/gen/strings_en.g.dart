@@ -670,6 +670,21 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 
 	/// en: 'That’s why an appointment reminder system can help.'
 	String get doctorServiceAppointmentReminder => 'That’s why an appointment reminder system can help.';
+
+	/// en: 'Language'
+	String get language => 'Language';
+
+	/// en: 'English'
+	String get english => 'English';
+
+	/// en: 'العربية'
+	String get arabic => 'العربية';
+
+	/// en: 'Dark mode'
+	String get darkMode => 'Dark mode';
+
+	/// en: 'Use a darker appearance throughout the app'
+	String get darkModeDescription => 'Use a darker appearance throughout the app';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -890,6 +905,11 @@ extension on Translations {
 			'doctorServicePatientCare' => 'Patient care should always come first.',
 			'doctorServicePractice' => 'If you run a clinic, you know how challenging it can be.',
 			'doctorServiceAppointmentReminder' => 'That’s why an appointment reminder system can help.',
+			'language' => 'Language',
+			'english' => 'English',
+			'arabic' => 'العربية',
+			'darkMode' => 'Dark mode',
+			'darkModeDescription' => 'Use a darker appearance throughout the app',
 			_ => null,
 		};
 	}

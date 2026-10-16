@@ -1,4 +1,5 @@
 import 'package:doctor_hunt/app/doctor_hunt.dart';
+import 'package:doctor_hunt/core/config/language/manager/language_cubit.dart';
 import 'package:doctor_hunt/core/database/cache/shared_preferences_helper.dart';
 import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/firebase_options.dart';
@@ -9,13 +10,12 @@ import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // LocaleSettings.setLocale(AppLocale.ar);
   await Future.wait([
-    
     SharedPreferencesHelper().init(),
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
   ]);
   setupServiceLocator();
+  await gi<LanguageCubit>().getAppLanguage();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

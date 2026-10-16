@@ -208,5 +208,10 @@
   "friday": "Friday",
   "doctorServicePatientCare": "Patient care should always come first.",
   "doctorServicePractice": "If you run a clinic, you know how challenging it can be.",
-  "doctorServiceAppointmentReminder": "That’s why an appointment reminder system can help."
+  "doctorServiceAppointmentReminder": "That’s why an appointment reminder system can help.",
+  "language": "Language",
+  "english": "English",
+  "arabic": "العربية",
+  "darkMode": "Dark mode",
+  "darkModeDescription": "Use a darker appearance throughout the app"
 }

@@ -208,5 +208,10 @@
   "friday": "الجمعة",
   "doctorServicePatientCare": "يجب أن تأتي رعاية المرضى في المقام الأول دائمًا.",
   "doctorServicePractice": "إذا كنت تدير عيادة، فأنت تعرف مدى صعوبة ذلك.",
-  "doctorServiceAppointmentReminder": "لذلك يمكن أن يساعدك نظام التذكير بالمواعيد."
+  "doctorServiceAppointmentReminder": "لذلك يمكن أن يساعدك نظام التذكير بالمواعيد.",
+  "language": "اللغة",
+  "english": "English",
+  "arabic": "العربية",
+  "darkMode": "الوضع الداكن",
+  "darkModeDescription": "استخدم مظهرًا داكنًا في التطبيق"
 }

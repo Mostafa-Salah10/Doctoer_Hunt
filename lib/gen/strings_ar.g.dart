@@ -247,6 +247,11 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	@override String get doctorServicePatientCare => 'يجب أن تأتي رعاية المرضى في المقام الأول دائمًا.';
 	@override String get doctorServicePractice => 'إذا كنت تدير عيادة، فأنت تعرف مدى صعوبة ذلك.';
 	@override String get doctorServiceAppointmentReminder => 'لذلك يمكن أن يساعدك نظام التذكير بالمواعيد.';
+	@override String get language => 'اللغة';
+	@override String get english => 'English';
+	@override String get arabic => 'العربية';
+	@override String get darkMode => 'الوضع الداكن';
+	@override String get darkModeDescription => 'استخدم مظهرًا داكنًا في التطبيق';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -467,6 +472,11 @@ extension on TranslationsAr {
 			'doctorServicePatientCare' => 'يجب أن تأتي رعاية المرضى في المقام الأول دائمًا.',
 			'doctorServicePractice' => 'إذا كنت تدير عيادة، فأنت تعرف مدى صعوبة ذلك.',
 			'doctorServiceAppointmentReminder' => 'لذلك يمكن أن يساعدك نظام التذكير بالمواعيد.',
+			'language' => 'اللغة',
+			'english' => 'English',
+			'arabic' => 'العربية',
+			'darkMode' => 'الوضع الداكن',
+			'darkModeDescription' => 'استخدم مظهرًا داكنًا في التطبيق',
 			_ => null,
 		};
 	}

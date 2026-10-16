@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:doctor_hunt/core/config/language/manager/language_cubit.dart';
 import 'package:doctor_hunt/core/config/theme/manager/theme_cubit.dart';
 import 'package:doctor_hunt/core/database/shared/data/data_source/shared_remote_data_source.dart';
 import 'package:doctor_hunt/core/database/shared/data/repo/shared_repo_impl.dart';
@@ -72,6 +73,7 @@ void setupServiceLocator() async {
   );
 
   gi.registerLazySingleton(() => ThemeCubit());
+  gi.registerLazySingleton(() => LanguageCubit());
   gi.registerLazySingleton(
     () => AdminHomeRepoImpl(
       adminHomeRemoteDataSource: AdminHomeRemoteDataSource(

@@ -12,6 +12,8 @@ import 'package:doctor_hunt/features/admin/features/home/presentation/manager/cr
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_create_doctor_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_doctor_details_screen.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/update_doctor_screen.dart';
+import 'package:doctor_hunt/features/admin/features/settings/data/models/admin_model.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/screens/admin_edit_profile_screen.dart';
 import 'package:doctor_hunt/features/appointment/data/models/appointment_model.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
@@ -153,7 +155,13 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.adminEditProfileScreen,
         builder: (context, state) {
-          return AdminEditProfileScreen();
+          var data = state.extra as Map<String, dynamic>;
+          AdminModel admin = data['admin'];
+          AdminSettingsCubit cubit = data['cubit'];
+          return BlocProvider(
+            create: (context) => cubit,
+            child: AdminEditProfileScreen(admin: admin),
+          );
         },
       ),
       GoRoute(

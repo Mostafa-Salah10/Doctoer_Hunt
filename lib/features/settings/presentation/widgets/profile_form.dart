@@ -93,6 +93,7 @@ class _ProfileFormState extends State<ProfileForm> {
                 return SafeArea(
                   child: AppButton(
                     onPressed: () async {
+                      if (state.updateCurrentPatient.isLoading) return;
                       if (_formState.currentState!.validate()) {
                         cubit.updateCurrentPatient(
                           PatientModel(
@@ -101,7 +102,7 @@ class _ProfileFormState extends State<ProfileForm> {
                             email: widget.patient.email,
                             phone: phone,
                             name: name,
-                            image:cubit.state.profileImage,
+                            image: cubit.state.profileImage,
                           ),
                         );
                       }

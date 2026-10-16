@@ -3,7 +3,9 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/extensions/config_extension.dart';
 import 'package:doctor_hunt/core/extensions/navigate_extension.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminSettingsSecondCard extends StatelessWidget {
   const AdminSettingsSecondCard({super.key});
@@ -33,9 +35,20 @@ class AdminSettingsSecondCard extends StatelessWidget {
         spacing: 5,
         children: [
           InkWell(
-            
-            onTap: () => context.pushNamed(AppRoutes.adminEditProfileScreen),
-            child: Image.asset(Assets.assetsImagesAdminProfile)),
+            onTap: () {
+              final cubit = context.read<AdminSettingsCubit>();
+              if (cubit.state.getCurrentAdmin.data != null) {
+                context.pushNamed(
+                  AppRoutes.adminEditProfileScreen,
+                  arguments: {
+                    "admin": cubit.state.getCurrentAdmin.data,
+                    'cubit': cubit,
+                  },
+                );
+              }
+            },
+            child: Image.asset(Assets.assetsImagesAdminProfile),
+          ),
           Image.asset(Assets.assetsImagesHorizontalDivider),
 
           Image.asset(Assets.assetsImagesAdminChangePass),

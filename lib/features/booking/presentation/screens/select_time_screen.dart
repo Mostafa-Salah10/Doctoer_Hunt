@@ -2,6 +2,7 @@ import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.d
 import 'package:doctor_hunt/core/widgets/custom_background_widget.dart';
 import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cubit.dart';
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_time_screen_body.dart';
+import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,7 @@ class _SelectTimeScreenState extends State<SelectTimeScreen> {
   void initState() {
     // log(widget.doctor.id);
     context.read<SelectTimeCubit>().fetchDoctorAvailableDays(widget.doctor.id);
+    context.read<SettingsCubit>().getCurrentPatient();
     super.initState();
   }
 

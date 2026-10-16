@@ -1,6 +1,5 @@
 import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/database/shared/domain/entities/doctor_entity.dart';
-import 'package:doctor_hunt/core/functions/get_patient_id.dart';
 import 'package:doctor_hunt/core/functions/toast_alert.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/app_button.dart';
@@ -11,6 +10,7 @@ import 'package:doctor_hunt/features/booking/presentation/manager/select_time_cu
 import 'package:doctor_hunt/features/booking/presentation/widgets/custom_done_dialog.dart';
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_day_data_with_title.dart';
 import 'package:doctor_hunt/features/booking/presentation/widgets/select_day_list.dart';
+import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -86,9 +86,12 @@ class SelectTimeScreenBody extends StatelessWidget {
                             : "Confirm",
                         onPressed: () async {
                           final book = context.read<SelectTimeCubit>();
-                          final patientId = getPatientId();
                           await book.bookWithDoctor(
-                            patientId: patientId!,
+                            patient: context
+                                .read<SettingsCubit>()
+                                .state
+                                .getCurrentPatient
+                                .data!,
                             doctor: doctor,
                           );
                         },

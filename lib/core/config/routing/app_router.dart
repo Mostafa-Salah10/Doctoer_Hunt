@@ -291,6 +291,7 @@ abstract class AppRouter {
             providers: [
               BlocProvider(create: (context) => cubit),
               BlocProvider(create: (context) => gi<SelectTimeCubit>()),
+              BlocProvider(create: (context) => gi<SettingsCubit>()),
             ],
             child: SelectTimeScreen(doctor: doctor),
           );

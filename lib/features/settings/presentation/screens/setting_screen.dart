@@ -62,6 +62,8 @@ class SettingScreen extends StatelessWidget {
               ),
 
               const VerticalSpace(height: 20),
+
+              
               const AddtionalSettingsList(),
               const VerticalSpace(height: 20),
               Text(

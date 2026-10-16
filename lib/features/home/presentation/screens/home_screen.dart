@@ -1,9 +1,11 @@
+import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/error_widget.dart';
 import 'package:doctor_hunt/features/home/presentation/manager/home_cubit.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_content.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_top_app_bar.dart';
 import 'package:doctor_hunt/features/home/presentation/widgets/home/home_top_container.dart';
+import 'package:doctor_hunt/features/settings/presentation/manager/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,7 +48,16 @@ class HomeScreen extends StatelessWidget {
 
                     HomeTopContainer(containerHeight: containerHeight),
 
-                    const HomeTopAppBar(),
+                    BlocProvider(
+                      create: (context) => gi<SettingsCubit>()..getCurrentPatient(),
+                      child: BlocBuilder<SettingsCubit, SettingsState>(
+                        builder: (context, state) {
+                          return HomeTopAppBar(
+                            patient: state.getCurrentPatient.data,
+                          );
+                        },
+                      ),
+                    ),
 
                     HomeContent(containerHeight: containerHeight),
                   ],

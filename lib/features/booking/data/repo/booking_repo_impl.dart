@@ -5,6 +5,7 @@ import 'package:doctor_hunt/core/enums/booking_status.dart';
 import 'package:doctor_hunt/features/booking/data/models/doctor_available_day_model.dart';
 import 'package:doctor_hunt/features/booking/data/models/slot_model.dart';
 import 'package:doctor_hunt/features/booking/data/repo/booking_repo.dart';
+import 'package:doctor_hunt/features/settings/data/models/patient_model.dart';
 
 class BookingRepoImpl implements BookingRepo {
   final FirebaseFirestore _firestore;
@@ -108,7 +109,7 @@ class BookingRepoImpl implements BookingRepo {
 
   @override
   Future<Either<String, Null>> bookWithDoctor({
-    required String patientId,
+    required PatientModel patient,
     required DoctorEntity doctor,
     required SlotModel slot,
     required String date,
@@ -132,7 +133,7 @@ class BookingRepoImpl implements BookingRepo {
           final appointmentRef = _firestore.collection("appoinments").doc();
           transaction.set(appointmentRef, {
             "doctorId": doctor.id,
-            "patientId": patientId,
+            "patientId": patient.patientId,
             "date": date,
             "consulationFee": doctor.cost,
             "speciality": doctor.speciality,
@@ -140,9 +141,8 @@ class BookingRepoImpl implements BookingRepo {
             "status": BookingStatus.upcoming.name,
             "doctorName": doctor.name,
             "doctorImage": doctor.imageUrl,
-            "patientName": "Handwerker",
-            "patientImage":
-                "https://avatars.githubusercontent.com/u/144556734?v=4",
+            "patientName": patient.name,
+            "patientImage": patient.imageUrl,
           });
 
           return right(null);

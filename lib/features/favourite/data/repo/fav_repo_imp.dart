@@ -15,7 +15,7 @@ class FavRepoImp implements FavRepo {
     try {
       await _firebaseFirestore
           .collection('favourites')
-          .doc(getPatientId())
+          .doc(getCurrentUserId())
           .collection('doctors')
           .doc(doctorId)
           .set({'id': doctorId});
@@ -31,7 +31,7 @@ class FavRepoImp implements FavRepo {
     try {
       final response = await _firebaseFirestore
           .collection('favourites')
-          .doc(getPatientId())
+          .doc(getCurrentUserId())
           .collection('doctors')
           .get();
 
@@ -48,7 +48,7 @@ class FavRepoImp implements FavRepo {
     try {
       await _firebaseFirestore
           .collection('favourites')
-          .doc(getPatientId())
+          .doc(getCurrentUserId())
           .collection('doctors')
           .doc(doctorId)
           .delete();

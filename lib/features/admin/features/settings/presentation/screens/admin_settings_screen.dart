@@ -2,9 +2,11 @@ import 'package:doctor_hunt/core/config/theme/app_colors.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/core/widgets/custom_log_out_widget.dart';
 import 'package:doctor_hunt/core/widgets/space_widget.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_settings_second_card.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/widgets/admin_settings_top_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdminSettingsScreen extends StatelessWidget {
@@ -33,7 +35,15 @@ class AdminSettingsScreen extends StatelessWidget {
           child: Column(
             children: [
               const VerticalSpace(height: 15),
-              const AdminSettingsTopCard(),
+              BlocBuilder<AdminSettingsCubit, AdminSettingsState>(
+                buildWhen: (previous, current) =>
+                    previous.getCurrentAdmin != current.getCurrentAdmin,
+                builder: (context, state) {
+                  return AdminSettingsTopCard(
+                    admin: state.getCurrentAdmin.data,
+                  );
+                },
+              ),
               const VerticalSpace(height: 15),
 
               const AdminSettingsSecondCard(),

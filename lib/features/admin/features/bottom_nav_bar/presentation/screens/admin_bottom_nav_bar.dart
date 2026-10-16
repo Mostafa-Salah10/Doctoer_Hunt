@@ -3,6 +3,7 @@ import 'package:doctor_hunt/core/services/di/service_locator.dart';
 import 'package:doctor_hunt/core/utils/assets.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/screens/admin_doctors_screen.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/settings/presentation/screens/admin_settings_screen.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/appointment/presentation/screens/admin_appointment_screen.dart';
@@ -60,6 +61,9 @@ class AdminBottomNavBar extends StatelessWidget {
       child: AdminAppointmentScreen(),
     ),
 
-    AdminSettingsScreen(),
+    BlocProvider(
+      create: (context) => gi<AdminSettingsCubit>()..getCurrentAdmin(),
+      child: AdminSettingsScreen(),
+    ),
   ];
 }

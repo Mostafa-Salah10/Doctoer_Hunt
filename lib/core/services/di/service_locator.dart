@@ -13,6 +13,8 @@ import 'package:doctor_hunt/features/admin/features/home/domain/use_case/get_doc
 import 'package:doctor_hunt/features/admin/features/home/domain/use_case/update_doctor.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/admin_home/admin_home_cubit.dart';
 import 'package:doctor_hunt/features/admin/features/home/presentation/manager/create_doctor/create_doctor_cubit.dart';
+import 'package:doctor_hunt/features/admin/features/settings/data/repo/admin_settings_repo_impl.dart';
+import 'package:doctor_hunt/features/admin/features/settings/presentation/manager/admin_settings_cubit.dart';
 import 'package:doctor_hunt/features/appointment/data/repo/appointment_repo_impl.dart';
 import 'package:doctor_hunt/features/appointment/presentation/manager/appointment_cubit.dart';
 import 'package:doctor_hunt/features/booking/data/repo/booking_repo_impl.dart';
@@ -63,9 +65,10 @@ void setupServiceLocator() async {
     ),
   );
   gi.registerLazySingleton(
-    () => SettingsRepoImpl(
-      firebaseFirestore: FirebaseFirestore.instance,
-    ),
+    () => SettingsRepoImpl(firebaseFirestore: FirebaseFirestore.instance),
+  );
+  gi.registerLazySingleton(
+    () => AdminSettingsRepoImpl(firebaseFirestore: FirebaseFirestore.instance),
   );
 
   gi.registerLazySingleton(() => ThemeCubit());
@@ -86,9 +89,10 @@ void setupServiceLocator() async {
 
   ///all cubits
 
-  gi.registerFactory(() => SettingsCubit(
-    settingsRepo: gi<SettingsRepoImpl>()
-  ));
+  gi.registerFactory(() => SettingsCubit(settingsRepo: gi<SettingsRepoImpl>()));
+  gi.registerFactory(
+    () => AdminSettingsCubit(adminSettingsRepo: gi<AdminSettingsRepoImpl>()),
+  );
   gi.registerFactory(() => BottomNavBarCubit());
   gi.registerFactory(
     () => DoctorAvailabilityCubit(repo: gi<DoctorAvailabilityRepoImpl>()),

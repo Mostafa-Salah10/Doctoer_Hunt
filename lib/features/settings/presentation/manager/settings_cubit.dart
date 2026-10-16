@@ -18,7 +18,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> getCurrentPatient() async {
     emit(state.copyWith(getCurrentPatient: BoxState.loading()));
 
-    final patientId = getPatientId();
+    final patientId = getCurrentUserId();
     final res = await _settingsRepo.getCurrentPatient(patientId: patientId!);
 
     res.fold(
@@ -57,4 +57,6 @@ class SettingsCubit extends Cubit<SettingsState> {
   void chooseProfileImage(File image) {
     emit(state.copyWith(profileImage: image));
   }
+
+
 }

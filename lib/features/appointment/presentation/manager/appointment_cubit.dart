@@ -30,7 +30,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
   Future<void> getPatientAppointments() async {
     emit(state.copyWith(getAppointments: BoxState.loading()));
 
-    final patientId = getPatientId();
+    final patientId = getCurrentUserId();
 
     final res = await _appointmentRepo.getPatientAppointment(
       patientId: patientId!,
@@ -163,7 +163,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     required String doctorId,
     required String appointmentId,
   }) async {
-    final patientId = getPatientId();
+    final patientId = getCurrentUserId();
 
     final rate = state.rates[appointmentId];
 

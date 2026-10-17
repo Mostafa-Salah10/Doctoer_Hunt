@@ -18,7 +18,7 @@ class SelectDayList extends StatelessWidget {
       builder: (context, state) {
         final days = state.availableDaysState.data ?? [];
         return SizedBox(
-          height: 55.h,
+          height: 60.h,
           child: ListView.separated(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,

@@ -24,23 +24,21 @@ class AdminSettingsTopCard extends StatelessWidget {
         contentPadding: const EdgeInsets.all(16),
         tileColor: AppColors.lightBackgroundColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        leading: SizedBox(
+        leading: Container(
           width: 60.w,
           height: 60.w,
-          child: ClipOval(
-            child: isLoading
-                ? const Bone.circle(size: 60)
-                : imageUrl.isNotEmpty
-                ? CustomCachedNetworkImage(
-                    imageUrl: imageUrl,
-                    fit: BoxFit.cover,
-                  )
-                : UserImagePlaceholder(
-                    width: 60.w,
-                    height: 60.w,
-                    name: admin?.name ?? '',
-                  ),
-          ),
+          clipBehavior: Clip.hardEdge,
+
+          decoration: BoxDecoration(shape: BoxShape.circle),
+          child: isLoading
+              ? const Bone.circle(size: 60)
+              : imageUrl.isNotEmpty
+              ? CustomCachedNetworkImage(imageUrl: imageUrl, fit: BoxFit.cover)
+              : UserImagePlaceholder(
+                  width: 60.w,
+                  height: 60.w,
+                  name: admin?.name ?? '',
+                ),
         ),
         title: Text(context.t.administrator),
         subtitle: Text(

@@ -27,25 +27,30 @@ class AdminSetttingsTopChangeProfileImage extends StatelessWidget {
       children: [
         const VerticalSpace(height: 20),
         Center(
-          child: Container(
+          child: SizedBox(
             width: 120.w,
             height: 120.w,
-            decoration: BoxDecoration(shape: BoxShape.circle),
-
             child: Stack(
+              clipBehavior: Clip.none,
               children: [
-                image != null
-                    ? Image.file(image!)
-                    : admin.imageUrl.isNotEmpty
-                    ? CustomCachedNetworkImage(
-                        imageUrl: admin.imageUrl,
-                        fit: BoxFit.cover,
-                      )
-                    : UserImagePlaceholder(
-                        width: 120.w,
-                        height: 120.w,
-                        name: admin.name,
-                      ),
+                ClipOval(
+                  child: SizedBox(
+                    width: 120.w,
+                    height: 120.w,
+                    child: image != null
+                        ? Image.file(image!, fit: BoxFit.cover)
+                        : admin.imageUrl.isNotEmpty
+                        ? CustomCachedNetworkImage(
+                            imageUrl: admin.imageUrl,
+                            fit: BoxFit.cover,
+                          )
+                        : UserImagePlaceholder(
+                            width: 120.w,
+                            height: 120.w,
+                            name: admin.name,
+                          ),
+                  ),
+                ),
                 Positioned(
                   right: 0,
                   bottom: 0,
@@ -69,7 +74,6 @@ class AdminSetttingsTopChangeProfileImage extends StatelessWidget {
             ),
           ),
         ),
-
         const VerticalSpace(height: 5),
         InkWell(
           onTap: () async {
